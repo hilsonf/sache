@@ -2,12 +2,16 @@
 var user       = require('../public/models/user');
 var LocalStrategy  = require('passport-local').Strategy;
 
+
 module.exports = function(passport) {
 
   passport.use(new LocalStrategy({
+    usernameField : 'username',
     passwordField : 'password',
     passReqToCallback : true},
   function(req, username, password, done) {
+    console.log(username)
+    console.log(password)
     process.nextTick(function () {
 	  user.findOne({'username':username},
 		function(err, user) {
@@ -17,6 +21,7 @@ module.exports = function(passport) {
 
       return done(null, user);
 		});
+     
     });
   }
 ));
