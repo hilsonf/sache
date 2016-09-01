@@ -1,0 +1,77 @@
+<div class="row"></div>
+
+
+{{#each products}}
+{{#each anchovies}}
+<div class="container headings">
+  <h1>{{this.name}}</h1>
+  <i class="material-icons">nature</i>
+  <hr>
+</div>
+
+<div class="row">
+<a href="/products" class="back"><i class="material-icons brown-text">arrow_back</i></a>
+
+<p class="col l12 center">{{this.description}}</p>
+
+<div class="row"></div>
+
+<div class="col s12 m12 l4">
+  <div class="container headings">
+    <h2>Sizes</h2>
+     <hr>
+  </div>
+  <div class="center">
+  <a href="/sizes/#anchovies">Click for Size Chart</a>
+  </div>
+  <div class="row"></div>
+
+</div>{{!-- col --}}
+
+<div class="col s12 m12 l4">
+  <div class="container headings">
+    <h2>Types</h2>
+    <hr>
+  </div>
+  <div class="center">
+    {{#each types}}
+    <span class="chip">{{type1}}</span>
+    <span class="chip">{{type2}}</span>
+    <span class="chip">{{type3}}</span>
+    {{/each}}
+  </div>
+  <div class="row"></div>
+
+</div>   {{!-- col --}}
+
+<div class="col s12 m12 l4">
+  <div class="container headings">
+    <h2>Flavors</h2>
+    <hr>
+  </div>
+  <div class="center">
+    {{#each flavors}}
+    <span class="chip">{{flavor1}}</span>
+    <span class="chip">{{flavor2}}</span>
+    <span class="chip">{{flavor3}}</span>
+    {{/each}}
+  </div>
+  <div class="row"></div>
+
+</div>   {{!-- col --}}
+
+</div>
+
+<div class="row">
+  {{#each images}}
+  <div class="col s12 m12 l4"><img src="{{image1}}" alt="" class="responsive-img"></div>
+  <div class="col s12 m12 l4"><img src="{{image2}}" alt="" class="responsive-img"></div>
+  <div class="col s12 m12 l4"><img src="{{image3}}" alt="" class="responsive-img"></div>
+  {{/each}}
+</div>
+
+ {{/each}} {{!-- anchovies --}}
+ {{/each}} {{!-- products --}}
+
+
+

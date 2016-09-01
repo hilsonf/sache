@@ -1,0 +1,54 @@
+.headings {
+    text-align: center;
+  h2 {
+
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  hr {
+      height: 5px;
+      background: #A17F59;
+      border: none;
+      width: 40px;
+      margin-bottom: 45px;
+  }
+
+  i{
+    text-align: center;
+    font-size: 3em;
+    color: #5C1117;
+  }
+  p{
+    text-align: center;
+  }
+
+}
+
+.recipeImg{
+  margin-top: 8px;
+}
+
+
+.form-heading{
+  text-align: center;
+  i{
+    color: #824A48;
+  }
+
+  h6{
+  text-transform: uppercase;
+  }
+}
+
+@media #{$medium-and-down} {
+  .recipeImg{
+     margin-top: 0;
+  }
+}
+
+
+.form-section{
+  background: #fff;
+  padding-bottom: 2%;
+}

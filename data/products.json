@@ -1,0 +1,163 @@
+
+{
+	"products":[
+
+		{"anchovies":[
+
+			{"name":"Anchovies",
+			 "cardtext": "Healthy Fat, Protein & Calcium",
+			 "url": "/products/1",
+      		 "description":"The salty little fishy fish may seem more of a sodium bomb than a health food, but anchovies come packed with omega-3 fatty acids, which are thought to offer protection against everything from heart disease to depression. Anchovies deliver as many grams of omega-3s as salmon and nearly twice as much as halibut.",
+			 "types":[{"type1":"Flat","type2":"Rolled","type3":"Pieces"}],
+			 "flavors":[{"flavor1":"Garlic","flavor2":"Parsley","flavor3":"Peppers"}],
+			 "images":[{"image1":"/public/img/anchovies.jpg","image2":"/public/img/anchovies1.jpg","image3":"/public/img/anchovies2.jpg" }]
+	  		}
+		]},
+
+		{"olives":[
+
+			{"name":"Olives",
+			 "cardtext": "Healthy Monounsaturated Fats",
+			 "url": "/products/2",
+      		 "description":"It is no surprise that modern science has proven without doubt the health benefits of the olives fruit. Olives are known to be one of the healthiest sources of food and has known to prolong health and sustain long life throughout generations.",
+			 "types":[{"type1":"Pitted Black","type2":"Pitted Green","type3":"Sliced Black","type4":"Sliced Green","type5":"Whole Black","type6":"Olive Paste","type7":"Stuffed Olives"}],
+			 "packings":[{"packing1":"Cans","packing2":"Vaccumed Sealed Bags","packing3":"Drums","packing4":"8 oz Jars","packing5":"12 oz Jars","packing6":"5 kg Pails"}],
+			 "images":[{"image1":"/public/img/olives.jpg","image2":"/public/img/olives1.jpg","image3":"/public/img/olives2.jpg" }]
+	  		}
+		]},
+
+		{"mushrooms":[
+
+			{"name":"Mushrooms",
+			 "cardtext": "The Disease Fighting Agent",
+			 "url": "/products/3",
+      		 "description":"For thousands of years, Eastern cultures have revered mushrooms’ health benefits. Mushrooms have long been celebrated as a source of powerful nutrients, but they can also help meet the dietary recommendations set forth in the 2010 Dietary Guidelines and Institute of Medicine’s Dietary Reference Intakes for Calcium and Vitamin D.",
+			 "types":[{"type1":"Pieces","type2":"Stems","type3":"Marinated","type4":"Sautee","type5":"Roasted","type6":"Grilled","type7":"Sliced"}],
+			 "packings":[{"packing1":"Cans","packing2":"12 oz Jars"}],
+			 "images":[{"image1":"/public/img/mushrooms.jpg","image2":"/public/img/mushrooms1.jpg","image3":"/public/img/mushrooms2.jpg" }]
+	  		}
+		]},
+
+		{"oliveoil":[
+
+			{"name":"Olive Oil",
+			 "cardtext": "An Anti-Aging Superfood",
+			 "url": "/products/4",
+      		 "description":"We are currently sourcing the worlds best quality oils. From premium extra virgin olive oils from Italy, Spain, Turkey, Greece and Morocco, to sunflower oil from across South America, Caragol & Zaina’s healthful oil range is constantly adapting to meet the needs of the growing culinary market and consumer tastes and cooking habits.",
+			 "types":[{"type1":"Virgin","type2":"Extra Virgin","type3":"Pomace"}],
+			 "packings":[{"packing1":"Bottels","packing2":"Drums"}],
+			 "images":[{"image1":"/public/img/oliveoil.jpg","image2":"/public/img/oliveoil1.jpg","image3":"/public/img/oliveoil2.jpg" }]
+	  		}
+		]},
+
+		{"pesto":[
+
+			{"name":"Pesto",
+			 "cardtext": "This is the card Description",
+			 "url": "/products/5",
+      		 "description":"Pesto is.....",
+			 "types":[{"type1":"Pesto1","type2":"Pesto2","type3":"Pesto3"}],
+			 "packings":[{"packing1":"Bottels","packing2":"Cans"}],
+			 "images":[{"image1":"/public/img/pesto.jpg","image2":"/public/img/pesto1.jpg","image3":"/public/img/pesto2.jpg" }]
+	  		}
+		]},
+
+		{"peppers":[
+
+			{"name":"Peppers",
+			 "cardtext": "Add a Flavourful Kick",
+			 "url": "/products/6",
+      		 "description":"The highest amount of Vitamin C in a bell pepper is concentrated in the red variety. Red bell peppers contain several phytochemicals and carotenoids, particularly beta-carotene, which lavish you with antioxidant and anti-inflammatory benefits. The capsaicin in bell peppers has multiple health benefits.",
+			 "types":[{"type1":"Fire Roasted","type2":"Harissa Paste","type3":"Sweet & Spicy","type4":"Yellow Roasted"}],
+			 "packings":[{"packing1":"Cans","packing2":"Drums","packing3":"Jars"}],
+			 "images":[{"image1":"/public/img/peppers.jpg","image2":"/public/img/peppers1.jpg","image3":"/public/img/peppers2.jpg" }]
+	  		}
+		]},
+
+		{"brazilnuts":[
+
+			{"name":"Brazil Nuts",
+			 "cardtext": "Cholesterol Balance",
+			 "url": "/products/7",
+      		 "description":"Brazil nuts are high in calories, contain good quantities of vitamins, anti-oxidants and minerals. Its kernels, in-fact, have been staple energy sources of native Amazonians even today.",
+			 "types":[{"type1":"Roasted","type2":"Dried"}],
+			 "packings":[{"packing1":"Cans","packing2":"Jars"}],
+			 "images":[{"image1":"/public/img/brazilnuts.jpg","image2":"/public/img/brazilnuts1.jpg","image3":"/public/img/brazilnuts2.jpg" }]
+	  		}
+		]},
+
+		{"quinoa":[
+
+			{"name":"Quinoa",
+			 "cardtext": "The Mother Grain",
+			 "url": "/products/8",
+      		 "description":"Quinoa is one of the world’s most popular health foods. Quinoa is gluten-free, high in protein and one of the few plant foods that contain all nine essential amino acids.",
+			 "types":[{"type1":"White","type2":"Red","type3":"black"}],
+			 "packings":[{"packing1":"Vaccum Sealed Bags"}],
+			 "images":[{"image1":"/public/img/quinoa.jpg","image2":"/public/img/quinoa1.jpg","image3":"/public/img/quinoa2.jpg" }]
+	  		}
+		]},
+
+		{"heartofpalms":[
+
+			{"name":"Hearts of Palm",
+			 "cardtext": "Heart of the Tree",
+			 "url": "/products/9",
+      		 "description":"Hearts of palm are ideal for maintaining a balanced diet due to its low calorie contribution. In addition, the type of calories given by hearts of palm, are important in order to have energy when doing physical activity.",
+			 "types":[{"type1":"White","type2":"Red","type3":"black"}],
+			 "packings":[{"packing1":"Vaccum Sealed Bags","packing2":"Cans"}],
+			 "images":[{"image1":"/public/img/palm.jpg","image2":"/public/img/palm1.jpg","image3":"/public/img/palm2.jpg" }]
+	  		}
+		]},
+
+		{"sardines":[
+
+			{"name":"Sardines",
+			 "cardtext": "Healthy Bones & Teeth",
+			 "url": "/products/10",
+      		 "description":"Sardines are an excellent source of vitamin B12 and selenium. They are a very good source of phosphorus, omega-3 fatty acids, protein and vitamin D. Additionally, they are a good source of calcium, niacin, copper, vitamin B2 and choline.",
+			 "types":[{"type1":"Skinless","type2":"Boneless","type3":"Spicy"}],
+			 "packings":[{"packing1":"Cans"}],
+			 "images":[{"image1":"/public/img/sardines.jpg","image2":"/public/img/sardines1.jpg","image3":"/public/img/sardines2.jpg" }]
+	  		}
+		]},
+
+		{"atichokes":[
+
+			{"name":"Atichokes",
+			 "cardtext": "Detoxifying the Body",
+			 "url": "/products/11",
+      		 "description":"Despite this prickly beginning, the ancients considered the artichoke full of health benefits, using it as an aphrodisiac, a diuretic, a breath freshener, and even a deodorant. The artichokes we eat are actually the buds of a purple flower that can grow more than 3 feet tall.",
+			 "types":[{"type1":"Whole Hearts","type2":"Whole Hearts with Stems","type3":"Quartered Hearts","type4":"Marinated Hearts","type5":"Sliced"}],
+			 "packings":[{"packing1":"Vaccum Sealed Bags","packing2":"Jars"}],
+			 "images":[{"image1":"/public/img/atichokes.jpg","image2":"/public/img/atichokes1.jpg","image3":"/public/img/atichokes2.jpg" }]
+	  		}
+		]},
+
+		{"lemons":[
+
+			{"name":"Preserved Lemons",
+			 "cardtext": "When Life Gives you Lemons",
+			 "url": "/products/12",
+			 "description":"Lemon has yet to be fully discovered in America. A standard favorite of the Kasbah, this entirely edible ingredient feels most at home inside a tagine, lending its bright citrus flavor to a variety of poultry and lamb applications.",
+ 			 "types":[{"type1":"Marinated Mediterranean","type2":"Vegetables Energize","type3":"Texurize Hors D’oeurves","type4":"Colorize Cocktails"}],
+			 "packings":[{"packing1":"Vaccum Sealed Bags","packing2":"Jars"}],
+			 "images":[{"image1":"/public/img/lemons.jpg","image2":"/public/img/lemons1.jpg","image3":"/public/img/lemons2.jpg" }]
+	  		}
+		]},
+
+		{"capers":[
+
+			{"name":"Capers",
+			 "cardtext": "When Life Gives you Lemons",
+			 "url": "/products/13",
+			 "description":"Fresh capers are a healthy addition to your diet and boost your fiber intake, but packing methods increase the sodium content. This may be a concern if you have high blood pressure or are at risk of developing heart disease.",
+ 			 "types":[{"type1":"Capote","type2":"Capucines","type3":"Fines","type4":"Non Pareil","type5":"Surfines"}],
+			 "packings":[{"packing1":"Drums","packing2":"Jars"}],
+			 "images":[{"image1":"/public/img/capers.jpg","image2":"/public/img/capers1.jpg","image3":"/public/img/capers2.jpg" }]
+	  		}
+		]}
+
+	]
+}
+

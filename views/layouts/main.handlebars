@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/public/css/materialize.css"  media="screen,projection"/>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="Caragol & Zaina"/>
+    <title>Caragol & Zaina</title>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo"><img src="/public/img/logo-01.png" alt="logo"></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/">HOME</a></li>
+      <li><a href="/#about">ABOUT US</a></li>
+      <li><a href="/contact">CONTACT</a></li>
+      <li><a href="/products">PRODUCTS</a></li>
+      <li><a href="/order">ORDER</a></li>
+      <li><a href="/recipes">RECIPES</a></li>      
+
+      {{#if data.users}}
+      <li><a href="/logout">LOGOUT</a></li>
+      {{/if}}
+    </ul>
+    <ul class="side-nav" id="mobile-demo"> 
+      <li><a href="/"><i class="material-icons">home</i>HOME</a></li>      
+      <li><a href="/#about"><i class="material-icons">info</i>ABOUT US</a></li>
+      <li><a href="/contact"><i class="material-icons">contacts</i>CONTACT</a></li>
+      <li><a href="/products"><i class="material-icons">nature</i>PRODUCTS</a></li>
+      <li><a href="/order"><i class="material-icons">shopping_cart</i>ORDER</a></li>
+      <li><a href="/recipes"><i class="material-icons">local_dining</i>RECIPES</a></li>
+
+      {{#if data.users}}
+      <li><a href="/logout">LOGOUT</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
+<!-- NAVIGATION -->
+
+{{{body}}}
+
+<footer class="page-footer">
+  <div class="footer-copyright">
+    <div class="container">© Caragol & Zaina</div>
+  </div>
+</footer>
+
+  <!-- Jquery -->
+  <script type="text/javascript" src="/public/js/jquery.min.js"></script> 
+  <!-- Materialize Js  -->
+  <script type="text/javascript" src="/public/js/materialize.min.js"></script>
+ 
+  <script type="text/javascript" src="/public/js/handlebars.min.js"></script>
+  <!-- Main Js  -->
+  <script src="/public/js/main.js"></script>
+
+
+</body>
+</html>
+
+
+

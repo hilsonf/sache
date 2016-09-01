@@ -1,0 +1,17 @@
+# Node 
+node_modules
+
+# Meta_Data
+.DS_Store
+
+# Sass Cache
+.sass-cache/
+
+# Bower
+public/bower/
+
+#images
+public/images
+
+
+
