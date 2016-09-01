@@ -1,7 +1,7 @@
 
 var mongoose = require( 'mongoose' );
  
-var unString = 'mongodb://zaina:zaina4727@ds161505.mlab.com:61505/heroku_k1dd6bv8';
+var unString = 'mongodb://0.0.0.0:3000/sachebd';
 
 //MONGOOSE CONECTION
 mongoose.connect(unString, function(err, res){
