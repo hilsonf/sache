@@ -3,7 +3,7 @@
 $(".button-collapse").sideNav({
   menuWidth: 300, // Default is 240
   edge: 'right', // Choose the horizontal origin
-  closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+  //closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
 });
 // caroucel trigger  
 $('.carousel').carousel({full_width: true});
@@ -32,89 +32,61 @@ onSet: function (day) {
 }
 });
 
+$('.timepicker').pickatime({
+  default: 'now',
+  twelvehour: true, // change to 12 hour AM/PM clock from 24 hour
+  donetext: 'OK',
+  autoclose: false,
+  vibrate: true // vibrate the device when dragging clock hand
+});
 
-//get date
-var getDate = function(){
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; //January is 0!
-  var yyyy = today.getFullYear();
-  var hhhh = today.getHours(); 
-  var mmmm = today.getMinutes();
-  var s = today.getSeconds();
-  if(dd<10) {
-     dd='0'+dd
-  } 
-  if(mm<10) {
-     mm='0'+mm
-   } 
-  if(mmmm<10) {
-     mmmm='0'+mmmm
-   } 
-   today = yyyy+'-'+mm+'-'+dd+'T'+hhhh+':'+mmmm+':'+s;
-   return today;
-}
+
+
 //form submit
-function submitOrder() {
+function submitBooking() {
 
   if (validation()){
 
-    var productName = document.getElementById("productName").value;
-    var productDes = document.getElementById("productDes").value;
-    var productSize = document.getElementById("productSize").value;
-    var quantity = document.getElementById("quantity").value;
-    var company = document.getElementById("company").value;
-    var email = document.getElementById("email").value;
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
     var tell = document.getElementById("tell").value;
-    var billingAddress = document.getElementById("billingAddress").value;
-    var shippingAddress = document.getElementById("shippingAddress").value;
-    var shipDate = document.getElementById("shipDate").value;
+    var bookDate = document.getElementById("bookDate").value;
+    var bookTime = document.getElementById("bookTime").value;
 
     var data = {};
-    var order =[];
-    data.productName = productName;
-    data.productDes = productDes;
-    data.productSize = productSize;
-    data.quantity = quantity;
-    data.company = company;
-    data.email = email; 
+    var booking =[];
+    data.firstName = firstName;
+    data.lastName = lastName;
     data.tell = tell;
-    data.billingAddress = billingAddress;
-    data.shippingAddress = shippingAddress;
-    data.shipDate = shipDate;
-    data.createdAt = getDate();
+    data.bookDate = bookDate;
+    data.bookTime = bookTime;
 
-    order.push(data);
+    booking.push(data);
 
-    var newOrder = JSON.stringify(data);
-    console.log(newOrder);
+    var newApt = JSON.stringify(data);
+    console.log(newApt);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/order');
+    xhr.open('POST', '/addBooking');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(newOrder);
+    xhr.send(newApt);
 
     //open modal
     $('#modal1').openModal();
-    //resets form
-    document.forms['order'].reset();
+    // //resets form
+    document.forms['booking'].reset();
 
 }//end if
 }//end submit
 
 //validation
 function validation() {
-  var productName = document.getElementById("productName").value;
-  var productDes = document.getElementById("productDes").value;
-  var productSize = document.getElementById("productSize").value;
-  var quantity = document.getElementById("quantity").value;
-  var company = document.getElementById("company").value;
-  var email = document.getElementById("email").value;
+  var firstName = document.getElementById("firstName").value;
+  var lastName = document.getElementById("lastName").value;
   var tell = document.getElementById("tell").value;
-  var billingAddress = document.getElementById("billingAddress").value;
-  var shippingAddress = document.getElementById("shippingAddress").value;
-  var shipDate = document.getElementById("shipDate").value;
+  var bookDate = document.getElementById("bookDate").value;
+  var bookTime = document.getElementById("bookTime").value;
 
-  if (productName === '' || productDes === ''|| productSize === ''|| quantity === ''|| company === ''|| email === ''|| tell === ''|| billingAddress === ''|| shippingAddress === ''|| shipDate === '') {
+  if (firstName === '' || lastName === ''|| tell === ''|| bookDate === ''|| bookTime === '') {
     $('#formError').openModal();
     return false;
   }else {
@@ -123,57 +95,20 @@ function validation() {
 }
 
 //delete order
-function deleteOrder(orderId){
+function deleteOrder(bookingId){
   $('#delete').openModal();
   var yes = document.getElementById("yes");
-  
   //yes delete order
   yes.onclick = function(){
-      console.log(orderId);
-      var order_Id = JSON.stringify({orderId});
+
+      var booking_Id = JSON.stringify({bookingId});
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/deleteOrder');
+      xhr.open('POST', '/deleteBooking');
       xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(order_Id);
+      xhr.send(booking_Id);
   }
 
 }
 
 
-function updateOrder(orderId, email){
-  $('#update').openModal();
-  var transit = document.getElementById("transit");
-  var complete = document.getElementById("complete");
-  
-  //order in transit order
-  transit.onclick = function(){
-      var status = 'In Transit';
-      var order = {};
-      order._id = orderId;
-      order.orderStatus = status;
-      order.email = email;
-     
-      var data = JSON.stringify({order});
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/updateOrder');
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(data);
-  }
-  
-  //order complete
-  complete.onclick = function(){
-      var status = 'Complete';
-      var order = {};
-      order._id = orderId;
-      order.orderStatus = status;
-      order.email = email;
-     
-      var data = JSON.stringify({order});
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/updateOrder');
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(data);
-  }
-
-}
 

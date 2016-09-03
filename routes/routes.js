@@ -1,9 +1,33 @@
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, multer, multerResizer) {
 
-var order = require('../public/models/order.js');
-var products = require('../data/products.json');
+var booking = require('../public/models/booking.js');
+var manager = require('../public/models/manager.js');
 var email = require('../config/email');
+
+
+
+const resizer = new multerResizer({
+  multer: multer({storage: multer.diskStorage({
+  destination: './uploads',
+  filename: function (request, file, callback) {
+    callback(null, file.originalname)
+  }
+})}),
+   tasks: [
+        {
+            resize: {
+                width: 100,
+                height: 100,
+                interpolation: 'linear',
+                format: 'png'
+            }
+        }
+    ]
+
+})
+
+var upload = resizer.single('file');
 
 
 function loggedIn(req, res, next){
@@ -28,7 +52,6 @@ app.get('/login', function (req, res) {
 })
 
 app.get('/logout', function (req, res, next) {
-  
   req.session.destroy(function(err){
   	req.logout();
     res.redirect('/login');
@@ -36,76 +59,46 @@ app.get('/logout', function (req, res, next) {
   
 })
 
-app.get('/products', function (req, res) {
-  res.render('products', products);
-})
-
-app.get('/recipes', function (req, res) {
-  res.render('recipes');
-})
-
-app.get('/order', function (req, res) {
-  res.render('order');
-})
-
 app.get('/contact', function (req, res) {
   res.render('contact');
 })
 
-app.get('/sizes', function (req, res) {
-  var backId = req.headers.referer; 
-  res.render('sizes', {back: backId});
+app.get('/lookbook', function (req, res) {
+  manager.allImages(res, function(result){
+  var data = {data:{uploads: result}};
+  res.render('lookbook', data);
+
+  })
 })
 
-app.get('/order/:id', function (req, res) {
-  var id = req.params.id;
-  order.userOrder(id, function(result){
-    res.render('customerorder', {order: result});
-  });
+app.get('/bookapt', function (req, res) {
+  res.render('bookapt');
 })
 
-app.get('/products/:id', function (req, res) {
-  var id = req.params.id;
-  if (id == 1) {
-    res.render('products/anchovies', products);
-  }else if (id == 2) {
-    res.render('products/olives', products);
-  }else if (id == 3) {
-    res.render('products/mushrooms', products);
-  }else if (id == 4) {
-    res.render('products/oliveoil', products);
-  }else if (id == 5) {
-    res.render('products/pesto', products);
-  }else if (id == 6) {
-    res.render('products/peppers', products);
-  }else if (id == 7) {
-    res.render('products/brazilnuts', products);
-  }else if (id == 8) {
-    res.render('products/quinoa', products);
-  }else if (id == 9) {
-    res.render('products/heartofpalms', products);
-  }else if (id == 10) {
-    res.render('products/sardines', products);
-  }else if (id == 11) {
-    res.render('products/atichokes', products);
-  }else if (id == 12) {
-    res.render('products/lemons', products);
-  }else if (id == 13) {
-    res.render('products/capers', products);
-  }else if (id == 14) {
-    res.render('products/caperberries', products);
-  }else if (id == 15) {
-    res.render('products/cornichons', products);
-  }
-  
-})
+
+
+
 
 app.get('/dashboard',loggedIn, function (req, res, next) {
-	order.allOrders(res, function(result){
-	  var user = req.user;
-	  var data = {data:{orders: result, users: user}};
-	  res.render('dashboard', data);
-	});
+  booking.allBookings(res, function(result){
+    var user = req.user;
+    var data = {data:{bookings: result, users: user}};
+    res.render('dashboard', data);
+  });
+});
+
+app.get('/upload',loggedIn, function (req, res, next) {
+    var user = req.user;
+    var data = {data:{users: user}};
+    res.render('upload', data);
+ 
+});
+
+app.get('/calendar',loggedIn, function (req, res, next) {
+    var user = req.user;
+    var data = {data:{users: user}};
+	  res.render('calendar', data);
+ 
 });
 
 
@@ -114,27 +107,31 @@ app.get('/dashboard',loggedIn, function (req, res, next) {
 
 
 
-app.post('/order',function(req, res){
-	order.addOrder(req, res);
+app.post('/addBooking',function(req, res){
+	booking.addBooking(req, res);
 });
 
 
-app.post('/deleteOrder',function(req, res){
-  var id = req.body.orderId;
-  order.deleteOrder(id, function(result){
+app.post('/deleteBooking',function(req, res){
+  var id = req.body.bookingId;
+  booking.deleteBooking(id, function(result){
   });
 });
 
-
-app.post('/updateOrder',function(req, res){
-  order.updateOrder(req, res, function(result){
-  });
-});
 
 app.post('/message',function(req, res){
    //Send Email
    email.message(req, res);
    res.redirect('/#contact');
+});
+
+
+app.post('/uploadImage', upload, function(req, res, next) {
+
+  console.log(req.file);
+  manager.addImage(req, res);
+  res.redirect('/manager');
+
 });
 
 

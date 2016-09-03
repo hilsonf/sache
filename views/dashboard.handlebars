@@ -1,7 +1,7 @@
 <div class="row"></div>
 
 <div class="container headings">
-  <h1>Dashboard</h1>
+  <h1>Bookings</h1>
   <i class="material-icons">subtitles</i>
   <h6>Welcome {{data.users.username}}</h6>
   <hr>
@@ -10,84 +10,49 @@
 
 <div class="row">
 
- {{#each data.orders}}
+ {{#each data.bookings}}
  <div class="col s12 m12 l6">
  <ul class="collection">
     <li class="collection-item avatar">
  
       <i class="material-icons circle brown">folder</i>     
 
-      <h2>{{this.productName}}</h2>
+      <h2>Booking</h2>
       
-      <label class="left brown-text">Order#:&nbsp; </label> <span><strong>{{this._id}}</strong></span><br>
-      <label class="left brown-text">Status:&nbsp; </label> <span><strong>{{this.orderStatus}}</strong></span>
-
+      <label class="left brown-text">Booking#:&nbsp; </label> <span><strong>{{this._id}}</strong></span><br>
       
       <div class="row"></div>      
       <div class="divider"></div>
-      <h6>Product Information</h6>
+      <h6>Booking Information</h6>
       <div class="divider"></div>
       <div class="row"></div>
       
       <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">dashboard</i>Size</label>
-      <p>{{this.quantity}} {{this.productSize}}</p>
+      <label class="brown-text"><i class="material-icons prefix brown-text">dashboard</i>Name</label>
+      <p>{{this.firstName}} {{this.lastName}}</p>
       </div>
-
-      <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">description</i>Description</label>      
-      <p class="truncate tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{this.productDes}}">{{this.productDes}}</p>
-      </div>             
-	  
-      <div class="row"></div>
-	    <div class="divider"></div>
-      <h6>Billing Information</h6> 
-      <div class="divider"></div>
-      <div class="row"></div>
-      
-      <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">business</i>Company Name</label>
-      <p>{{this.company}}</p>
-      </div>
-
-      <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">credit_card</i>Billing Adddress</label>
-      <p>{{this.billingAddress}}</p>
-      </div>
-
-      <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">email</i>Email</label>
-      <p>{{this.email}}</p> 
-      </div> 
 
       <div class="col s12 m6 l6">
       <label class="brown-text"><i class="material-icons prefix brown-text">phone</i>Phone</label>
       <p>{{this.tell}}</p>
       </div>
 
-	    <div class="row"></div>
-      <div class="divider"></div>
-      <h6>Shipping Information</h6>
-      <div class="divider"></div>
-      <div class="row"></div>
+      <div class="col s12 m6 l6">
+      <label class="brown-text"><i class="material-icons prefix brown-text">access_time</i>Date</label>
+      <p>{{this.bookDate}}</p>
+      </div>
 
       <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">local_shipping</i>Shipping Address</label>
-      <p>{{this.shippingAddress}}</p>
+      <label class="brown-text"><i class="material-icons prefix brown-text">access_time</i>Time</label>
+      <p>{{this.bookTime}}</p>
       </div>
 
-      <div class="col s12 m6 l6"> 
-      <label class="brown-text"><i class="material-icons prefix brown-text">access_time</i>ETA</label>
-      <p>{{this.shipDate}}</p>
-      </div>
+
 
       <div class="row"></div>
 
       <div><a href="#" class="secondary-content" onClick="deleteOrder('{{this._id}}')"><i class="material-icons">delete</i></a><label style="position: absolute; top: 43px; right: 21px;">delete</label></div>
-      <div>
-      <a href="#" class="primary-content" onClick="updateOrder('{{this._id}}','{{this.email}}')"><i class="material-icons">change_history</i></a>
-      <label style="position: absolute; top: 43px; right: 80px;">update</label>
-      </div>
+
 
 
     </li>

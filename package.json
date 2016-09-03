@@ -1,7 +1,7 @@
 {
   "name": "zaina",
   "version": "1.0.0",
-  "description": "caragolzaina website",
+  "description": "sache website",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,9 +20,13 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.0",
     "handlebars-helpers": "^0.7.5",
+    "materialize-clockpicker": "^1.0.1",
     "mongoose": "^4.5.8",
+    "multer": "^1.2.0",
+    "multer-resizer": "github:mertdogar/multer-resizer",
     "nodemailer": "^0.7.1",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "twilio": "^2.10.0"
   }
 }

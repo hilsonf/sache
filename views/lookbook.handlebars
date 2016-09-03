@@ -1,0 +1,40 @@
+<div class="row"></div>
+
+
+<div class="container headings">
+  <h1>Look Book</h1>
+  <i class="large material-icons">supervisor_account</i>
+  <hr>
+</div>
+<div class="row"></div>
+
+
+<div class="row">
+ {{#each data.uploads}}
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{this.imageUrl}}" alt="sache_beauty_salon_lookbook">
+           </div>
+            <div class="card-content">
+              <p class="truncate">{{this.imageDes}}</p>
+            </div>
+          </div>
+        </div>
+ {{/each}}
+</div>
+
+
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+
+
+
+
+

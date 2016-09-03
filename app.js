@@ -10,7 +10,11 @@ var express 	= require('express'),
     session = require('express-session'),
     exphbs  = require('express-handlebars'),
     mongoose = require('mongoose'),
+    multer  = require('multer'),
+    multerResizer = require('multer-resizer'),
+    twilio = require('twilio'),
     bodyParser = require('body-parser');
+
 
 
 require('./config/passport')(passport); // pass passport for configuration
@@ -19,6 +23,7 @@ require('./config/passport')(passport); // pass passport for configuration
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use('/public', express.static(__dirname + '/public'));
+app.use('/uploads',express.static(__dirname + '/uploads'));
 
 app.use(function(req, res, next) {
     if (!req.user)
@@ -35,7 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./routes/routes')(app, passport);
+require('./routes/routes')(app, passport, multer, multerResizer);
 
 var port = process.env.PORT || 3000;
 
