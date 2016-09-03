@@ -130,7 +130,7 @@ app.post('/uploadImage', upload, function(req, res, next) {
 
   console.log(req.file);
   manager.addImage(req, res);
-  res.redirect('/manager');
+  res.redirect('/dashboard');
 
 });
 
