@@ -4915,7 +4915,7 @@ div.dhx_menu_head, div.dhx_menu_icon {
 
 .dhx_cal_prev_button {
   right: 61px;
-  background: url(../calendar/imgs_dhx_terrace/arrow_left.png) center center no-repeat;
+  background: url(../img/imgs_dhx_terrace/arrow_left.png) center center no-repeat;
   -webkit-border-top-left-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-topleft: 5px;
@@ -4925,7 +4925,7 @@ div.dhx_menu_head, div.dhx_menu_icon {
 
 .dhx_cal_next_button {
   right: 14px;
-  background: url(../calendar/imgs_dhx_terrace/arrow_right.png) center center no-repeat;
+  background: url(../img/imgs_dhx_terrace/arrow_right.png) center center no-repeat;
   -webkit-border-top-right-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   -moz-border-radius-topright: 5px;

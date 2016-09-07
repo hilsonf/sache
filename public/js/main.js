@@ -111,7 +111,7 @@ function deleteOrder(bookingId){
   }
 
 }
-
+  
  $(document).ready(function() {
   if (window.location.pathname == '/calendar') {
     scheduler.init('scheduler_here',new Date(),"month");
