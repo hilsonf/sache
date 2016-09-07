@@ -77,14 +77,16 @@ app.get('/bookapt', function (req, res) {
   res.render('bookapt');
 })
 
-app.get('/update/:id',loggedIn, function (req, res) {
+app.get('/update/:id', loggedIn, function (req, res) {
   var id = req.params.id;
+  var user = req.user;
   booking.userBooking(id, function(result){ 
 
   var dt = {};
     dt.date = moment(result.bookDate).format('MMMM DD, YYYY'); 
     dt.time = moment(result.bookDate).format('h:mm');
-    data = {booking: result,dateTime: dt};
+    //data = {booking: result,dateTime: dt, user: user};
+    var data = {data:{booking: result,dateTime: dt, users: user}};
     res.render('updateapt', data);
   });
 
