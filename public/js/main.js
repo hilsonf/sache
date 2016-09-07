@@ -112,13 +112,15 @@ function deleteOrder(bookingId){
 
 }
 
-
-$(window).load(function(){
+ $(document).ready(function() {
+  if (window.location.pathname == '/calendar') {
     scheduler.init('scheduler_here',new Date(),"month");
     scheduler.templates.xml_date = function(value){ return new Date(value); };
     scheduler.load("/calendar-data", "json");
- 
-});
+ }else{
+
+ }
+})
 
 
 

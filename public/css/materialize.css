@@ -4528,7 +4528,8 @@ div.icon_delete {
 
 .dhx_cal_container div {
   -moz-user-select: none;
-  -moz-user-select: -moz-none; }
+  -moz-user-select: -moz-none;
+  height: auto; }
 
 .dhx_cal_navline {
   height: 20px;
