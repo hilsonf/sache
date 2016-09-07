@@ -1,5 +1,4 @@
-//866-416-5690
-//1800-325-2424
+
 module.exports = function(app, passport, multer, multerResizer) {
 
 var booking = require('../models/booking.js');
@@ -7,11 +6,7 @@ var calendar = require('../models/calendar');
 var manager = require('../models/manager.js');
 var email = require('../config/email');
 var helpers = require('../config/helpers');
-
-
-
-
-
+var moment = require('moment');
 
 
 const resizer = new multerResizer({
@@ -82,11 +77,26 @@ app.get('/bookapt', function (req, res) {
   res.render('bookapt');
 })
 
+app.get('/update/:id',loggedIn, function (req, res) {
+  var id = req.params.id;
+  booking.userBooking(id, function(result){ 
+
+  var dt = {};
+    dt.date = moment(result.bookDate).format('MMMM DD, YYYY'); 
+    dt.time = moment(result.bookDate).format('h:mm');
+    data = {booking: result,dateTime: dt};
+    res.render('updateapt', data);
+  });
+
+})
+
 
 app.get('/dashboard',loggedIn, function (req, res, next) {
   booking.allBookings(res, function(result){
 
-    helpers.dateformat(result[0].bookDate);
+    if(result.length > 0){
+      helpers.dateformat(result[0].bookDate);
+    }
 
     var user = req.user;
     var data = {data:{bookings: result, users: user}};
@@ -98,7 +108,6 @@ app.get('/upload',loggedIn, function (req, res, next) {
     var user = req.user;
     var data = {data:{users: user}};
     res.render('upload', data);
- 
 });
 
 app.get('/calendar',loggedIn, function (req, res, next) {
@@ -107,9 +116,8 @@ app.get('/calendar',loggedIn, function (req, res, next) {
         res.render('calendar', data);
 });
 
-
 app.get('/calendar-data', function(req, res){
-   calendar.allCalendar(res, function(cal){
+    calendar.allCalendar(res, function(cal){
     res.send(cal);
    });
 });
@@ -120,11 +128,12 @@ app.get('/calendar-data', function(req, res){
 
 
 
-app.post('/addBooking',function(req, res){
-	booking.addBooking(req, res);
-  calendar.addCalendar(req, res);
-});
+app.post('/addBooking',function(req, res){ 
+  calendar.addCalendar(req, res, function(cal){
+    booking.addBooking(req, cal, res);
+  });
 
+});
 
 app.post('/deleteBooking',function(req, res){
   var id = req.body.bookingId;
@@ -132,9 +141,7 @@ app.post('/deleteBooking',function(req, res){
   });
 });
 
-
 app.post('/message',function(req, res){
-   //Send Email
    email.message(req, res);
    res.redirect('/#contact');
 });
@@ -145,6 +152,15 @@ app.post('/uploadImage', upload, function(req, res, next) {
   res.redirect('/lookbook');
 });
 
+app.post('/updateapt/:id', function(req, res, next) {
+      booking.updateBooking(req, res, function(result){
+      }); 
+      var id = req.params.id;
+      booking.userBooking(id, function(b){
+        calendar.updateCalendar(req, b, res);
+        res.redirect('/calendar');
+      })     
+});
 
 app.post('/login',
 passport.authenticate("local", {

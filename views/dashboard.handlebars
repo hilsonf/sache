@@ -1,7 +1,7 @@
 <div class="row"></div>
 
 <div class="container headings">
-  <h1>Bookings</h1>
+  <h1>Manage Apts</h1>
   <i class="material-icons">subtitles</i>
   <h6>Welcome {{data.users.username}}</h6>
   <hr>
@@ -46,6 +46,8 @@
       <div class="row"></div>
 
       <div><a href="#" class="secondary-content" onClick="deleteOrder('{{this._id}}')"><i class="material-icons">delete</i></a><label style="position: absolute; top: 43px; right: 21px;">delete</label></div>
+      <div><a href="/update/{{this._id}}" class="primary-content" onClick="updateOrder('{{this._id}}')"><i class="material-icons">change_history</i></a>
+      <label style="position: absolute; top: 43px; right: 80px;">update</label></div>
 
 
 

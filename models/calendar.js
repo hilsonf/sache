@@ -16,10 +16,9 @@ module.exports = function(){
 
 	var _model = mongoose.model('calendar', calendarSchema);
 
-	_addCalendar = function (req, res){
+	_addCalendar = function (req, res, success){
 
 		var calendar = new _model({
-
 
 			text: 	     req.body.firstName+' '+req.body.lastName+' Appointment',
 		    start_date:  req.body.bookDate,
@@ -31,6 +30,7 @@ module.exports = function(){
 					throw err;
 				}else{
 					//Send Email
+					success(doc);
   					console.log('Calendar Saved to DB');
 				};
     			
@@ -47,11 +47,27 @@ module.exports = function(){
 			});
 		}
 
+	_update = function(req, b, res){
+		var id = b.calId;
+		var d = new Date(req.body.updatebookDate+' '+req.body.updatebookTime+':00');
+		_model.update({_id: id},{$set:{
+			text: req.body.updatefirstName+' '+req.body.updatelastName+' Appointment',
+			start_date: d,
+			end_date: d
+		}}, function(err){
+			if(err){
+				throw err;
+			}else{
+			}
+		})
+	}
+
 
 	return {
 		schema     : calendarSchema,
 		addCalendar   : _addCalendar,
-		allCalendar  : _allCalendar
+		allCalendar  : _allCalendar,
+		updateCalendar:  _update
 	};
 
 

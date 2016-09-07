@@ -96,6 +96,7 @@ function validation() {
   }
 }
 
+
 //delete order
 function deleteOrder(bookingId){
   $('#delete').openModal();
