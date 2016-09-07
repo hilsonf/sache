@@ -27,26 +27,20 @@
       <div class="divider"></div>
       <div class="row"></div>
       
-      <div class="col s12 m6 l6">
+      <div class="col s12 m4 l3">
       <label class="brown-text"><i class="material-icons prefix brown-text">dashboard</i>Name</label>
       <p>{{this.firstName}} {{this.lastName}}</p>
       </div>
 
-      <div class="col s12 m6 l6">
+      <div class="col s12 m4 l3">
       <label class="brown-text"><i class="material-icons prefix brown-text">phone</i>Phone</label>
       <p>{{this.tell}}</p>
       </div>
 
-      <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">access_time</i>Date</label>
-      <p>{{this.bookDate}}</p>
+      <div class="col s12 m4 l6">
+      <label class="brown-text"><i class="material-icons prefix brown-text">access_time</i>Date/Time</label>
+      <p>{{dateformat this.bookDate}}</p>
       </div>
-
-      <div class="col s12 m6 l6">
-      <label class="brown-text"><i class="material-icons prefix brown-text">access_time</i>Time</label>
-      <p>{{this.bookTime}}</p>
-      </div>
-
 
 
       <div class="row"></div>

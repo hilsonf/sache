@@ -13,14 +13,22 @@ var express 	= require('express'),
     multer  = require('multer'),
     multerResizer = require('multer-resizer'),
     twilio = require('twilio'),
+    helpers = require('./config/helpers'),
     bodyParser = require('body-parser');
 
 
 
+  var hbs = exphbs.create({
+  // Specify helpers which are only registered on this instance.
+  helpers: helpers,
+  defaultLayout: 'main'
+  });
+
 require('./config/passport')(passport); // pass passport for configuration
 
 //view engine
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/uploads',express.static(__dirname + '/uploads'));

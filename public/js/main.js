@@ -25,6 +25,7 @@ $('.tooltipped').tooltip({delay: 50});
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
 selectYears: 15, // Creates a dropdown of 15 years to control year
+format: 'mmmm dd, yyyy',
 onSet: function (day) {
   if(day.select){
     this.close();
@@ -34,7 +35,7 @@ onSet: function (day) {
 
 $('.timepicker').pickatime({
   default: 'now',
-  twelvehour: true, // change to 12 hour AM/PM clock from 24 hour
+  twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
   donetext: 'OK',
   autoclose: false,
   vibrate: true // vibrate the device when dragging clock hand
@@ -53,13 +54,14 @@ function submitBooking() {
     var bookDate = document.getElementById("bookDate").value;
     var bookTime = document.getElementById("bookTime").value;
 
+    var d = new Date(bookDate+' '+bookTime+':00');
     var data = {};
     var booking =[];
     data.firstName = firstName;
     data.lastName = lastName;
     data.tell = tell;
-    data.bookDate = bookDate;
-    data.bookTime = bookTime;
+    data.bookDate = d;
+   
 
     booking.push(data);
 
@@ -109,6 +111,15 @@ function deleteOrder(bookingId){
   }
 
 }
+
+
+$(window).load(function(){
+    scheduler.init('scheduler_here',new Date(),"month");
+    scheduler.templates.xml_date = function(value){ return new Date(value); };
+    scheduler.load("/calendar-data", "json");
+ 
+});
+
 
 
 

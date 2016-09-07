@@ -1,9 +1,16 @@
-
+//866-416-5690
+//1800-325-2424
 module.exports = function(app, passport, multer, multerResizer) {
 
-var booking = require('../public/models/booking.js');
-var manager = require('../public/models/manager.js');
+var booking = require('../models/booking.js');
+var calendar = require('../models/calendar');
+var manager = require('../models/manager.js');
 var email = require('../config/email');
+var helpers = require('../config/helpers');
+
+
+
+
 
 
 
@@ -17,10 +24,10 @@ const resizer = new multerResizer({
    tasks: [
         {
             resize: {
-                width: 100,
-                height: 100,
+                width: 800,
+                height: 800,
                 interpolation: 'linear',
-                format: 'png'
+                format: 'jpg'
             }
         }
     ]
@@ -76,11 +83,11 @@ app.get('/bookapt', function (req, res) {
 })
 
 
-
-
-
 app.get('/dashboard',loggedIn, function (req, res, next) {
   booking.allBookings(res, function(result){
+
+    helpers.dateformat(result[0].bookDate);
+
     var user = req.user;
     var data = {data:{bookings: result, users: user}};
     res.render('dashboard', data);
@@ -95,10 +102,16 @@ app.get('/upload',loggedIn, function (req, res, next) {
 });
 
 app.get('/calendar',loggedIn, function (req, res, next) {
-    var user = req.user;
-    var data = {data:{users: user}};
-	  res.render('calendar', data);
- 
+        var user = req.user;
+        var data = {data:{users: user}};
+        res.render('calendar', data);
+});
+
+
+app.get('/calendar-data', function(req, res){
+   calendar.allCalendar(res, function(cal){
+    res.send(cal);
+   });
 });
 
 
@@ -109,6 +122,7 @@ app.get('/calendar',loggedIn, function (req, res, next) {
 
 app.post('/addBooking',function(req, res){
 	booking.addBooking(req, res);
+  calendar.addCalendar(req, res);
 });
 
 
@@ -127,11 +141,8 @@ app.post('/message',function(req, res){
 
 
 app.post('/uploadImage', upload, function(req, res, next) {
-
-  console.log(req.file);
   manager.addImage(req, res);
-  res.redirect('/dashboard');
-
+  res.redirect('/lookbook');
 });
 
 

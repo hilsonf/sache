@@ -11,10 +11,8 @@ var client = new twilio.RestClient(accountSid, authToken);
 
 _text = function(doc, res){
 
-	console.log(doc);
-
 	client.messages.create({
-	    body: 'Reservation Reminder '+doc.firstName+doc.lastName,
+	    body: 'Reservation Confirmed '+doc.firstName+' '+doc.lastName,
 	    to: doc.tell,  // Text this number
 	    from: '+13474914750' // From a valid Twilio number
 	}, function(err, message) {

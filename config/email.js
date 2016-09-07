@@ -5,8 +5,8 @@ module.exports = function() {
   var smtpTransport = nodemailer.createTransport("SMTP",{
       service: "Gmail",
       auth: {
-          user: "Zainacaragol@gmail.com",
-          pass: "Dominica01"
+          user: "__",
+          pass: "__"
       }
   });
   
@@ -14,7 +14,7 @@ module.exports = function() {
 
 _email = function(order, res){
 
-  var mailList = 'Zainacaragol@gmail.com,'+order.email;
+  var mailList = '__,'+order.email;
 
   var mailOptions={
       to : mailList,
@@ -57,7 +57,7 @@ _message = function(req, res){
 
   
   var mailOptions={
-      to : 'Zainacaragol@gmail.com',
+      to : '__',
       subject : message.subject,
       text : 'Senders Name: '+message.name+'\r\n'+'Email: '+message.email+'\r\n'+'Phone: '+message.tell+'\r\n'+message.message
   // console.log(mailOptions);
