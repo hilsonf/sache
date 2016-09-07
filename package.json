@@ -19,7 +19,6 @@
     "connect-flash": "^0.1.1",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.0",
-    "fullcalendar": "^3.0.0-beta",
     "handlebars-helpers": "^0.7.5",
     "materialize-clockpicker": "^1.0.1",
     "mongoose": "^4.5.8",
