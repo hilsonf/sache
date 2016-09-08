@@ -4,6 +4,7 @@
 <head>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/public/css/font-awesome.min.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="/public/css/materialize.css"  media="screen,projection"/>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="Sache Beauty Salon"/>
@@ -19,15 +20,14 @@
     <ul class="right hide-on-med-and-down">
       <li><a href="/">HOME</a></li>
       <li><a href="/#about">ABOUT US</a></li>
-      <li><a href="/contact">CONTACT</a></li>
-      <li><a href="/lookbook">LOOK BOOK</a></li>
-      <li><a href="/bookapt">BOOK NOW</a></li>
-      <li><a href="/employees">EMPLOYEES</a></li>      
+      <li><a href="/contact">CONTACT</a></li>      
+      <li><a href="/stylists">STYLISTS</a></li>      
+      <li><a href="/pricelist">PRICE LIST</a></li>      
+      <li><a href="/bookapt">MAKE RESERVATION</a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="gallery-desktop">GALLERY<i class="material-icons right">arrow_drop_down</i></a></li>
 
       {{#if data.users}}
-      
       <li><a class="dropdown-button" href="#!" data-activates="manager-desktop">MANAGER<i class="material-icons right">arrow_drop_down</i></a></li>
-
       <li><a href="/logout">LOGOUT</a></li> 
       {{/if}}
 
@@ -40,16 +40,27 @@
         <li class="divider"></li>
         <li><a href="/calendar">Calender</a></li>
         <li class="divider"></li>
-        <li><a href="/upload">Image Upload</a></li>
+        <li><a href="/upload">Add Content</a></li>
       </ul>
-
 
       <ul id="manager-mobile" class="dropdown-content">
         <li><a href="/dashboard">Bookings</a></li>
         <li class="divider"></li>
         <li><a href="/calendar">Calender</a></li>
         <li class="divider"></li>
-        <li><a href="/upload">Image Upload</a></li>
+        <li><a href="/upload">Add Content</a></li>
+      </ul>
+
+      <ul id="gallery-desktop" class="dropdown-content">
+        <li><a href="/lookbook">Look Book</a></li>
+        <li class="divider"></li>
+        <li><a href="/videos">Videos</a></li>
+      </ul>
+      
+      <ul id="gallery-mobile" class="dropdown-content">
+        <li><a href="/lookbook">Look Book</a></li>
+        <li class="divider"></li>
+        <li><a href="/videos">Videos</a></li>
       </ul>
 
 
@@ -58,15 +69,13 @@
       <li><a href="/"><i class="material-icons">home</i>HOME</a></li>      
       <li><a href="/#about"><i class="material-icons">info</i>ABOUT US</a></li>
       <li><a href="/contact"><i class="material-icons">contacts</i>CONTACT</a></li>
-      <li><a href="/lookbook"><i class="material-icons">nature</i>LOOK BOOK</a></li>
-      <li><a href="/bookapt"><i class="material-icons">shopping_cart</i>BOOK NOW</a></li>
-      <li><a href="/employees"><i class="material-icons">local_dining</i>EMPLOYEES</a></li>
+      <li><a href="/stylists"><i class="material-icons">account_box</i>STYLISTS</a></li>
+      <li><a href="/bookapt"><i class="material-icons">date_range</i>MAKE RESERVATION</a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="gallery-mobile"><i class="material-icons">photo_library</i>GALLERY<i class="material-icons right">arrow_drop_down</i></a></li> 
 
       {{#if data.users}}   
-
- <li><a class="dropdown-button" href="#!" data-activates="manager-mobile"><i class="material-icons">supervisor_account</i>MANAGER<i class="material-icons right">arrow_drop_down</i></a></li> 
-
-  <li><a href="/logout">LOGOUT</a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="manager-mobile"><i class="material-icons">supervisor_account</i>MANAGER<i class="material-icons right">arrow_drop_down</i></a></li> 
+      <li><a href="/logout">LOGOUT</a></li>
       {{/if}}
 
     </ul>
@@ -78,7 +87,14 @@
 
 <footer class="page-footer">
   <div class="footer-copyright">
-    <div class="container">© Caragol & Zaina</div>
+  <div class="container">
+  © Sache´ Beauty Studio
+  <div class="right">
+    <a class="fa fa-facebook fa-lg grey-text text-lighten-3" style="padding-left:10px;" href="https://www.facebook.com/sache.beauty.studio" target="_blank"></a>
+    <a class="fa fa-twitter fa-lg grey-text text-lighten-3" style="padding-left:10px;" href="https://twitter.com/sachebeauty" target="_blank"></a>
+    <a class="fa fa-linkedin fa-lg grey-text text-lighten-3" style="padding-left:10px;" href="https://www.linkedin.com/in/sache-beauty-studio-llc-ba749657" target="_blank"></a>
+  </div>
+  </div>
   </div>
 </footer>
 

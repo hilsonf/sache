@@ -15,7 +15,14 @@ module.exports = function(){
 	    visible:      String
 	});
 
+	var contentVideoSchema = new mongoose.Schema({
+	    vidUrl:     String,
+	    createdAt:    String,
+	    visible:      String
+	});
+
 	var _model = mongoose.model('images', contentImageSchema);
+	var _vid = mongoose.model('videos', contentVideoSchema);
 
 	_addImage = function (req, res){
 
@@ -47,34 +54,45 @@ module.exports = function(){
 			}).sort({createdAt: -1});
 		}
 
-	_remove = function(id, success){
-		_model.update({_id: id},{$set:{visible:'false'}}, function(err, doc){
-			if(err){
-				throw err;
-			}else{
-				success(doc);
-			}
-		})
+
+	_addVideo = function (req, res){
+
+		var str = req.body.videourl;
+		var videoId = str.slice(17);
+		var embed = 'https://www.youtube.com/embed/'+videoId
+		var videos = new _vid({
+			vidUrl: 	  embed,
+		    createdAt:    new Date(),
+		    visible:      'true'       
+        	})
+			// Save to Database
+			videos.save(function(err, doc){
+				if (err) {
+					throw err;
+				}else{
+  					console.log('Video Saved to DB');
+				};
+    			
+  			});
 	}
 
-
-	_findOne = function(id ,success){
-		_model.findOne({'_id': id}, function(err, doc){
-			if(err){
-				throw err;
-			}else{
-				success(doc);
-			}
-		})
-	}
+	_allVideos = function(fail, success){
+			_vid.find({visible:"true"}, function(err, doc){
+				if(err){
+					fail(err);
+				}else{
+					success(doc);
+				}
+			}).sort({createdAt: -1});
+		}
 
 
 	return {
 		schema     : contentImageSchema,
 		addImage   : _addImage,
 		allImages  : _allImages,
-		deleteImage: _remove,
-		userBooking  : _findOne
+		addVideo  : _addVideo,
+		allVideos  : _allVideos
 	};
 
 

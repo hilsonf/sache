@@ -41,6 +41,18 @@ $('.timepicker').pickatime({
   vibrate: true // vibrate the device when dragging clock hand
 });
 
+$('#hideshow1').click(function() {        
+    $('#ext-content').toggle('fast');
+});
+
+$('#hideshow2').click(function() {        
+    $('#bra-content').toggle('fast');
+});
+
+$('#hideshow3').click(function() {        
+    $('#sew-content').toggle('fast');
+});
+
 
 
 //form submit
@@ -103,7 +115,6 @@ function deleteOrder(bookingId){
   var yes = document.getElementById("yes");
   //yes delete order
   yes.onclick = function(){
-
       var booking_Id = JSON.stringify({bookingId});
       var xhr = new XMLHttpRequest();
       xhr.open('POST', '/deleteBooking');

@@ -1,0 +1,29 @@
+<div class="row"></div>
+
+<div class="container headings">
+  <h1>Videos</h1>
+  <i class="large material-icons">movie</i>  <hr>
+</div>
+<div class="row"></div>
+
+<div class="row">
+{{#each data.videos}}
+<div class="col s12 m12 l6">
+  <div class="video-container">
+        <iframe width="853" height="480" src="{{this.vidUrl}}" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+{{/each}}
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+
+
+
+
+

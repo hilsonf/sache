@@ -2,13 +2,19 @@
 
 <div class="container headings">
   <h1>Upload Content</h1>
-  <i class="material-icons">subtitles</i>
+  <i class="large material-icons">file_upload</i>
   <h6>Welcome {{data.users.username}}</h6>
   <hr>
 </div>
 
+<div class="row"></div>
+<div class="row"></div>
 
 <div class="row">
+<div class="container headings">
+  <h2>Upload Image</h2>
+</div>
+<div class="row"></div>
 
 <form enctype="multipart/form-data" action="/uploadImage" method="post" class="col l12">
 
@@ -34,6 +40,28 @@
   <textarea type="text" name="imageDes"></textarea> --}}
  </form>
 
+</div>
+
+<div class="row"></div>
+<div class="row">
+<div class="container headings">
+  <h2>Upload Video</h2>
+</div>
+<div class="row"></div>
+
+  <form class="col s12 m12 l12" name="video" action="/addVideo" method="post">
+    <div class="input-field col s12 m12 l12">
+      <i class="fa fa-link material-icons prefix" aria-hidden="true"></i>
+      <input id="videourl" name="videourl" type="text" class="validate" required>
+      <label for="videourl">Enter Youtube URL</label>
+    </div>
+
+    <div class="row"></div>
+
+    <div class="center">
+      <button class="btn-large waves-effect waves-light" type="submit">Upload Video<i class="material-icons right">cloud_upload</i></button>     
+    </div>
+  </form>
 </div>
 
  

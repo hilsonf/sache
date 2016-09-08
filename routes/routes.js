@@ -7,6 +7,7 @@ var manager = require('../models/manager.js');
 var email = require('../config/email');
 var helpers = require('../config/helpers');
 var moment = require('moment');
+var fs = require('fs');
 
 
 const resizer = new multerResizer({
@@ -31,6 +32,10 @@ const resizer = new multerResizer({
 
 var upload = resizer.single('file');
 
+function deleteImg(req){
+  var oldImg = './'+req.path ; 
+  fs.unlinkSync(oldImg);
+}
 
 function loggedIn(req, res, next){
     if(req.isAuthenticated()){
@@ -57,8 +62,7 @@ app.get('/logout', function (req, res, next) {
   req.session.destroy(function(err){
   	req.logout();
     res.redirect('/login');
-  })
-  
+  })  
 })
 
 app.get('/contact', function (req, res) {
@@ -69,7 +73,13 @@ app.get('/lookbook', function (req, res) {
   manager.allImages(res, function(result){
   var data = {data:{uploads: result}};
   res.render('lookbook', data);
+  })
+})
 
+app.get('/videos', function (req, res) {
+  manager.allVideos(res, function(result){
+  var data = {data:{videos: result}};
+  res.render('videos', data);
   })
 })
 
@@ -77,15 +87,21 @@ app.get('/bookapt', function (req, res) {
   res.render('bookapt');
 })
 
-app.get('/update/:id', loggedIn, function (req, res) {
-  var id = req.params.id;
-  var user = req.user;
-  booking.userBooking(id, function(result){ 
+app.get('/stylists', function (req, res) {
+  res.render('stylists');
+})
 
-  var dt = {};
+app.get('/pricelist', function (req, res) {
+  res.render('pricelist');
+})
+
+app.get('/update/:id', loggedIn, function (req, res) {
+  booking.userBooking(id, function(result){ 
+    var id = req.params.id;
+    var user = req.user;
+    var dt = {};
     dt.date = moment(result.bookDate).format('MMMM DD, YYYY'); 
     dt.time = moment(result.bookDate).format('h:mm');
-    //data = {booking: result,dateTime: dt, user: user};
     var data = {data:{booking: result,dateTime: dt, users: user}};
     res.render('updateapt', data);
   });
@@ -95,11 +111,9 @@ app.get('/update/:id', loggedIn, function (req, res) {
 
 app.get('/dashboard',loggedIn, function (req, res, next) {
   booking.allBookings(res, function(result){
-
     if(result.length > 0){
       helpers.dateformat(result[0].bookDate);
     }
-
     var user = req.user;
     var data = {data:{bookings: result, users: user}};
     res.render('dashboard', data);
@@ -107,21 +121,21 @@ app.get('/dashboard',loggedIn, function (req, res, next) {
 });
 
 app.get('/upload',loggedIn, function (req, res, next) {
-    var user = req.user;
-    var data = {data:{users: user}};
-    res.render('upload', data);
+  var user = req.user;
+  var data = {data:{users: user}};
+  res.render('upload', data);
 });
 
 app.get('/calendar',loggedIn, function (req, res, next) {
-        var user = req.user;
-        var data = {data:{users: user}};
-        res.render('calendar', data);
+  var user = req.user;
+  var data = {data:{users: user}};
+  res.render('calendar', data);
 });
 
 app.get('/calendar-data', function(req, res){
-    calendar.allCalendar(res, function(cal){
+  calendar.allCalendar(res, function(cal){
     res.send(cal);
-   });
+  });
 });
 
 
@@ -130,11 +144,10 @@ app.get('/calendar-data', function(req, res){
 
 
 
-app.post('/addBooking',function(req, res){ 
+app.post('/addBooking',function(req, res){
   calendar.addCalendar(req, res, function(cal){
-    booking.addBooking(req, cal, res);
+  booking.addBooking(req, cal, res);
   });
-
 });
 
 app.post('/deleteBooking',function(req, res){
@@ -144,32 +157,38 @@ app.post('/deleteBooking',function(req, res){
 });
 
 app.post('/message',function(req, res){
-   email.message(req, res);
-   res.redirect('/#contact');
+  email.message(req, res);
+  res.redirect('/contact');
+});
+
+app.post('/addVideo',function(req, res){
+  manager.addVideo(req, res);
+  res.redirect('/videos');
 });
 
 
 app.post('/uploadImage', upload, function(req, res, next) {
   manager.addImage(req, res);
+  deleteImg(req.file);
   res.redirect('/lookbook');
 });
 
 app.post('/updateapt/:id', function(req, res, next) {
-      booking.updateBooking(req, res, function(result){
-      }); 
-      var id = req.params.id;
-      booking.userBooking(id, function(b){
-        calendar.updateCalendar(req, b, res);
-        res.redirect('/calendar');
-      })     
+  booking.updateBooking(req, res, function(result){
+  }); 
+  var id = req.params.id;
+  booking.userBooking(id, function(b){
+    calendar.updateCalendar(req, b, res);
+    res.redirect('/calendar');
+  })     
 });
 
 app.post('/login',
-passport.authenticate("local", {
+  passport.authenticate("local", {
     successRedirect : "/dashboard",
     failureRedirect : "/login",
     failureFlash: true
-})
+  })
 );
 
 
