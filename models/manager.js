@@ -1,4 +1,3 @@
-
 module.exports = function(){
 	var db      = require('../config/db.js');
         mongoose    = require('mongoose');
@@ -16,7 +15,7 @@ module.exports = function(){
 	});
 
 	var contentVideoSchema = new mongoose.Schema({
-	    vidUrl:     String,
+	    vidUrl:       String,
 	    createdAt:    String,
 	    visible:      String
 	});

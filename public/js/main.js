@@ -15,12 +15,9 @@ function prev(){
 function next(){
   $('.carousel').carousel('prev');
 }
-// select 
-$('select').material_select();
-// material boxed 
-// $('.materialboxed').materialbox();
-//tooltip
+// Tooltip 
 $('.tooltipped').tooltip({delay: 50});
+
 // date picker 
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
@@ -42,20 +39,30 @@ $('.timepicker').pickatime({
 });
 
 $('#hideshow1').click(function() {        
-    $('#ext-content').toggle('fast');
+  $('#ext-content').toggle('fast');
 });
 
 $('#hideshow2').click(function() {        
-    $('#bra-content').toggle('fast');
+  $('#bra-content').toggle('fast');
 });
 
 $('#hideshow3').click(function() {        
-    $('#sew-content').toggle('fast');
+  $('#sew-content').toggle('fast');
 });
 
 
+$('.collapsible').collapsible({
+  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+});
 
-//form submit
+//Get Calendar Info
+if (window.location.pathname == '/calendar') {
+  scheduler.init('scheduler_here',new Date(),"month");
+  scheduler.templates.xml_date = function(value){ return new Date(value); };
+  scheduler.load("/calendar-data", "json");
+}
+
+//Submit Reservation
 function submitBooking() {
 
   if (validation()){
@@ -92,7 +99,7 @@ function submitBooking() {
 }//end if
 }//end submit
 
-//validation
+//Reservation Validation
 function validation() {
   var firstName = document.getElementById("firstName").value;
   var lastName = document.getElementById("lastName").value;
@@ -108,9 +115,8 @@ function validation() {
   }
 }
 
-
-//delete order
-function deleteOrder(bookingId){
+//Delete Reservation
+function deleteBooking(bookingId){
   $('#delete').openModal();
   var yes = document.getElementById("yes");
   //yes delete order
@@ -121,18 +127,11 @@ function deleteOrder(bookingId){
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(booking_Id);
   }
-
 }
   
- $(document).ready(function() {
-  if (window.location.pathname == '/calendar') {
-    scheduler.init('scheduler_here',new Date(),"month");
-    scheduler.templates.xml_date = function(value){ return new Date(value); };
-    scheduler.load("/calendar-data", "json");
- }else{
 
- }
-})
+
+
 
 
 

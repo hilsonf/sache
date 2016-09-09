@@ -96,9 +96,9 @@ app.get('/pricelist', function (req, res) {
 })
 
 app.get('/update/:id', loggedIn, function (req, res) {
-  booking.userBooking(id, function(result){ 
     var id = req.params.id;
     var user = req.user;
+  booking.userBooking(id, function(result){ 
     var dt = {};
     dt.date = moment(result.bookDate).format('MMMM DD, YYYY'); 
     dt.time = moment(result.bookDate).format('h:mm');
@@ -154,6 +154,10 @@ app.post('/deleteBooking',function(req, res){
   var id = req.body.bookingId;
   booking.deleteBooking(id, function(result){
   });
+  booking.userBooking(id, function(b){
+    calendar.deleteCalendar(req, b, res);
+    res.redirect('/calendar');
+  })  
 });
 
 app.post('/message',function(req, res){

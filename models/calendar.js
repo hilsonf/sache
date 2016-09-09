@@ -1,4 +1,3 @@
-//800-
 module.exports = function(){
 	var db      = require('../config/db.js');
         mongoose    = require('mongoose');
@@ -9,9 +8,11 @@ module.exports = function(){
     var Schema   = mongoose.Schema;
        
     var calendarSchema = new mongoose.Schema({
-	    text: 	  String,
+	    text: 	    String,
 	    start_date: String,
-        end_date:   String
+        end_date:   String,
+        createdAt:  String,
+        visible:    String
 	});
 
 	var _model = mongoose.model('calendar', calendarSchema);
@@ -22,7 +23,9 @@ module.exports = function(){
 
 			text: 	     req.body.firstName+' '+req.body.lastName+' Appointment',
 		    start_date:  req.body.bookDate,
-		    end_date:    req.body.bookDate   
+		    end_date:    req.body.bookDate,
+		    createdAt:    new Date(),
+		    visible:      'true'    
         	})
 			// Save to Database
 			calendar.save(function(err, doc){
@@ -38,7 +41,7 @@ module.exports = function(){
 	}
 
 	_allCalendar = function(fail, success){
-			_model.find({}, function(err, doc){
+			_model.find({visible:"true"}, function(err, doc){
 				if(err){
 					fail(err);
 				}else{
@@ -62,12 +65,23 @@ module.exports = function(){
 		})
 	}
 
+	_remove = function(req, b, res){
+		var id = b.calId;
+		_model.update({_id: id},{$set:{visible: "false"}}, function(err){
+			if(err){
+				throw err;
+			}else{
+			}
+		})
+	}
+
 
 	return {
 		schema     : calendarSchema,
 		addCalendar   : _addCalendar,
 		allCalendar  : _allCalendar,
-		updateCalendar:  _update
+		updateCalendar:  _update,
+		deleteCalendar: _remove
 	};
 
 

@@ -1,7 +1,7 @@
 <div class="row"></div>
 
 <div class="container headings">
-  <h1>Manage Apts</h1>
+  <h1>Manage Appts</h1>
   <i class="large material-icons">subtitles</i>
   <h6>Welcome {{data.users.username}}</h6>
   <hr>
@@ -17,13 +17,13 @@
  
       <i class="material-icons circle brown">folder</i>     
 
-      <h2>Booking</h2>
+      <h2>Appt</h2>
       
-      <label class="left brown-text">Booking#:&nbsp; </label> <span><strong>{{this._id}}</strong></span><br>
+      <label class="left brown-text">Appointment#:&nbsp; </label> <span><strong>{{this._id}}</strong></span><br>
       
       <div class="row"></div>      
       <div class="divider"></div>
-      <h6>Booking Information</h6>
+      <h6>Appointment Information</h6>
       <div class="divider"></div>
       <div class="row"></div>
       
@@ -45,7 +45,7 @@
 
       <div class="row"></div>
 
-      <div><a href="#" class="secondary-content" onClick="deleteOrder('{{this._id}}')"><i class="material-icons">delete</i></a><label style="position: absolute; top: 43px; right: 21px;">delete</label></div>
+      <div><a href="#" class="secondary-content" onClick="deleteBooking('{{this._id}}')"><i class="material-icons">delete</i></a><label style="position: absolute; top: 43px; right: 21px;">delete</label></div>
       <div><a href="/update/{{this._id}}" class="primary-content"><i class="material-icons">change_history</i></a>
       <label style="position: absolute; top: 43px; right: 80px;">update</label></div>
 

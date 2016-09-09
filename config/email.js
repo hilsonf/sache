@@ -5,7 +5,7 @@ module.exports = function() {
   var smtpTransport = nodemailer.createTransport("SMTP",{
       service: "Gmail",
       auth: {
-          user: "__",
+          user: "sachebeautystudio@gmail.com",
           pass: "__"
       }
   });
@@ -14,7 +14,7 @@ module.exports = function() {
 
 _email = function(order, res){
 
-  var mailList = '__,'+order.email;
+  var mailList = 'sachebeautystudio@gmail.com';
 
   var mailOptions={
       to : mailList,
@@ -32,35 +32,15 @@ _email = function(order, res){
   })
 }
 
-_email2 = function(order, res){
-
-  
-  var mailOptions={
-      to : order.email,
-      subject : 'Order Status',
-      text : 'Order#: '+order._id+'\r\n'+'Your order is '+ order.orderStatus +'.'+'You can check the status of your order at http://caragolzaina.com/order/'+order._id
-  }
-  smtpTransport.sendMail(mailOptions, function(error, response){
-   if(error){
-      res.end("error");
-   }else{
-      res.end("sent");
-   }
-
-  })
-}//end mail2
-
-
 _message = function(req, res){
 
   var message = req.body;
 
-  
   var mailOptions={
-      to : '__',
+      from: message.email,
+      to : 'sachebeautystudio@gmail.com',
       subject : message.subject,
       text : 'Senders Name: '+message.name+'\r\n'+'Email: '+message.email+'\r\n'+'Phone: '+message.tell+'\r\n'+message.message
-  // console.log(mailOptions);
   }
   smtpTransport.sendMail(mailOptions, function(error, response){
    if(error){
@@ -74,7 +54,6 @@ _message = function(req, res){
 
 return{
   sendMail: _email,
-  sendMail2: _email2,
   message: _message
 }
 
