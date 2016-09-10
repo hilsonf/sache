@@ -48,6 +48,7 @@
     line-height: $sidenav-item-height;
     padding: 0 ($sidenav-padding * 2);
 
+
     &:hover { background-color: rgba(0,0,0,.05);}
 
     &.btn, &.btn-large, &.btn-flat, &.btn-floating {
@@ -72,8 +73,6 @@
     margin-right: 8px;
     font-size: 1.5em;
     width: $sidenav-item-height / 2;
-    position: relative;
-    top: 3px;
     color: #5C1117;
   }
 

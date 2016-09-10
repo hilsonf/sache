@@ -55,13 +55,34 @@ $('.collapsible').collapsible({
   accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
 });
 
+//Get Current Location
+var currentLocation = location.pathname;
+console.log(currentLocation);
+
 //Get Calendar Info
-if (window.location.pathname == '/calendar') {
+if (currentLocation == '/calendar') {
   scheduler.init('scheduler_here',new Date(),"month");
   scheduler.templates.xml_date = function(value){ return new Date(value); };
   scheduler.load("/calendar-data", "json");
 }
 
+//Add Active Class on Tab
+if (location.hash) {
+    $("nav ul li:nth-child(2)").addClass("active");
+}else if (currentLocation == '/') {
+    $("nav ul li:nth-child(1)").addClass("active");
+}else if (currentLocation == '/contact') {
+    $("nav ul li:nth-child(3)").addClass("active");
+}else if (currentLocation == '/stylists') {
+    $("nav ul li:nth-child(4)").addClass("active");
+}else if (currentLocation == '/pricelist') {
+    $("nav ul li:nth-child(5)").addClass("active");
+}else if (currentLocation == '/lookbook' || currentLocation == '/videos') {
+   $("nav ul li:nth-child(6)").addClass("active");
+}else if (currentLocation == '/bookapt') {
+    $("nav ul li:nth-child(7)").addClass("active");
+}
+ 
 //Submit Reservation
 function submitBooking() {
 

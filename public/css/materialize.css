@@ -7330,8 +7330,6 @@ input[type=range]:focus::-ms-fill-upper {
     margin-right: 8px;
     font-size: 1.5em;
     width: 24px;
-    position: relative;
-    top: 3px;
     color: #5C1117; }
   .side-nav .divider {
     margin: 8px 0 0 0; }
