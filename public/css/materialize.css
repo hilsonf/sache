@@ -5332,6 +5332,18 @@ div.dhx_menu_head, div.dhx_menu_icon {
 #scheduler_here td {
   padding: 0; }
 
+.dhx_cal_light select {
+  display: inline;
+  background-color: #FFFFFF;
+  width: 8%;
+  height: 2em;
+  padding: 0;
+  margin-left: .25em;
+  margin-right: .25em; }
+
+@media only screen and (max-width: 992px) {
+  .dhx_cal_date, .dhx_cal_tab {
+    display: none; } }
 .picker__box {
   background: #fff; }
 

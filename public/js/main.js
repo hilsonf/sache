@@ -57,16 +57,21 @@ $('.collapsible').collapsible({
 
 //Get Current Location
 var currentLocation = location.pathname;
-console.log(currentLocation);
 
 //Get Calendar Info
 if (currentLocation == '/calendar') {
   scheduler.init('scheduler_here',new Date(),"month");
-  scheduler.templates.xml_date = function(value){ return new Date(value); };
+  scheduler.templates.xml_date = function(value){return new Date(value); };
   scheduler.load("/calendar-data", "json");
-}
 
-//Add Active Class on Tab
+  scheduler.config.xml_date="%Y-%m-%d %H:%i";
+  var dp = new dataProcessor("/calendar-data");
+  dp.init(scheduler);
+  dp.setTransactionMode("POST", false);
+
+
+}
+ //Add Active Class on Tab
 if (location.hash) {
     $("nav ul li:nth-child(2)").addClass("active");
 }else if (currentLocation == '/') {
@@ -95,18 +100,21 @@ function submitBooking() {
     var bookTime = document.getElementById("bookTime").value;
 
     var d = new Date(bookDate+' '+bookTime+':00');
+    var calId = createEvent(d)
     var data = {};
     var booking =[];
     data.firstName = firstName;
     data.lastName = lastName;
     data.tell = tell;
     data.bookDate = d;
+    data.calendarId = calId;
    
 
     booking.push(data);
 
     var newApt = JSON.stringify(data);
     console.log(newApt);
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/addBooking');
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -114,7 +122,7 @@ function submitBooking() {
 
     //open modal
     $('#modal1').openModal();
-    // //resets form
+    //resets form
     document.forms['booking'].reset();
 
 }//end if
@@ -151,7 +159,16 @@ function deleteBooking(bookingId){
 }
   
 
+function createEvent(date){
+  var eventId = scheduler.addEvent({
+    start_date: date,
+    end_date:   date,
+    text:   "Event"
+  });
 
+  var eventObj = scheduler.getEvent(eventId);
+  return eventObj.id
+}
 
 
 

@@ -98,7 +98,7 @@ app.get('/pricelist', function (req, res) {
 app.get('/update/:id', loggedIn, function (req, res) {
     var id = req.params.id;
     var user = req.user;
-  booking.userBooking(id, function(result){ 
+    booking.findBooking(id, function(result){ 
     var dt = {};
     dt.date = moment(result.bookDate).format('MMMM DD, YYYY'); 
     dt.time = moment(result.bookDate).format('h:mm');
@@ -154,8 +154,11 @@ app.post('/deleteBooking',function(req, res){
   var id = req.body.bookingId;
   booking.deleteBooking(id, function(result){
   });
-  booking.userBooking(id, function(b){
-    calendar.deleteCalendar(req, b, res);
+
+  booking.findBooking(id, function(b){
+    var calId = b.calendarId
+    calendar.findOneAndDelete(calId, function(result){
+    })
     res.redirect('/calendar');
   })  
 });
@@ -181,10 +184,36 @@ app.post('/updateapt/:id', function(req, res, next) {
   booking.updateBooking(req, res, function(result){
   }); 
   var id = req.params.id;
-  booking.userBooking(id, function(b){
+  booking.findBooking(id, function(b){
     calendar.updateCalendar(req, b, res);
     res.redirect('/calendar');
   })     
+});
+
+app.post('/calendar-data', function(req, res){
+  var mode = req.body["!nativeeditor_status"];
+
+  if (mode == 'inserted') {
+      calendar.manuallyAddCalendar(req, function(result){
+        res.send();      
+        res.redirect('back');
+      });        
+  }
+
+  if (mode == 'updated') {
+    calendar.findOneAndUpdate(req, function(result){
+      res.send();
+      res.redirect('back');
+    })
+  }
+
+  if (mode == 'deleted') {
+    var id = req.body.calendarId
+    calendar.findOneAndDelete(id, function(result){
+      res.send();
+      res.redirect('back');
+    })
+  }
 });
 
 app.post('/login',

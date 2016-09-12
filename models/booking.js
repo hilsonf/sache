@@ -13,7 +13,7 @@ module.exports = function(){
 	    lastName:     String,
 	    tell: 		  Number,
 	    bookDate:     Date,
-	    calId:        String,
+	    calendarId:   String,
 	    createdAt:    String,
 	    visible:      String
 	});
@@ -28,7 +28,7 @@ module.exports = function(){
 		    lastName:     req.body.lastName,
 		    tell: 		  req.body.tell,
 		    bookDate:     req.body.bookDate,
-		    calId:        cal._id,
+		    calendarId:   cal.calendarId,
 		    createdAt:    new Date(),
 		    visible:      'true'       
         	})
@@ -66,9 +66,18 @@ module.exports = function(){
 		})
 	}
 
-
 	_findOne = function(id ,success){
 		_model.findOne({'_id': id}, function(err, doc){
+			if(err){
+				throw err;
+			}else{
+				success(doc);
+			}
+		})
+	}
+
+	_findOneAndDelete = function(id ,success){
+		_model.findOneAndUpdate({'_id': id}, { visible: 'false' },function(err, doc){
 			if(err){
 				throw err;
 			}else{
@@ -98,12 +107,13 @@ module.exports = function(){
 
 
 	return {
-		schema     : bookingSchema,
-		addBooking   : _addBooking,
-		allBookings  : _allBookings,
-		deleteBooking: _remove,
-		userBooking  : _findOne,
-		updateBooking: _update
+		schema     		: bookingSchema,
+		addBooking   	: _addBooking,
+		allBookings  	: _allBookings,
+		deleteBooking 	: _remove,
+		findBooking  	: _findOne,
+		updateBooking 	: _update,
+		findOneAndDelete: _findOneAndDelete
 	};
 
 
