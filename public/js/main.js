@@ -6,14 +6,15 @@ $(".button-collapse").sideNav({
   //closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
 });
 // caroucel trigger  
-$('.carousel').carousel({full_width: true});
+
+
 // prev image  
 function prev(){
-  $('.carousel').carousel('next');
+  $('.mycarousel').carousel('next');
 }
 // next image  
 function next(){
-  $('.carousel').carousel('prev');
+  $('.mycarousel').carousel('prev');
 }
 // Tooltip 
 $('.tooltipped').tooltip({delay: 50});
@@ -29,6 +30,7 @@ onSet: function (day) {
   }
 }
 });
+
 
 $('.timepicker').pickatime({
   default: 'now',
@@ -55,6 +57,16 @@ $('.collapsible').collapsible({
   accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
 });
 
+function loadFile(event)  {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+};
+
+function loadFile2(event)  {
+    var output = document.getElementById('output2');
+    output.src = URL.createObjectURL(event.target.files[0]);
+};
+
 //Get Current Location
 var currentLocation = location.pathname;
 
@@ -75,6 +87,7 @@ if (currentLocation == '/calendar') {
 if (location.hash) {
     $("nav ul li:nth-child(2)").addClass("active");
 }else if (currentLocation == '/') {
+    $('.mycarousel').carousel({full_width: true});
     $("nav ul li:nth-child(1)").addClass("active");
 }else if (currentLocation == '/contact') {
     $("nav ul li:nth-child(3)").addClass("active");
@@ -83,6 +96,7 @@ if (location.hash) {
 }else if (currentLocation == '/pricelist') {
     $("nav ul li:nth-child(5)").addClass("active");
 }else if (currentLocation == '/lookbook' || currentLocation == '/videos') {
+   $('.carousel').carousel();
    $("nav ul li:nth-child(6)").addClass("active");
 }else if (currentLocation == '/bookapt') {
     $("nav ul li:nth-child(7)").addClass("active");

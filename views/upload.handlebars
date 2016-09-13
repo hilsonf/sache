@@ -11,44 +11,49 @@
 <div class="row"></div>
 
 <div class="row">
-<div class="container headings">
-  <h2>Upload Image</h2>
-</div>
-<div class="row"></div>
+<div class="col l12">
+<h2 class="center">Upload Image</h2>
+<form enctype="multipart/form-data" action="/uploadImage" method="POST">
 
-<form enctype="multipart/form-data" action="/uploadImage" method="post" class="col l12">
-
-  <div class="file-field input-field col l4">
+  <div class="file-field col s12 m12 l12">
       <div class="btn">
-        <span>File</span>
-        <input type="file">
+        <span>Select File</span>
+        <input type="file" name="file" onchange="loadFile(event)" class="validate" required>
       </div>
+
       <div class="file-path-wrapper">
-        <input class="file-path validate" type="file" name="file">
+        <input class="file-path validate" type="text">
       </div>
-    </div>
+      <img id="output" class="responsive-img"/>
+  </div>
 
-    <div class="input-field col l6">
-      <textarea id="textarea1" class="materialize-textarea" name="imageDes"></textarea>
-      <label for="textarea1">Textarea</label>
-    </div>
+  <div class="input-field col s12 m12 l12">
+    <i class="material-icons prefix">mode_edit</i>
+    <textarea id="textarea" class="materialize-textarea" name="imageDes" class="validate" required></textarea>
+    <label for="textarea">Enter Image Description</label>
+  </div>
 
-    <button type="submit" value="Upload Image">Upload</button>
+  <div class="row"></div>
 
-{{!--   <input type="file" name="photo" />
-  <input type="submit" value="Upload Image" name="submit" />
-  <textarea type="text" name="imageDes"></textarea> --}}
- </form>
+  <div class="center">
+  <button class="btn-large waves-effect waves-light" type="submit">Upload Image<i class="material-icons right">cloud_upload</i></button> 
+  </div>
 
+</form>
+</div>
 </div>
 
 <div class="row"></div>
+<div class="divider"></div>
+<div class="row"></div>
+<div class="divider"></div>
+
+<div class="row"></div>
+<div class="row"></div>
+
 <div class="row">
-<div class="container headings">
-  <h2>Upload Video</h2>
-</div>
-<div class="row"></div>
-
+<div class="col l12">
+<h2 class="center">Upload Video</h2>
   <form class="col s12 m12 l12" name="video" action="/addVideo" method="post">
     <div class="input-field col s12 m12 l12">
       <i class="fa fa-link material-icons prefix" aria-hidden="true"></i>
@@ -63,28 +68,49 @@
     </div>
   </form>
 </div>
+</div>
 
- 
+<div class="row"></div>
+<div class="divider"></div>
+<div class="row"></div>
+<div class="divider"></div>
 
 
-{{!-- MODAL --}}
-<div id="delete" class="modal">
-  <div class="modal-content">
-    <p class="center"><img src="/public/img/warning.svg" alt="delete_order" class="responsive-img"></p>
-    <p class="center"><a class="modal-action modal-close waves-effect waves-light btn" href="#">no</a></p>
-    <p class="center"><a class="modal-action modal-close waves-effect waves-light btn red lighten-2" id="yes" href="/dashboard">Yes</a></p>
+<div class="row"></div>
+<div class="row"></div>
+
+
+<div class="row">
+<div class="col l12">
+<h2 class="center">Upload Image</h2>
+<form enctype="multipart/form-data" action="/uploadImage2" method="POST">
+
+  <div class="file-field col s12 m12 l12">
+      <div class="btn">
+        <span>Select File</span>
+        <input type="file" name="file" onchange="loadFile2(event)" class="validate" required multiple>
+      </div>
+
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+      <img id="output2" class="responsive-img"/>
   </div>
-</div>
 
-<div id="update" class="modal">
-  <div class="modal-content">
-    <p class="center"><img src="/public/img/update.svg" alt="delete_order" class="responsive-img"></p>
-    <p class="center"><a class="modal-action modal-close waves-effect waves-light btn orange lighten-2" id="transit" href="/dashboard">In Transit</a></p>
-    <p class="center"><a class="modal-action modal-close waves-effect waves-light btn green lighten-2" id="complete" href="/dashboard">Complete</a></p>
+  <div class="row"></div>
+
+  <div class="center">
+  <button class="btn-large waves-effect waves-light" type="submit">Upload Image<i class="material-icons right">cloud_upload</i></button> 
   </div>
+
+</form>
+</div>
 </div>
 
-</div>
+<div class="row"></div>
+<div class="divider"></div>
+<div class="row"></div>
+<div class="divider"></div>
 
 
 

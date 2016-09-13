@@ -9,7 +9,7 @@
 <div class="row"></div>
 
 <div class="row">
- {{#each data.uploads}}
+ {{#each data.images}}
         <div class="col s12 m6 l4">
         <img class="materialboxed responsive-img" data-caption="{{this.imageDes}}" src="{{this.imageUrl}}">
         </div>
@@ -17,7 +17,18 @@
 </div>
 
 
-<div class="row"></div>
+
+
+<div class="row">
+  <div class="carousel">
+   {{#each data.gallery}}
+    <a class="carousel-item" href="#one!"><img src="{{this.imageUrl}}"></a>
+   {{/each}}
+  </div>
+</div>
+
+
+
 <div class="row"></div>
 <div class="row"></div>
 <div class="row"></div>

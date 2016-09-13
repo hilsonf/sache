@@ -30,11 +30,20 @@ const resizer = new multerResizer({
 
 })
 
-var upload = resizer.single('file');
+var singleupload = resizer.single('file');
+var multipleupload = resizer.array('file');
 
 function deleteImg(req){
   var oldImg = './'+req.path ; 
   fs.unlinkSync(oldImg);
+}
+
+function deleteMultipleImg(req){
+  var files = req.files
+  for (var i = 0; i < files.length; i++) {
+      var oldImg = files[i].path
+      fs.unlinkSync(oldImg);
+    }
 }
 
 function loggedIn(req, res, next){
@@ -70,10 +79,20 @@ app.get('/contact', function (req, res) {
 })
 
 app.get('/lookbook', function (req, res) {
-  manager.allImages(res, function(result){
-  var data = {data:{uploads: result}};
-  res.render('lookbook', data);
+  manager.allImages(function(fail){}, function(images){
+  // var data = {data:{uploads: result}};
+  // res.render('lookbook', data);
+
+  manager.allGalleries(function(fail){}, function(galleries){
+     var data = {data:{images: images, gallery: galleries}};
+     res.render('lookbook', data);
   })
+
+
+  })
+
+
+
 })
 
 app.get('/videos', function (req, res) {
@@ -174,10 +193,16 @@ app.post('/addVideo',function(req, res){
 });
 
 
-app.post('/uploadImage', upload, function(req, res, next) {
+app.post('/uploadImage', singleupload, function(req, res, next) {
   manager.addImage(req, res);
   deleteImg(req.file);
   res.redirect('/lookbook');
+});
+
+app.post('/uploadImage2', multipleupload, function(req, res, next) {
+  manager.addMultipleImages(req, res);
+  deleteMultipleImg(req);
+  // res.redirect('/lookbook');
 });
 
 app.post('/updateapt/:id', function(req, res, next) {

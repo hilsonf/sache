@@ -10,17 +10,25 @@ module.exports = function(){
 	    imageName: 	  String,
 	    imageUrl:     String,
 	    imageDes:     String,
-	    createdAt:    String,
+	    createdAt:    Date,
+	    visible:      String
+	});
+
+	var contentGallerySchema = new mongoose.Schema({
+	    imageName: 	  String,
+	    imageUrl:     String,
+	    createdAt:    Date,
 	    visible:      String
 	});
 
 	var contentVideoSchema = new mongoose.Schema({
 	    vidUrl:       String,
-	    createdAt:    String,
+	    createdAt:    Date,
 	    visible:      String
 	});
 
 	var _model = mongoose.model('images', contentImageSchema);
+	var _gal = mongoose.model('gallery', contentGallerySchema);
 	var _vid = mongoose.model('videos', contentVideoSchema);
 
 	_addImage = function (req, res){
@@ -43,8 +51,47 @@ module.exports = function(){
   			});
 	}
 
+
+	_addMultipleImages = function (req, res){
+
+		var files = req.files
+
+		for (var i = 0; i < files.length; i++) {
+			var imgName = files[i].filename
+			var imgUrl = files[i].resizedPath
+		
+
+		var gallery = new _gal({
+			imageName: 	  imgName,
+		    imageUrl:     imgUrl,
+		    createdAt:    new Date(),
+		    visible:      'true'       
+        	})
+			// Save to Gallery
+			gallery.save(function(err, doc){
+				if (err) {
+					throw err;
+				}else{
+  					console.log('Image Saved to Gallery');
+				};
+    			
+  			});
+  		}
+	}
+
 	_allImages = function(fail, success){
 			_model.find({visible:"true"}, function(err, doc){
+				if(err){
+					fail(err);
+				}else{
+					// success(doc);
+					success(doc);
+				}
+			}).sort({createdAt: -1});
+		}
+
+	_allGalleries = function(fail, success){
+			_gal.find({visible:"true"}, function(err, doc){
 				if(err){
 					fail(err);
 				}else{
@@ -87,11 +134,13 @@ module.exports = function(){
 
 
 	return {
-		schema     : contentImageSchema,
-		addImage   : _addImage,
-		allImages  : _allImages,
-		addVideo  : _addVideo,
-		allVideos  : _allVideos
+		schema     			: contentImageSchema,
+		addImage   			: _addImage,
+		allImages  			: _allImages,
+		allGalleries  		: _allGalleries,
+		addVideo  			: _addVideo,
+		allVideos  			: _allVideos,
+		addMultipleImages 	:_addMultipleImages
 	};
 
 
