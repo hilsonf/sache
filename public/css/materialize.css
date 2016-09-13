@@ -2048,7 +2048,7 @@ ul {
     list-style-type: none; }
 
 a {
-  color: #6d4c41;
+  color: #7b1fa2;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent; }
 
@@ -2278,7 +2278,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: #5C1117; }
+  background-color: #d8a31f; }
   footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 50px;
@@ -2388,10 +2388,11 @@ td, th {
       padding-left: 72px;
       position: relative; }
       .collection .collection-item.avatar h6 {
-        color: #5C1117;
-        font-weight: 600; }
+        color: #d8a31f;
+        font-weight: 400; }
       .collection .collection-item.avatar h2 {
-        color: #5C1117; }
+        color: #d8a31f;
+        font-weight: 400; }
       .collection .collection-item.avatar .circle {
         position: absolute;
         width: 42px;
@@ -3063,7 +3064,7 @@ input[type=range] + .thumb {
   .headings i {
     text-align: center;
     font-size: 3em;
-    color: #5C1117; }
+    color: #d8a31f; }
   .headings p {
     text-align: center; }
 
@@ -3086,7 +3087,7 @@ input[type=range] + .thumb {
 
 nav {
   color: #fff;
-  background-color: #5C1117;
+  background-color: #d8a31f;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -3121,11 +3122,15 @@ nav {
     font-size: 2.1rem;
     padding: 0;
     white-space: nowrap; }
-    nav .brand-logo img {
-      padding: 10px 10px 10px 20px; }
+    nav .brand-logo svg {
+      width: 60px;
+      height: 60px;
+      margin-left: 5px; }
     @media only screen and (max-width: 992px) {
-      nav .brand-logo img {
-        padding: 8px 10px 10px 0; } }
+      nav .brand-logo svg {
+        width: 50px;
+        height: 50px;
+        margin-left: 0px; } }
     nav .brand-logo.center {
       left: 50%;
       transform: translateX(-50%); }
@@ -3264,7 +3269,8 @@ h1 {
   font-size: 4.2rem;
   line-height: 110%;
   margin: 2.1rem 0 1.68rem 0;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #4F2C74; }
 
 h2 {
   font-size: 1.64rem;
@@ -5841,13 +5847,13 @@ button {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #A17F59;
+  background-color: #4F2C74;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover {
-    background-color: #ac8c68; }
+    background-color: #5c3386; }
 
 .btn-floating {
   display: inline-block;
@@ -6430,8 +6436,8 @@ textarea.materialize-textarea {
   input[type=number]:focus:not([readonly]),
   input[type=search]:focus:not([readonly]),
   textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #975751;
-    box-shadow: 0 1px 0 0 #975751; }
+    border-bottom: 1px solid #d8a31f;
+    box-shadow: 0 1px 0 0 #d8a31f; }
   input:not([type]):focus:not([readonly]) + label,
   input[type=text]:focus:not([readonly]) + label,
   input[type=password]:focus:not([readonly]) + label,
@@ -6445,7 +6451,7 @@ textarea.materialize-textarea {
   input[type=number]:focus:not([readonly]) + label,
   input[type=search]:focus:not([readonly]) + label,
   textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: #975751; }
+    color: #d8a31f; }
   input:not([type]).valid, input:not([type]):focus.valid,
   input[type=text].valid,
   input[type=text]:focus.valid,
@@ -6615,7 +6621,7 @@ textarea.materialize-textarea {
     font-size: 2rem;
     transition: color .2s; }
     .input-field .prefix.active {
-      color: #975751; }
+      color: #d8a31f; }
   .input-field .prefix ~ input,
   .input-field .prefix ~ textarea,
   .input-field .prefix ~ label,
@@ -7331,9 +7337,9 @@ input[type=range]:focus::-ms-fill-upper {
     .side-nav a.btn-flat {
       color: #343434; }
     .side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover {
-      background-color: #ac8c68; }
+      background-color: #5c3386; }
     .side-nav a.btn-floating:hover {
-      background-color: #A17F59; }
+      background-color: #4F2C74; }
   .side-nav li > a > i,
   .side-nav li > a > [class^="mdi-"], .side-nav li > a > [class*="mdi-"],
   .side-nav li > a > i.material-icons {
@@ -8424,7 +8430,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .picker__date-display {
   text-align: center;
-  background-color: #975751;
+  background-color: #4F2C74;
   color: #fff;
   padding-bottom: 15px;
   font-weight: 300; }
@@ -8436,7 +8442,7 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a1ded8; }
 
 .picker__weekday-display {
-  background-color: #824A48;
+  background-color: #40225F;
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;

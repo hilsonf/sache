@@ -40,7 +40,7 @@ $primary-color-dark: darken($primary-color, 15%) !default;
 $secondary-color: color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color("brown", "darken-1") !default;
+$link-color: color("purple", "darken-2") !default;
 
 
 /* 2. Badges
@@ -65,7 +65,7 @@ $button-disabled-background: #DFDFDF !default;
 $button-disabled-color: #9F9F9F !default;
 
 // Raised buttons
-$button-raised-background: #A17F59 !default;
+$button-raised-background: #4F2C74 !default;
 $button-raised-background-hover: lighten($button-raised-background, 5%) !default;
 $button-raised-color: #fff !default;
 
@@ -148,7 +148,7 @@ $input-border: 1px solid $input-border-color !default;
 $input-background: #fff !default;
 $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
-$input-focus-color: #975751 !default;
+$input-focus-color: #d8a31f !default;
 $input-font-size: 1rem !default;
 $input-margin: 0 0 20px 0 !default;
 $input-padding: 0 !default;
