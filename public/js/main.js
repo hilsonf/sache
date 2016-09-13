@@ -1,13 +1,42 @@
+//Get Current Location
+var currentLocation = location.pathname;
+//Get Calendar Info
+if (currentLocation == '/calendar') {
+  scheduler.init('scheduler_here',new Date(),"month");
+  scheduler.templates.xml_date = function(value){return new Date(value); };
+  scheduler.load("/calendar-data", "json");
 
+  scheduler.config.xml_date="%Y-%m-%d %H:%i";
+  var dp = new dataProcessor("/calendar-data");
+  dp.init(scheduler);
+  dp.setTransactionMode("POST", false);
+}
+ //Add Active Class on Tab
+if (location.hash) {
+    $("nav ul li:nth-child(2)").addClass("active");
+}else if (currentLocation == '/') {
+    $("nav ul li:nth-child(1)").addClass("active");
+}else if (currentLocation == '/contact') {
+    $("nav ul li:nth-child(3)").addClass("active");
+}else if (currentLocation == '/stylists') {
+    $("nav ul li:nth-child(4)").addClass("active");
+}else if (currentLocation == '/pricelist') {
+    $("nav ul li:nth-child(5)").addClass("active");
+}else if (currentLocation == '/lookbook' || currentLocation == '/videos') {
+   $("nav ul li:nth-child(6)").addClass("active");
+}else if (currentLocation == '/bookapt') {
+    $("nav ul li:nth-child(7)").addClass("active");
+}
+
+//carousel triggers
+$('.mycarousel').carousel({full_width: true});
+$('.carousel').carousel();
 // nav trigger  
 $(".button-collapse").sideNav({
   menuWidth: 300, // Default is 240
   edge: 'right', // Choose the horizontal origin
   //closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
 });
-// caroucel trigger  
-
-
 // prev image  
 function prev(){
   $('.mycarousel').carousel('next');
@@ -18,7 +47,6 @@ function next(){
 }
 // Tooltip 
 $('.tooltipped').tooltip({delay: 50});
-
 // date picker 
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
@@ -30,8 +58,7 @@ onSet: function (day) {
   }
 }
 });
-
-
+//timepicker
 $('.timepicker').pickatime({
   default: 'now',
   twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
@@ -39,69 +66,31 @@ $('.timepicker').pickatime({
   autoclose: false,
   vibrate: true // vibrate the device when dragging clock hand
 });
-
+//show hide1
 $('#hideshow1').click(function() {        
   $('#ext-content').toggle('fast');
 });
-
+//show hide2
 $('#hideshow2').click(function() {        
   $('#bra-content').toggle('fast');
 });
-
+//show hide3
 $('#hideshow3').click(function() {        
   $('#sew-content').toggle('fast');
 });
-
-
+//collapsable
 $('.collapsible').collapsible({
   accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
 });
+//select
+$('select').material_select();
 
+//load file when selected
 function loadFile(event)  {
-    var output = document.getElementById('output');
+    var output = document.getElementById('pics');
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-function loadFile2(event)  {
-    var output = document.getElementById('output2');
-    output.src = URL.createObjectURL(event.target.files[0]);
-};
-
-//Get Current Location
-var currentLocation = location.pathname;
-
-//Get Calendar Info
-if (currentLocation == '/calendar') {
-  scheduler.init('scheduler_here',new Date(),"month");
-  scheduler.templates.xml_date = function(value){return new Date(value); };
-  scheduler.load("/calendar-data", "json");
-
-  scheduler.config.xml_date="%Y-%m-%d %H:%i";
-  var dp = new dataProcessor("/calendar-data");
-  dp.init(scheduler);
-  dp.setTransactionMode("POST", false);
-
-
-}
- //Add Active Class on Tab
-if (location.hash) {
-    $("nav ul li:nth-child(2)").addClass("active");
-}else if (currentLocation == '/') {
-    $('.mycarousel').carousel({full_width: true});
-    $("nav ul li:nth-child(1)").addClass("active");
-}else if (currentLocation == '/contact') {
-    $("nav ul li:nth-child(3)").addClass("active");
-}else if (currentLocation == '/stylists') {
-    $("nav ul li:nth-child(4)").addClass("active");
-}else if (currentLocation == '/pricelist') {
-    $("nav ul li:nth-child(5)").addClass("active");
-}else if (currentLocation == '/lookbook' || currentLocation == '/videos') {
-   $('.carousel').carousel();
-   $("nav ul li:nth-child(6)").addClass("active");
-}else if (currentLocation == '/bookapt') {
-    $("nav ul li:nth-child(7)").addClass("active");
-}
- 
 //Submit Reservation
 function submitBooking() {
 
@@ -123,7 +112,6 @@ function submitBooking() {
     data.bookDate = d;
     data.calendarId = calId;
    
-
     booking.push(data);
 
     var newApt = JSON.stringify(data);

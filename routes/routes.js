@@ -5,7 +5,6 @@ var booking = require('../models/booking.js');
 var calendar = require('../models/calendar');
 var manager = require('../models/manager.js');
 var email = require('../config/email');
-var helpers = require('../config/helpers');
 var moment = require('moment');
 var fs = require('fs');
 
@@ -30,13 +29,8 @@ const resizer = new multerResizer({
 
 })
 
-var singleupload = resizer.single('file');
-var multipleupload = resizer.array('file');
 
-function deleteImg(req){
-  var oldImg = './'+req.path ; 
-  fs.unlinkSync(oldImg);
-}
+var multipleupload = resizer.array('file');
 
 function deleteMultipleImg(req){
   var files = req.files
@@ -79,20 +73,12 @@ app.get('/contact', function (req, res) {
 })
 
 app.get('/lookbook', function (req, res) {
-  manager.allImages(function(fail){}, function(images){
-  // var data = {data:{uploads: result}};
-  // res.render('lookbook', data);
-
-  manager.allGalleries(function(fail){}, function(galleries){
-     var data = {data:{images: images, gallery: galleries}};
-     res.render('lookbook', data);
-  })
-
-
-  })
-
-
-
+  
+    manager.allGalleries(function(fail){}, function(gal){
+       var data = {data:{gallery: gal}};
+       res.render('lookbook', data);
+    })
+  
 })
 
 app.get('/videos', function (req, res) {
@@ -127,12 +113,8 @@ app.get('/update/:id', loggedIn, function (req, res) {
 
 })
 
-
 app.get('/dashboard',loggedIn, function (req, res, next) {
   booking.allBookings(res, function(result){
-    if(result.length > 0){
-      helpers.dateformat(result[0].bookDate);
-    }
     var user = req.user;
     var data = {data:{bookings: result, users: user}};
     res.render('dashboard', data);
@@ -192,17 +174,10 @@ app.post('/addVideo',function(req, res){
   res.redirect('/videos');
 });
 
-
-app.post('/uploadImage', singleupload, function(req, res, next) {
-  manager.addImage(req, res);
-  deleteImg(req.file);
-  res.redirect('/lookbook');
-});
-
-app.post('/uploadImage2', multipleupload, function(req, res, next) {
+app.post('/uploadImages', multipleupload, function(req, res, next) {
   manager.addMultipleImages(req, res);
   deleteMultipleImg(req);
-  // res.redirect('/lookbook');
+  res.redirect('/lookbook');
 });
 
 app.post('/updateapt/:id', function(req, res, next) {

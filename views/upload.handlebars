@@ -8,35 +8,41 @@
 </div>
 
 <div class="row"></div>
-<div class="row"></div>
 
 <div class="row">
 <div class="col l12">
-<h2 class="center">Upload Image</h2>
-<form enctype="multipart/form-data" action="/uploadImage" method="POST">
+<h2 class="center">Multiple Image Upload</h2>
+<form enctype="multipart/form-data" action="/uploadImages" method="POST">
+
+  <div class="input-field col s12 m12 l12">
+        <i class="material-icons prefix">image</i>
+        <select id="category" name="category" class="validate" required>
+          <option value="" disabled selected>Select Image Category</option>
+          <option value="extensions" data-icon="public/img/extensions.jpg" class="circle">Extensions</option>
+          <option value="braids" data-icon="public/img/braids.png" class="circle">Braids</option>
+          <option value="sewin" data-icon="public/img/sewin.jpg" class="circle">Sewin</option>
+        </select>        
+  </div>
+  <div class="row"></div>
+  <div class="row"></div>
 
   <div class="file-field col s12 m12 l12">
       <div class="btn">
-        <span>Select File</span>
-        <input type="file" name="file" onchange="loadFile(event)" class="validate" required>
+        <span>Select Files</span>
+        <input type="file" name="file" onchange="loadFile(event)" class="validate" required multiple>
       </div>
 
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text">
       </div>
-      <img id="output" class="responsive-img"/>
-  </div>
 
-  <div class="input-field col s12 m12 l12">
-    <i class="material-icons prefix">mode_edit</i>
-    <textarea id="textarea" class="materialize-textarea" name="imageDes" class="validate" required></textarea>
-    <label for="textarea">Enter Image Description</label>
+      <img id="pics" class="responsive-img"/>
   </div>
 
   <div class="row"></div>
 
   <div class="center">
-  <button class="btn-large waves-effect waves-light" type="submit">Upload Image<i class="material-icons right">cloud_upload</i></button> 
+  <button class="btn-large waves-effect waves-light" type="submit">Upload Images<i class="material-icons right">cloud_upload</i></button> 
   </div>
 
 </form>
@@ -54,7 +60,7 @@
 <div class="row">
 <div class="col l12">
 <h2 class="center">Upload Video</h2>
-  <form class="col s12 m12 l12" name="video" action="/addVideo" method="post">
+  <form class="col s12 m12 l12" name="video" action="/addVideo" method="POST">
     <div class="input-field col s12 m12 l12">
       <i class="fa fa-link material-icons prefix" aria-hidden="true"></i>
       <input id="videourl" name="videourl" type="text" class="validate" required>
@@ -74,43 +80,4 @@
 <div class="divider"></div>
 <div class="row"></div>
 <div class="divider"></div>
-
-
-<div class="row"></div>
-<div class="row"></div>
-
-
-<div class="row">
-<div class="col l12">
-<h2 class="center">Upload Image</h2>
-<form enctype="multipart/form-data" action="/uploadImage2" method="POST">
-
-  <div class="file-field col s12 m12 l12">
-      <div class="btn">
-        <span>Select File</span>
-        <input type="file" name="file" onchange="loadFile2(event)" class="validate" required multiple>
-      </div>
-
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-      <img id="output2" class="responsive-img"/>
-  </div>
-
-  <div class="row"></div>
-
-  <div class="center">
-  <button class="btn-large waves-effect waves-light" type="submit">Upload Image<i class="material-icons right">cloud_upload</i></button> 
-  </div>
-
-</form>
-</div>
-</div>
-
-<div class="row"></div>
-<div class="divider"></div>
-<div class="row"></div>
-<div class="divider"></div>
-
-
 

@@ -1,5 +1,5 @@
 "use strict";
-var express 	    = require('express'),
+var express 	  = require('express'),
     app           = express(),
     http          = require('http'),
     nodemailer    = require("nodemailer"),
@@ -9,11 +9,11 @@ var express 	    = require('express'),
     LocalStrategy = require('passport-local').Strategy,
     session       = require('express-session'),
     exphbs        = require('express-handlebars'),
+    helpers       = require('handlebars-helpers')(),
     mongoose      = require('mongoose'),
     multer        = require('multer'),
     multerResizer = require('multer-resizer'),
     twilio        = require('twilio'),
-    helpers       = require('./config/helpers'),
     bodyParser    = require('body-parser');
 
 

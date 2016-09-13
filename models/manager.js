@@ -5,18 +5,11 @@ module.exports = function(){
 	    bodyParser = require('body-parser');
 
     var Schema   = mongoose.Schema;
-       
-    var contentImageSchema = new mongoose.Schema({
+  
+  	var contentGallerySchema = new mongoose.Schema({
 	    imageName: 	  String,
 	    imageUrl:     String,
-	    imageDes:     String,
-	    createdAt:    Date,
-	    visible:      String
-	});
-
-	var contentGallerySchema = new mongoose.Schema({
-	    imageName: 	  String,
-	    imageUrl:     String,
+	    category:     String,
 	    createdAt:    Date,
 	    visible:      String
 	});
@@ -27,29 +20,8 @@ module.exports = function(){
 	    visible:      String
 	});
 
-	var _model = mongoose.model('images', contentImageSchema);
 	var _gal = mongoose.model('gallery', contentGallerySchema);
 	var _vid = mongoose.model('videos', contentVideoSchema);
-
-	_addImage = function (req, res){
-
-		var images = new _model({
-			imageName: 	  req.file.filename,
-		    imageUrl:     req.file.resizedPath,
-		    imageDes: 	  req.body.imageDes,
-		    createdAt:    new Date(),
-		    visible:      'true'       
-        	})
-			// Save to Database
-			images.save(function(err, doc){
-				if (err) {
-					throw err;
-				}else{
-  					console.log('Image Saved to DB');
-				};
-    			
-  			});
-	}
 
 
 	_addMultipleImages = function (req, res){
@@ -64,6 +36,7 @@ module.exports = function(){
 		var gallery = new _gal({
 			imageName: 	  imgName,
 		    imageUrl:     imgUrl,
+		    category:     req.body.category,
 		    createdAt:    new Date(),
 		    visible:      'true'       
         	})
@@ -78,17 +51,6 @@ module.exports = function(){
   			});
   		}
 	}
-
-	_allImages = function(fail, success){
-			_model.find({visible:"true"}, function(err, doc){
-				if(err){
-					fail(err);
-				}else{
-					// success(doc);
-					success(doc);
-				}
-			}).sort({createdAt: -1});
-		}
 
 	_allGalleries = function(fail, success){
 			_gal.find({visible:"true"}, function(err, doc){
@@ -134,9 +96,6 @@ module.exports = function(){
 
 
 	return {
-		schema     			: contentImageSchema,
-		addImage   			: _addImage,
-		allImages  			: _allImages,
 		allGalleries  		: _allGalleries,
 		addVideo  			: _addVideo,
 		allVideos  			: _allVideos,

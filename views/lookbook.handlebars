@@ -1,6 +1,5 @@
 <div class="row"></div>
 
-
 <div class="container headings">
   <h1>Look Book</h1>
   <i class="large material-icons">image</i>
@@ -9,35 +8,44 @@
 <div class="row"></div>
 
 <div class="row">
- {{#each data.images}}
-        <div class="col s12 m6 l4">
-        <img class="materialboxed responsive-img" data-caption="{{this.imageDes}}" src="{{this.imageUrl}}">
-        </div>
- {{/each}}
+<h2 class="center">Extensions</h2>
+<div class="carousel">
+{{#each data.gallery}}
+{{#is this.category "extensions"}}
+<a class="carousel-item" href="#"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+{{/is}}
+{{/each}}
+</div>
 </div>
 
-
+<div class="row"></div>
+<div class="row"></div>
 
 
 <div class="row">
-  <div class="carousel">
-   {{#each data.gallery}}
-    <a class="carousel-item" href="#one!"><img src="{{this.imageUrl}}"></a>
-   {{/each}}
-  </div>
+<h2 class="center">Braids</h2>
+<div class="carousel">
+{{#each data.gallery}}
+{{#is this.category "braids"}}
+<a class="carousel-item" href="#"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+{{/is}}
+{{/each}}
+</div>
 </div>
 
-
-
-<div class="row"></div>
 <div class="row"></div>
 <div class="row"></div>
 
+<div class="row">
+<h2 class="center">Sew In's</h2>
+<div class="carousel">
+{{#each data.gallery}}
+{{#is this.category "sewin"}}
+<a class="carousel-item" href="#"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+{{/is}}
+{{/each}}
+</div>
+</div>
 
-
-
-
-
-
-
-
+<div class="row"></div>
+<div class="row"></div>
