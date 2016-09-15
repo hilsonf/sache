@@ -71,9 +71,9 @@
     display: inline-block;
     line-height: $sidenav-item-height;
     margin-right: 8px;
-    font-size: 1.5em;
+    font-size: $sidenav-font-size;
     width: $sidenav-item-height / 2;
-    color: #5C1117;
+    color: #4F2C74;
   }
 
   .divider {

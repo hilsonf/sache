@@ -1,5 +1,5 @@
 
-module.exports = function(app, passport, multer, multerResizer) {
+module.exports = function(app, passport, multer, multerResizer, tinify) {
 
 var booking = require('../models/booking.js');
 var calendar = require('../models/calendar');

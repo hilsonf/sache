@@ -3057,7 +3057,7 @@ input[type=range] + .thumb {
     margin-bottom: 15px; }
   .headings hr {
     height: 5px;
-    background: #A17F59;
+    background: #AA7F16;
     border: none;
     width: 40px;
     margin-bottom: 45px; }
@@ -3123,13 +3123,13 @@ nav {
     padding: 0;
     white-space: nowrap; }
     nav .brand-logo svg {
-      width: 60px;
+      width: 100%;
       height: 60px;
       margin-left: 5px; }
     @media only screen and (max-width: 992px) {
       nav .brand-logo svg {
-        width: 50px;
-        height: 50px;
+        width: 100%;
+        height: 52px;
         margin-left: 0px; } }
     nav .brand-logo.center {
       left: 50%;
@@ -7323,7 +7323,7 @@ input[type=range]:focus::-ms-fill-upper {
   .side-nav a {
     color: rgba(0, 0, 0, 0.87);
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     height: 48px;
     line-height: 48px;
@@ -7346,16 +7346,16 @@ input[type=range]:focus::-ms-fill-upper {
     display: inline-block;
     line-height: 48px;
     margin-right: 8px;
-    font-size: 1.5em;
+    font-size: 16px;
     width: 24px;
-    color: #5C1117; }
+    color: #4F2C74; }
   .side-nav .divider {
     margin: 8px 0 0 0; }
   .side-nav .subheader {
     cursor: initial;
     pointer-events: none;
     color: rgba(0, 0, 0, 0.54);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 48px; }
     .side-nav .subheader:hover {
@@ -7384,7 +7384,7 @@ input[type=range]:focus::-ms-fill-upper {
       width: 64px; }
     .side-nav .userView .name,
     .side-nav .userView .email {
-      font-weight: 14px;
+      font-weight: 16px;
       line-height: 24px; }
     .side-nav .userView .name {
       margin-top: 16px;
