@@ -3123,12 +3123,12 @@ nav {
     padding: 0;
     white-space: nowrap; }
     nav .brand-logo svg {
-      width: 100%;
+      width: 100px;
       height: 60px;
       margin-left: 5px; }
     @media only screen and (max-width: 992px) {
       nav .brand-logo svg {
-        width: 100%;
+        width: 100px;
         height: 52px;
         margin-left: 0px; } }
     nav .brand-logo.center {

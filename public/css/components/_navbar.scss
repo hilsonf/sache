@@ -52,14 +52,14 @@ nav {
     white-space: nowrap;
 
     svg{
-        width: 100%; 
+        width: 100px; 
         height: 60px;
         margin-left: 5px;    
     }
 
     @media #{$medium-and-down} {
       svg{
-        width: 100%; 
+        width: 100px; 
         height: 52px;
         margin-left: 0px;
     }
