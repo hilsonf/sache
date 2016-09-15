@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Quicksand";
+    src: local(Quicksand Regular), url('#{$quicksand-font-path}Quicksand-Regular.ttf');
+    font-weight: 200;
+}
+@font-face {
+    font-family: "Quicksand-Light";
+    src: local(Quicksand Light), url('#{$quicksand-font-path}Quicksand-Light.ttf');
+    font-weight: 200;
+}
+@font-face {
+    font-family: "Ebgaramond";
+    src: local(Quicksand Regular), url('#{$ebgaramond-font-path}EBGaramond-Regular.ttf');
+    font-weight: 200;
+}
+
+

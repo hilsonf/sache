@@ -376,7 +376,8 @@
 
 //Today style
 .picker__day.picker__day--today {
-  color: #975751;
+  background:rgba(0, 150, 136, 0.25);
+  border-radius: 50%;
 }
 
 .picker__day.picker__day--today.picker__day--selected {
@@ -411,7 +412,7 @@
 .picker__close, .picker__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: #975751;
+  color: #4F2C74;
 }
 
 //month nav buttons

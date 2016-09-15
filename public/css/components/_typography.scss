@@ -1,31 +1,34 @@
-
-a {
-  text-decoration: none;
-}
-
 html{
   line-height: 1.5;
 
   @media only screen and (min-width: 0) {
-    font-size: 14px;
-  }
-
-  @media only screen and (min-width: $medium-screen) {
     font-size: 14.5px;
   }
 
-  @media only screen and (min-width: $large-screen) {
-    font-size: 15px;
+  @media only screen and (min-width: $medium-screen) {
+    font-size: 15.5px;
   }
 
-  font-family: "Roboto", sans-serif;
+  @media only screen and (min-width: $large-screen) {
+    font-size: 16px;
+  }
+  
+  font-family: "Ebgaramond", sans-serif;
   font-weight: normal;
   color: $off-black;
+
 }
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 400;
+  font-family: "Quicksand";
+	font-weight: 600;
 	line-height: 1.1;
 }
+
+nav a {
+  font-family: "Quicksand-Light";
+  font-weight: 400;
+}
+
 
 // Header Styles
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }

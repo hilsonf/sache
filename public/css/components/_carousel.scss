@@ -54,18 +54,18 @@
         }
       }
 
+    @media #{$small-and-down} {
+        .caroucel-details h2{
+          font-size: 1em;
+        }
+      }
+
     .carousel-item {
       width: 100%;
       max-height: 100%;
       position: absolute;
       top: 0;
       left: 0;
-
-      h2 {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 32px;
-      }
 
       p {
         font-size: 15px;

@@ -3216,51 +3216,40 @@ nav {
   .navbar-fixed {
     height: 64px; } }
 @font-face {
-  font-family: "Roboto";
-  src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.eot");
-  src: url("../fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff"), url("../fonts/roboto/Roboto-Thin.ttf") format("truetype");
+  font-family: "Quicksand";
+  src: local(Quicksand Regular), url("../fonts/quicksand/Quicksand-Regular.ttf");
   font-weight: 200; }
 @font-face {
-  font-family: "Roboto";
-  src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.eot");
-  src: url("../fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff"), url("../fonts/roboto/Roboto-Light.ttf") format("truetype");
-  font-weight: 300; }
+  font-family: "Quicksand-Light";
+  src: local(Quicksand Light), url("../fonts/quicksand/Quicksand-Light.ttf");
+  font-weight: 200; }
 @font-face {
-  font-family: "Roboto";
-  src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.eot");
-  src: url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff"), url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
-  font-weight: 400; }
-@font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto/Roboto-Medium.eot");
-  src: url("../fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff"), url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
-  font-weight: 500; }
-@font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto/Roboto-Bold.eot");
-  src: url("../fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff"), url("../fonts/roboto/Roboto-Bold.ttf") format("truetype");
-  font-weight: 700; }
-a {
-  text-decoration: none; }
-
+  font-family: "Ebgaramond";
+  src: local(Quicksand Regular), url("../fonts/ebgaramond/EBGaramond-Regular.ttf");
+  font-weight: 200; }
 html {
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ebgaramond", sans-serif;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.87); }
   @media only screen and (min-width: 0) {
     html {
-      font-size: 14px; } }
+      font-size: 14.5px; } }
   @media only screen and (min-width: 992px) {
     html {
-      font-size: 14.5px; } }
+      font-size: 15.5px; } }
   @media only screen and (min-width: 1200px) {
     html {
-      font-size: 15px; } }
+      font-size: 16px; } }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-family: "Quicksand";
+  font-weight: 600;
   line-height: 1.1; }
+
+nav a {
+  font-family: "Quicksand-Light";
+  font-weight: 400; }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit; }
@@ -5785,6 +5774,7 @@ button {
 
 .btn, .btn-large,
 .btn-flat {
+  font-family: "Quicksand";
   border: none;
   border-radius: 2px;
   display: inline-block;
@@ -7900,16 +7890,15 @@ input[type=range]:focus::-ms-fill-upper {
   @media only screen and (max-width: 992px) {
     .mycarousel.carousel-slider .carousel-arrows, .mycarousel.carousel-slider .carousel-fixed-item {
       display: none; } }
+  @media only screen and (max-width: 600px) {
+    .mycarousel.carousel-slider .caroucel-details h2 {
+      font-size: 1em; } }
   .mycarousel.carousel-slider .carousel-item {
     width: 100%;
     max-height: 100%;
     position: absolute;
     top: 0;
     left: 0; }
-    .mycarousel.carousel-slider .carousel-item h2 {
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 32px; }
     .mycarousel.carousel-slider .carousel-item p {
       font-size: 15px; }
     .mycarousel.carousel-slider .carousel-item img {
@@ -8481,7 +8470,8 @@ input[type=range]:focus::-ms-fill-upper {
   border: 1px solid transparent; }
 
 .picker__day.picker__day--today {
-  color: #975751; }
+  background: rgba(0, 150, 136, 0.25);
+  border-radius: 50%; }
 
 .picker__day.picker__day--today.picker__day--selected {
   color: #fff; }
@@ -8508,7 +8498,7 @@ input[type=range]:focus::-ms-fill-upper {
 .picker__close, .picker__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: #975751; }
+  color: #4F2C74; }
 
 .picker__nav--prev:before,
 .picker__nav--next:before {
