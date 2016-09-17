@@ -7997,6 +7997,19 @@ input[type=range]:focus::-ms-fill-upper {
       .carousel .indicators .indicator-item.active {
         background-color: #fff; }
 
+@media only screen and (min-width: 601px) {
+  .swap {
+    display: none; } }
+@media only screen and (max-width: 600px) {
+  .swap {
+    display: visible;
+    text-align: center; }
+    .swap i {
+      position: relative;
+      top: 300px;
+      z-index: 1;
+      color: #fff;
+      opacity: .7; } }
 .alert-box {
   color: #555;
   border-radius: 10px;
