@@ -32,8 +32,8 @@
 
 <div class="row">
 
-  <div class="col s12 m12 l12">
-    <form name="message" action="/message" method="post">
+    <form name="message" class="col s12 m12 l12" action="/message" method="post">
+      
       <div class="input-field col s12 m12 l6">
         <i class="material-icons prefix">&#xE853;</i>             
         <input id="name" name="name" type="text" class="validate" required>
@@ -63,15 +63,16 @@
         <textarea id="message" name="message" class="materialize-textarea" required></textarea>
         <label for="message">Enter Message</label>
       </div>
+
+      <div class="row"></div>
+
       <button class="btn waves-effect waves-light right margin" type="submit">Send
         <i class="material-icons right">send</i>
       </button>
     </form>
-  </div>
 
 </div>
 
-<div class="row"></div>
 
 
 
