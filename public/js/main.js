@@ -30,7 +30,7 @@ if (location.hash) {
 
 //carousel triggers
 $('.mycarousel').carousel({full_width: true});
-$('.carousel').carousel();
+$('.carousel').carousel({dist:1,padding:15});
 // nav trigger  
 $(".button-collapse").sideNav({
   menuWidth: 300, // Default is 240
