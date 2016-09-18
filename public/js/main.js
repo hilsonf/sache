@@ -30,12 +30,11 @@ if (location.hash) {
 
 //carousel triggers
 $('.mycarousel').carousel({full_width: true});
-$('.carousel').carousel({dist:1,padding:15});
+$('.carousel').carousel();
 // nav trigger  
 $(".button-collapse").sideNav({
   menuWidth: 300, // Default is 240
-  edge: 'right', // Choose the horizontal origin
-  //closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+  edge: 'right' // Choose the horizontal origin
 });
 // prev image  
 function prev(){
