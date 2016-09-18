@@ -28,7 +28,6 @@ if (location.hash) {
     $("nav ul li:nth-child(7)").addClass("active");
 }else if (currentLocation == '/dashboard' || currentLocation == '/calendar' || currentLocation == '/upload') {
     $("nav ul li:nth-child(8)").addClass("active");
-    //
 }
 
 //carousel triggers
