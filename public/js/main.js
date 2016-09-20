@@ -58,6 +58,7 @@ format: 'mmmm dd, yyyy',
 onSet: function (day) {
   if(day.select){
     this.close();
+    $(".datepicker").addClass("valid");
   }
 }
 });
@@ -69,6 +70,7 @@ $('.timepicker').pickatime({
   autoclose: true,
   vibrate: true // vibrate the device when dragging clock hand
 });
+
 //show hide1
 $('#hideshow1').click(function() {        
   $('#ext-content').toggle('fast');
@@ -94,11 +96,20 @@ function loadFile(event)  {
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
+
+$('#firstName,#lastName,#tell,#bookDate,#bookTime').on('change', checkForm);
+
+function checkForm(){
+    var validation = document.getElementById("booking").checkValidity();
+    if (validation == true){
+      $('form .btn').prop("disabled", false);
+    }else{
+      $('form .btn').prop("disabled", true);
+    }
+}
+
 //Submit Reservation
 function submitBooking() {
-
-  if (validation()){
-
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
     var tell = document.getElementById("tell").value;
@@ -118,8 +129,6 @@ function submitBooking() {
     booking.push(data);
 
     var newApt = JSON.stringify(data);
-    console.log(newApt);
-
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/addBooking');
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -129,25 +138,7 @@ function submitBooking() {
     $('#modal1').openModal();
     //resets form
     document.forms['booking'].reset();
-
-}//end if
 }//end submit
-
-//Reservation Validation
-function validation() {
-  var firstName = document.getElementById("firstName").value;
-  var lastName = document.getElementById("lastName").value;
-  var tell = document.getElementById("tell").value;
-  var bookDate = document.getElementById("bookDate").value;
-  var bookTime = document.getElementById("bookTime").value;
-
-  if (firstName === '' || lastName === ''|| tell === ''|| bookDate === ''|| bookTime === '') {
-    $('#formError').openModal();
-    return false;
-  }else {
-    return true;
-  }
-}
 
 //Delete Reservation
 function deleteBooking(bookingId){
