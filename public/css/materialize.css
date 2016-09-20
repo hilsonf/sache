@@ -8026,20 +8026,18 @@ input[type=range]:focus::-ms-fill-upper {
       z-index: 1;
       color: #fff;
       opacity: .7; } }
-.alert-box {
-  color: #555;
+.error {
   border-radius: 10px;
   padding: 10px 36px;
-  margin: 10px; }
-
-.alert-box span {
-  font-weight: bold;
-  text-transform: uppercase; }
-
-.error {
+  margin: 10px;
   background: #ffecec;
   border: 1px solid #f5aca6;
-  text-align: center; }
+  text-align: center;
+  display: none; }
+  .error span {
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase; }
 
 /* ==========================================================================
    $BASE-PICKER

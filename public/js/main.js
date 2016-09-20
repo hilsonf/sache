@@ -31,7 +31,7 @@ if (location.hash) {
 }
 
 //error slide up
-$('.error').slideUp(7000);
+$('.error').slideDown(2000).slideUp(6000);
 //carousel triggers
 $('.mycarousel').carousel({full_width: true});
 $('.carousel').carousel();
