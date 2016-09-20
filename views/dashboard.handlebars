@@ -12,7 +12,7 @@
 
  {{#each data.bookings}}
  <div class="col s12 m12 l6">
- <ul class="collection">
+ <ul class="collection z-depth-1">
     <li class="collection-item avatar">
  
       <div class="secondary-content"><a href="#" onClick="deleteBooking('{{this._id}}')"><i class="material-icons circle">delete</i></a><label>delete</label></div>
@@ -53,9 +53,7 @@
 </div>
  {{/each}}
 
-    
-
-
+</div>   
 
 {{!-- MODAL --}}
 <div id="delete" class="modal">
@@ -65,9 +63,9 @@
     <p class="center"><a class="modal-action modal-close waves-effect waves-light btn red lighten-2" id="yes" href="/dashboard">Yes</a></p>
   </div>
 </div>
+{{!-- MODAL --}}
 
 
-</div>
 
 
 

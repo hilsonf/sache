@@ -356,12 +356,12 @@ ul.staggered-list li {
 // Footer
 footer.page-footer {
   margin-top: 45px;
-  padding-top: 20px;
+  padding-top: 14px;
   background-color: #d8a31f;
 
   .footer-copyright {
     overflow: hidden;
-    height: 50px;
+    height: 60px;
     line-height: 50px;
     color: rgba(255,255,255,.8);
     background-color: rgba(51,51,51,.02);
@@ -558,7 +558,6 @@ td, th{
 
       p {
         margin: 0px;
-        text-align: left !important;
       }
 
     }
@@ -617,6 +616,13 @@ td, th{
     left: 22px;
     font-size: .8em;
   }
+
+  a:hover {
+    i{
+    background-color: $button-floating-background-hover;
+    @extend .z-depth-1-half;
+    }
+  }
 }
 .primary-content {
   position: absolute;
@@ -630,6 +636,13 @@ td, th{
     top: 42px;
     left: 19px;
     font-size: .8em;
+  }
+
+  a:hover {
+    i{
+    background-color: $button-floating-background-hover;
+    @extend .z-depth-1-half;
+    }
   }
 }
 .collapsible .collection {
@@ -828,4 +841,9 @@ nav ul a span.badge {
 .contact-icon{
   position: relative;
   top: 4px;
+}
+
+#pics{
+  width:90px; 
+  height:90px;
 }
