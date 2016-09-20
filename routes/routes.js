@@ -59,8 +59,8 @@ app.get('/', function (req, res) {
 })
 
 app.get('/login', function (req, res) {
-  var error = req.flash();
-  res.render('login', error);
+  var error = req.flash('error');
+  res.render('login', {error:error});
 })
 
 app.get('/logout', function (req, res, next) {

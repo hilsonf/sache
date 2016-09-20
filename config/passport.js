@@ -14,8 +14,8 @@ module.exports = function(passport) {
 	  user.findOne({'username':username},
 		function(err, user) {
 			if (err) { return done(err); }
-			if (!user) { return done(null, false, { message: 'You have entered a wrong user name'}); }
-			if (!user.validPassword(password)) { return done(null, false, { message: 'You have entered the wrong password'}); }
+			if (!user) { return done(null, false, { message: 'Sorry no user found.'}); }
+			if (!user.validPassword(password)) { return done(null, false, { message: 'Oops! Wrong password.'}); }
 
       return done(null, user);
 		});
