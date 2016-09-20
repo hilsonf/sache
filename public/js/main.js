@@ -59,7 +59,7 @@ onSet: function (day) {
   if(day.select){
     this.close();
     $(".datepicker").addClass("valid");
-  }
+  }else{$(".datepicker").addClass("invalid");}
 }
 });
 //timepicker
@@ -98,10 +98,16 @@ function loadFile(event)  {
 
 
 $('#firstName,#lastName,#tell,#bookDate,#bookTime').on('change', checkForm);
+// $('#name,#subject,#email,#tell,#message').on('change', checkForm);
 
 function checkForm(){
-    var validation = document.getElementById("booking").checkValidity();
-    if (validation == true){
+    // var valid = false;
+    // if (currentLocation == '/bookapt') {
+      valid = document.getElementById("booking").checkValidity();
+    // }else if (currentLocation == '/contact') {
+    //   valid = document.getElementById("message").checkValidity();
+    // }
+    if (valid == true){
       $('form .btn').prop("disabled", false);
     }else{
       $('form .btn').prop("disabled", true);
