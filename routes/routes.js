@@ -13,7 +13,7 @@ const resizer = new multerResizer({
   multer: multer({storage: multer.diskStorage({
   destination: './uploads',
   filename: function (request, file, callback) {
-    callback(null, Date.now()+'_'+file.originalname)
+    callback(null, Date.now()+'-'+file.originalname)
   }
 })}),
    tasks: [
