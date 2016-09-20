@@ -65,8 +65,8 @@ onSet: function (day) {
 $('.timepicker').pickatime({
   default: 'now',
   twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
-  donetext: 'OK',
-  autoclose: false,
+  donetext: 'Done',
+  autoclose: true,
   vibrate: true // vibrate the device when dragging clock hand
 });
 //show hide1

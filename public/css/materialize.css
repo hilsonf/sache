@@ -5599,7 +5599,8 @@ button {
 .picker__footer .clockpicker-button {
   margin: auto;
   margin-top: 15px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  color: #4F2C74; }
 
 .picker__footer .clockpicker-button:focus {
   background-color: transparent; }
