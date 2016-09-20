@@ -30,6 +30,8 @@ if (location.hash) {
     $("nav ul li:nth-child(8)").addClass("active");
 }
 
+//error slide up
+$('.error').slideUp(7000);
 //carousel triggers
 $('.mycarousel').carousel({full_width: true});
 $('.carousel').carousel();
