@@ -557,19 +557,8 @@ td, th{
       }
 
       p {
-        margin: 0 0 0 4px;
-      }
-
-      .secondary-content {
-        position: absolute;
-        top: 16px;
-        right: 30px;
-      }
-
-      .primary-content {
-        position: absolute;
-        top: 16px;
-        right: 90px;
+        margin: 0px;
+        text-align: left !important;
       }
 
     }
@@ -616,12 +605,32 @@ td, th{
 }
 // Made less specific to allow easier overriding
 .secondary-content {
-  float: right;
-  color: #E57373;
+  position: absolute;
+  top: 90px;
+  left: 0px;
+  i{
+   background: #E57373 !important;
+  }
+  label{
+    position: absolute;
+    top: 42px;
+    left: 22px;
+    font-size: .8em;
+  }
 }
 .primary-content {
-  float: right;
-  color: #74B3C1;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  i{
+    background: #74B3C1 !important;
+  }
+  label{
+    position: absolute;
+    top: 42px;
+    left: 19px;
+    font-size: .8em;
+  }
 }
 .collapsible .collection {
   margin: 0;

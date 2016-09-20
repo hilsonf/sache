@@ -2423,15 +2423,8 @@ td, th {
       .collection .collection-item.avatar .title {
         font-size: 16px; }
       .collection .collection-item.avatar p {
-        margin: 0 0 0 4px; }
-      .collection .collection-item.avatar .secondary-content {
-        position: absolute;
-        top: 16px;
-        right: 30px; }
-      .collection .collection-item.avatar .primary-content {
-        position: absolute;
-        top: 16px;
-        right: 90px; }
+        margin: 0px;
+        text-align: left !important; }
     .collection .collection-item:last-child {
       border-bottom: none; }
     .collection .collection-item.active {
@@ -2455,12 +2448,28 @@ td, th {
     padding-left: 72px; }
 
 .secondary-content {
-  float: right;
-  color: #E57373; }
+  position: absolute;
+  top: 90px;
+  left: 0px; }
+  .secondary-content i {
+    background: #E57373 !important; }
+  .secondary-content label {
+    position: absolute;
+    top: 42px;
+    left: 22px;
+    font-size: .8em; }
 
 .primary-content {
-  float: right;
-  color: #74B3C1; }
+  position: absolute;
+  top: 15px;
+  left: 0px; }
+  .primary-content i {
+    background: #74B3C1 !important; }
+  .primary-content label {
+    position: absolute;
+    top: 42px;
+    left: 19px;
+    font-size: .8em; }
 
 .collapsible .collection {
   margin: 0;
