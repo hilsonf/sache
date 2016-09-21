@@ -1,8 +1,6 @@
 
-module.exports = function(app, passport, multer, multerResizer, tinify) {
+module.exports = function(app, passport, multer, multerResizer) {
 
-var booking = require('../models/booking.js');
-var calendar = require('../models/calendar');
 var manager = require('../models/manager.js');
 var email = require('../config/email');
 var moment = require('moment');
@@ -77,13 +75,11 @@ app.get('/contact', function (req, res) {
 })
 
 app.get('/lookbook', function (req, res) {
-  
     manager.allGalleries(function(fail){}, function(gal){
        var user = req.user;
        var data = {data:{gallery: gal, users: user}};
        res.render('lookbook', data);
     })
-  
 })
 
 app.get('/videos', function (req, res) {
@@ -112,76 +108,23 @@ app.get('/pricelist', function (req, res) {
   res.render('pricelist', data);
 })
 
-app.get('/update/:id', loggedIn, function (req, res) {
-    var id = req.params.id;
-    var user = req.user;
-    booking.findBooking(id, function(result){ 
-    var dt = {};
-    dt.date = moment(result.bookDate).format('MMMM DD, YYYY'); 
-    dt.time = moment(result.bookDate).format('h:mm');
-    var data = {data:{booking: result,dateTime: dt, users: user}};
-    res.render('updateapt', data);
-  });
-
-})
-
-app.get('/dashboard',loggedIn, function (req, res, next) {
-  booking.allBookings(res, function(result){
-    var user = req.user;
-    var data = {data:{bookings: result, users: user}};
-    res.render('dashboard', data);
-  });
-});
-
-app.get('/upload',loggedIn, function (req, res, next) {
+app.get('/upload',loggedIn, function (req, res) {
   var user = req.user;
   var data = {data:{users: user}};
   res.render('upload', data);
 });
 
-app.get('/calendar',loggedIn, function (req, res, next) {
-  var user = req.user;
-  var data = {data:{users: user}};
-  res.render('calendar', data);
-});
-
-app.get('/calendar-data', function(req, res){
-  calendar.allCalendar(res, function(cal){
-    res.send(cal);
-  });
-});
 
 
 
 // ========================== ACTION =========================//
 
-
-
-app.post('/addBooking',function(req, res){
-  calendar.addCalendar(req, res, function(cal){
-  booking.addBooking(req, cal, res);
-  });
-});
-
-app.post('/deleteBooking',function(req, res){
-  var id = req.body.bookingId;
-  booking.deleteBooking(id, function(result){
-  });
-
-  booking.findBooking(id, function(b){
-    var calId = b.calendarId
-    calendar.findOneAndDelete(calId, function(result){
-    })
-    res.redirect('/calendar');
-  })  
-});
-
-app.post('/message',function(req, res){
+app.post('/message', function(req, res){
   email.message(req, res);
   res.redirect('/contact');
 });
 
-app.post('/addVideo',function(req, res){
+app.post('/addVideo', function(req, res){
   manager.addVideo(req, res);
   res.redirect('/videos');
 });
@@ -192,45 +135,9 @@ app.post('/uploadImages', multipleupload, function(req, res, next) {
   res.redirect('/lookbook');
 });
 
-app.post('/updateapt/:id', function(req, res, next) {
-  booking.updateBooking(req, res, function(result){
-  }); 
-  var id = req.params.id;
-  booking.findBooking(id, function(b){
-    calendar.updateCalendar(req, b, res);
-    res.redirect('/calendar');
-  })     
-});
-
-app.post('/calendar-data', function(req, res){
-  var mode = req.body["!nativeeditor_status"];
-
-  if (mode == 'inserted') {
-      calendar.manuallyAddCalendar(req, function(result){
-        res.send();      
-        res.redirect('back');
-      });        
-  }
-
-  if (mode == 'updated') {
-    calendar.findOneAndUpdate(req, function(result){
-      res.send();
-      res.redirect('back');
-    })
-  }
-
-  if (mode == 'deleted') {
-    var id = req.body.calendarId
-    calendar.findOneAndDelete(id, function(result){
-      res.send();
-      res.redirect('back');
-    })
-  }
-});
-
 app.post('/login',
   passport.authenticate("local", {
-    successRedirect : "/dashboard",
+    successRedirect : "/upload",
     failureRedirect : "/login",
     failureFlash: true
   })
@@ -238,5 +145,4 @@ app.post('/login',
 
 
 // ========================== ACTION =========================//
-
 }

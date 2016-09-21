@@ -5,57 +5,10 @@
   <i class="large material-icons">date_range</i>
   <hr>
 </div>
-
 <div class="row">
-
-  <form name="booking" id="booking" class="col s12 m12 l12" >
-    
-      <div class="input-field col s12 m4 l4">
-        <i class="material-icons prefix">subject</i>
-        <input id="firstName" name="firstName" type="text" class="validate" required>        
-        <label for="firstName">Enter First Name</label>
-      </div>
-
-      <div class="input-field col s12 m4 l4">
-        <i class="material-icons prefix">subject</i>
-        <input id="lastName" name="lastName" type="text" class="validate" required>        
-        <label for="lastName">Enter Last Name</label>
-      </div>
-
-      <div class="input-field col s12 m4 l4">
-        <i class="material-icons prefix">phone</i>
-        <input id="tell" name="tell" type="tel" class="validate" pattern="^\d{3}\d{4}$" required>
-        <label for="tell">Enter Telephone Ex 3448896</label>
-      </div>
-
-      <div class="input-field col s12 m6 l6">
-        <i class="material-icons prefix">access_time</i>
-        <input id="bookDate" name="bookDate" type="text" class="datepicker" required>
-        <label for="bookDate">Select Day</label>
-      </div>
-
-      
-      <div class="input-field col s12 m6 l6">
-          <i class="material-icons prefix">access_time</i>
-          <label for="bookTime">Select Time</label>
-          <input id="bookTime" name="bookTime" type="time" class="timepicker validate" required>
-      </div>
-                 
-    <div class="row"></div>
-
-    <button class="btn waves-effect waves-light right margin" type="button" onClick="submitBooking()" disabled>Book Now<i class="material-icons right">send</i></button>     
-
-  </form>    
+<div class="col s12 m12 l12">
+<script type="text/javascript" src="/public/js/sache.plugin.js"></script>
 </div>
-
-
-<!-- MODAL -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <p class="center"><img src="/public/img/success.svg" alt="ordersuccess" class="responsive-img"></p>
-    <p class="center"><a class="modal-action modal-close waves-effect waves-light btn" href="/lookbook">Browse Look Book</a></p>
-  </div>
-</div>  
-
+</div>
 
 

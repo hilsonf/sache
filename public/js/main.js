@@ -1,16 +1,6 @@
 //Get Current Location
 var currentLocation = location.pathname;
-//Get Calendar Info
-if (currentLocation == '/calendar') {
-  scheduler.init('scheduler_here',new Date(),"month");
-  scheduler.templates.xml_date = function(value){return new Date(value); };
-  scheduler.load("/calendar-data", "json");
 
-  scheduler.config.xml_date="%Y-%m-%d %H:%i";
-  var dp = new dataProcessor("/calendar-data");
-  dp.init(scheduler);
-  dp.setTransactionMode("POST", false);
-}
  //Add Active Class on Tab
 if (location.hash) {
     $("nav ul li:nth-child(2)").addClass("active");
@@ -26,7 +16,7 @@ if (location.hash) {
    $("nav ul li:nth-child(6)").addClass("active");
 }else if (currentLocation == '/bookapt') {
     $("nav ul li:nth-child(7)").addClass("active");
-}else if (currentLocation == '/dashboard' || currentLocation == '/calendar' || currentLocation == '/upload') {
+}else if (currentLocation == '/upload') {
     $("nav ul li:nth-child(8)").addClass("active");
 }
 
@@ -50,38 +40,18 @@ function next(){
 }
 // Tooltip 
 $('.tooltipped').tooltip({delay: 50});
-// date picker 
-$('.datepicker').pickadate({
-selectMonths: true, // Creates a dropdown to control month
-selectYears: 15, // Creates a dropdown of 15 years to control year
-format: 'mmmm dd, yyyy',
-onSet: function (day) {
-  if(day.select){
-    this.close();
-    $(".datepicker").addClass("valid");
-  }else{$(".datepicker").addClass("invalid");}
-}
-});
-//timepicker
-$('.timepicker').pickatime({
-  default: 'now',
-  twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
-  donetext: 'Done',
-  autoclose: true,
-  vibrate: true // vibrate the device when dragging clock hand
-});
 
 //show hide1
 $('#hideshow1').click(function() {        
-  $('#ext-content').toggle('fast');
+  $('#ext-content').toggle(1500);
 });
 //show hide2
 $('#hideshow2').click(function() {        
-  $('#bra-content').toggle('fast');
+  $('#bra-content').toggle(1500);
 });
 //show hide3
 $('#hideshow3').click(function() {        
-  $('#sew-content').toggle('fast');
+  $('#sew-content').toggle(1500);
 });
 //collapsable
 $('.collapsible').collapsible({
@@ -96,83 +66,12 @@ function loadFile(event)  {
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-
-$('#firstName,#lastName,#tell,#bookDate,#bookTime').on('change', checkForm);
-// $('#name,#subject,#email,#tell,#message').on('change', checkForm);
-
+$('#name,#subject,#email,#tell,#message').on('change', checkForm);
 function checkForm(){
-    // var valid = false;
-    // if (currentLocation == '/bookapt') {
-      valid = document.getElementById("booking").checkValidity();
-    // }else if (currentLocation == '/contact') {
-    //   valid = document.getElementById("message").checkValidity();
-    // }
+    valid = document.getElementById("message").checkValidity();
     if (valid == true){
       $('form .btn').prop("disabled", false);
     }else{
       $('form .btn').prop("disabled", true);
     }
 }
-
-//Submit Reservation
-function submitBooking() {
-    var firstName = document.getElementById("firstName").value;
-    var lastName = document.getElementById("lastName").value;
-    var tell = document.getElementById("tell").value;
-    var bookDate = document.getElementById("bookDate").value;
-    var bookTime = document.getElementById("bookTime").value;
-
-    var d = new Date(bookDate+' '+bookTime+':00');
-    var calId = createEvent(d)
-    var data = {};
-    var booking =[];
-    data.firstName = firstName;
-    data.lastName = lastName;
-    data.tell = tell;
-    data.bookDate = d;
-    data.calendarId = calId;
-   
-    booking.push(data);
-
-    var newApt = JSON.stringify(data);
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/addBooking');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(newApt);
-
-    //open modal
-    $('#modal1').openModal();
-    //resets form
-    document.forms['booking'].reset();
-}//end submit
-
-//Delete Reservation
-function deleteBooking(bookingId){
-  $('#delete').openModal();
-  var yes = document.getElementById("yes");
-  //yes delete order
-  yes.onclick = function(){
-      var booking_Id = JSON.stringify({bookingId});
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/deleteBooking');
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(booking_Id);
-  }
-}
-  
-
-function createEvent(date){
-  var eventId = scheduler.addEvent({
-    start_date: date,
-    end_date:   date,
-    text:   "Event"
-  });
-
-  var eventObj = scheduler.getEvent(eventId);
-  return eventObj.id
-}
-
-
-
-
-

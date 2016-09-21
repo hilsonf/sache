@@ -1,7 +1,12 @@
 //Default styles
 
+#externalBookingPluginContainer{
+  width: 100% !important;
+}
+
 html {
  box-sizing: border-box;
+ background-color: #F6F4F1;
 }
 *, *:before, *:after {
  box-sizing: inherit;
@@ -357,7 +362,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 45px;
   padding-top: 14px;
-  background-color: #d8a31f;
+  background-color: #7D7781;
 
   .footer-copyright {
     overflow: hidden;
@@ -410,6 +415,11 @@ table {
 
 thead {
   border-bottom: 1px solid $table-border-color;
+  background-color: #aca5b1 !important;
+  i{
+    position: relative;
+    top: 5px;
+  }
 }
 
 td, th{
@@ -560,6 +570,14 @@ td, th{
         margin: 0px;
       }
 
+
+
+      .secondary-content {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+      }
+
     }
 
 
@@ -604,47 +622,10 @@ td, th{
 }
 // Made less specific to allow easier overriding
 .secondary-content {
-  position: absolute;
-  top: 90px;
-  left: 0px;
-  i{
-   background: #E57373 !important;
-  }
-  label{
-    position: absolute;
-    top: 42px;
-    left: 22px;
-    font-size: .8em;
-  }
-
-  a:hover {
-    i{
-    background-color: $button-floating-background-hover;
-    @extend .z-depth-1-half;
-    }
-  }
+  float: right;
+  color: $secondary-color;
 }
-.primary-content {
-  position: absolute;
-  top: 15px;
-  left: 0px;
-  i{
-    background: #74B3C1 !important;
-  }
-  label{
-    position: absolute;
-    top: 42px;
-    left: 19px;
-    font-size: .8em;
-  }
 
-  a:hover {
-    i{
-    background-color: $button-floating-background-hover;
-    @extend .z-depth-1-half;
-    }
-  }
-}
 .collapsible .collection {
   margin: 0;
   border: none;

@@ -12,7 +12,6 @@ var express 	  = require('express'),
     mongoose      = require('mongoose'),
     multer        = require('multer'),
     multerResizer = require('multer-resizer'),
-    twilio        = require('twilio'),
     bodyParser    = require('body-parser');
 
 
