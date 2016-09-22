@@ -358,12 +358,18 @@ ul.staggered-list li {
   }
 }
 
+.center-on-medium-down {
+  @media #{$medium-and-down} {
+    text-align: center;
+  }
+}
+
 // Footer
 footer.page-footer {
   margin-top: 45px;
   padding-top: 14px;
   //background-color: #7D7781;
-background-color: #ACA5B1;
+  background-color: #ACA5B1;
 
   .footer-copyright {
     overflow: hidden;

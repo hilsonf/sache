@@ -2293,6 +2293,10 @@ ul.staggered-list li {
   .center-on-small-only {
     text-align: center; } }
 
+@media only screen and (max-width: 992px) {
+  .center-on-medium-down {
+    text-align: center; } }
+
 footer.page-footer {
   margin-top: 45px;
   padding-top: 14px;
@@ -3071,7 +3075,6 @@ input[type=range] + .thumb {
 .headings {
   text-align: center; }
   .headings h2 {
-    text-transform: uppercase;
     margin-bottom: 15px; }
   .headings hr {
     height: 5px;
@@ -3080,28 +3083,8 @@ input[type=range] + .thumb {
     width: 40px;
     margin-bottom: 45px; }
   .headings i {
-    text-align: center;
     font-size: 3em;
     color: #ACA5B1; }
-  .headings p {
-    text-align: center; }
-
-.recipeImg {
-  margin-top: 8px; }
-
-.form-heading {
-  text-align: center; }
-  .form-heading i {
-    color: #824A48; }
-  .form-heading h6 {
-    text-transform: uppercase; }
-
-@media only screen and (max-width: 992px) {
-  .recipeImg {
-    margin-top: 0; } }
-.form-section {
-  background: #fff;
-  padding-bottom: 2%; }
 
 nav {
   color: #fff;
