@@ -82,8 +82,6 @@ function uploadImage(){
     var x = $('#category').val();
     if (x != '') {
       $('.select-dropdown').addClass("valid");
-    }else{
-      $('.select-dropdown').addClass("invalid");
     }
 
     valid = document.getElementById("imageUpload").checkValidity();
