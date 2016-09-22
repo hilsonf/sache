@@ -2296,7 +2296,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 45px;
   padding-top: 14px;
-  background-color: #7D7781; }
+  background-color: #ACA5B1; }
   footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 60px;
@@ -3105,7 +3105,7 @@ input[type=range] + .thumb {
 
 nav {
   color: #fff;
-  background-color: #ACA5B1;
+  background-color: #83708c;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -3179,7 +3179,9 @@ nav {
       float: left;
       padding: 0; }
       nav ul li.active {
-        background-color: rgba(0, 0, 0, 0.1); }
+        background-color: rgba(0, 0, 0, 0.2); }
+    nav ul li:nth-child(7) {
+      background: rebeccapurple none repeat scroll 0% 0%; }
     nav ul a {
       transition: background-color .3s;
       font-size: 1rem;
