@@ -9,6 +9,11 @@
     font-weight: 200;
 }
 @font-face {
+    font-family: "Quicksand-Bold";
+    src: local(Quicksand Bold), url('#{$quicksand-font-path}Quicksand-Bold.ttf');
+    font-weight: 200;
+}
+@font-face {
     font-family: "Ebgaramond";
     src: local(Quicksand Regular), url('#{$ebgaramond-font-path}EBGaramond-Regular.ttf');
     font-weight: 200;

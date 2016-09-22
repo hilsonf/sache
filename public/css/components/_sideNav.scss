@@ -65,6 +65,8 @@
     &.btn-floating:hover { background-color: $button-raised-background; }
   }
 
+ 
+
   li > a > i,
   li > a > [class^="mdi-"], li > a > [class*="mdi-"],
   li > a > i.material-icons {
@@ -74,6 +76,10 @@
     font-size: $sidenav-font-size;
     width: $sidenav-item-height / 2;
     color: #4F2C74;
+  } 
+
+  li:nth-child(7) a, li:nth-child(7) > a > i{
+    color: #fff !important;
   }
 
   .divider {

@@ -3244,6 +3244,10 @@ nav {
   src: local(Quicksand Light), url("../fonts/quicksand/Quicksand-Light.ttf");
   font-weight: 200; }
 @font-face {
+  font-family: "Quicksand-Bold";
+  src: local(Quicksand Bold), url("../fonts/quicksand/Quicksand-Bold.ttf");
+  font-weight: 200; }
+@font-face {
   font-family: "Ebgaramond";
   src: local(Quicksand Regular), url("../fonts/ebgaramond/EBGaramond-Regular.ttf");
   font-weight: 200; }
@@ -3763,8 +3767,9 @@ form .margin {
   min-height: 3rem;
   line-height: 3rem;
   padding: 0 1rem;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd; }
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600; }
   .collapsible-header i {
     width: 2rem;
     font-size: 1.6rem;
@@ -3803,7 +3808,7 @@ form .margin {
 .side-nav .collapsible-body,
 .side-nav.fixed .collapsible-body {
   border: 0;
-  background-color: #fff; }
+  background-color: #f4f4f4; }
   .side-nav .collapsible-body li a,
   .side-nav.fixed .collapsible-body li a {
     padding: 0 23.5px 0 31px; }
@@ -4864,6 +4869,8 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 16px;
     width: 24px;
     color: #4F2C74; }
+  .side-nav li:nth-child(7) a, .side-nav li:nth-child(7) > a > i {
+    color: #fff !important; }
   .side-nav .divider {
     margin: 8px 0 0 0; }
   .side-nav .subheader {
