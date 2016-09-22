@@ -4106,7 +4106,8 @@ textarea.materialize-textarea {
   textarea.materialize-textarea:focus.invalid + label:after {
     content: attr(data-error);
     color: #F44336;
-    opacity: 1; }
+    opacity: 1;
+    margin-top: 10px; }
   input:not([type]).validate + label,
   input[type=text].validate + label,
   input[type=password].validate + label,

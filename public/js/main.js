@@ -75,3 +75,33 @@ function checkForm(){
       $('form .btn').prop("disabled", true);
     }
 }
+
+$('#category,#file').on('change', uploadImage);
+function uploadImage(){
+
+    var x = $('#category').val();
+    if (x != '') {
+      $('.select-dropdown').addClass("valid");
+    }else{
+      $('.select-dropdown').addClass("invalid");
+    }
+
+    valid = document.getElementById("imageUpload").checkValidity();
+    console.log(valid)
+    if (valid == true){
+      $('#imageUpload .btn-large').prop("disabled", false);
+    }else{
+      $('#imageUpload .btn-large').prop("disabled", true);
+    }
+}
+
+$('#videourl').on('change', uploadVideo);
+function uploadVideo(){
+    valid = document.getElementById("video").checkValidity();
+    console.log(valid)
+    if (valid == true){
+      $('#video .btn-large').prop("disabled", false);
+    }else{
+      $('#video .btn-large').prop("disabled", true);
+    }
+}

@@ -12,7 +12,7 @@
 <div class="row">
 <div class="col s12 m12 l12">
 <h2 class="center">Multiple Image Upload</h2>
-<form enctype="multipart/form-data" action="/uploadImages" method="POST">
+<form name="imageUpload" id="imageUpload" enctype="multipart/form-data" action="/uploadImages" method="POST">
 
   <div class="input-field col s12 m12 l12">
         <i class="material-icons prefix">image</i>
@@ -29,7 +29,7 @@
   <div class="file-field col s12 m12 l12">
       <div class="btn">
         <span>Select Files</span>
-        <input type="file" name="file" onchange="loadFile(event)" class="validate" required multiple>
+        <input type="file" name="file" id="file" onchange="loadFile(event)" class="validate" required multiple>
       </div>
 
       <div class="file-path-wrapper">
@@ -45,7 +45,7 @@
   <div class="row"></div>
 
   <div class="center">
-  <button class="btn-large waves-effect waves-light" type="submit">Upload Images<i class="material-icons right">cloud_upload</i></button> 
+  <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Images<i class="material-icons right">cloud_upload</i></button> 
   </div>
 
 </form>
@@ -64,17 +64,16 @@
 <div class="row">
 <div class="col s12 m12 l12">
 <h2 class="center">Upload Video</h2>
-  <form class="col s12 m12 l12" name="video" action="/addVideo" method="POST">
+  <form name="video" id="video" class="col s12 m12 l12" action="/addVideo" method="POST">
     <div class="input-field col s12 m12 l12">
       <i class="fa fa-link material-icons prefix" aria-hidden="true"></i>
-      <input id="videourl" name="videourl" type="text" class="validate" required>
-      <label for="videourl">Enter Youtube URL</label>
-    </div>
+      <input id="videourl" name="videourl" type="text" class="validate" pattern="^(http(s)?:\/\/)?youtu(be|.be)?(\.com)?\/.+" required>
+      <label for="videourl" data-error="Ex https://youtu.be/oz77z9xnb_8">Enter Youtube URL</label>
 
+     </div>
     <div class="row"></div>
-
     <div class="center">
-      <button class="btn-large waves-effect waves-light" type="submit">Upload Video<i class="material-icons right">cloud_upload</i></button>     
+      <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Video<i class="material-icons right">cloud_upload</i></button>     
     </div>
   </form>
 </div>
