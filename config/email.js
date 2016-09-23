@@ -20,7 +20,7 @@ _message = function(req, res){
       from: message.email,
       to : 'sachebeautystudio@gmail.com',
       subject : message.subject,
-      text : 'Senders Name: '+message.name+'\r\n'+'Email: '+message.email+'\r\n'+'Phone: '+message.tell+'\r\n'+message.message
+      text : 'Senders Name: '+message.name+'\r\n'+'Email: '+message.email+'\r\n'+'Phone: '+message.tell+'\r\n'+message.mymessage
   }
   smtpTransport.sendMail(mailOptions, function(error, response){
    if(error){
