@@ -24,7 +24,7 @@ if (location.hash) {
 $('.error, .success').slideDown(2000).slideUp(6000);
 //carousel triggers
 $('.mycarousel').carousel({full_width: true});
-$('.carousel').carousel();
+$('.carousel').carousel({dist:0, padding: 1});
 // nav trigger  
 $(".button-collapse").sideNav({
   menuWidth: 300, // Default is 240
