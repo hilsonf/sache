@@ -120,7 +120,7 @@ app.post('/uploadImages', multipleupload, function(req, res, next) {
   if (files) {
   files.forEach(function(file){
     var category = req.body.category;
-    var fileUrl = file.path;
+    //var fileUrl = file.path;
     var str = file.path; 
     var res = str.slice(0,str.indexOf('.'));
     var fileUrl = res + "_optimized.jpg";
