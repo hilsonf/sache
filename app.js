@@ -11,7 +11,6 @@ var express 	  = require('express'),
     helpers       = require('./config/helpers'),
     mongoose      = require('mongoose'),
     multer        = require('multer'),
-    multerResizer = require('multer-resizer'),
     bodyParser    = require('body-parser');
 
 

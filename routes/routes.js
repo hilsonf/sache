@@ -1,5 +1,5 @@
 //
-module.exports = function(app, passport, multer, multerResizer) {
+module.exports = function(app, passport, multer) {
 
 var manager = require('../models/manager.js');
 var email = require('../config/email');
