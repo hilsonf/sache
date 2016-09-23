@@ -128,8 +128,8 @@ app.post('/uploadImages', multipleupload, function(req, res, next) {
     var source = tinify.fromFile(file.path);
     var resized = source.resize({
       method: "fit",
-      width: 300,
-      height: 300
+      width: 400,
+      height: 400
     });
     resized.toFile(fileUrl);
 
