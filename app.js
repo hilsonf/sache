@@ -48,7 +48,7 @@ app.use(passport.session());
 app.use(flash());
 
 //Routes
-require('./routes/routes')(app, passport, multer, multerResizer);
+require('./routes/routes')(app, passport, multer);
 
 var port = process.env.PORT || 3000;
 
