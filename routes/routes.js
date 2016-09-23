@@ -5,8 +5,8 @@ var manager = require('../models/manager.js');
 var email = require('../config/email');
 var moment = require('moment');
 var fs = require('fs');
-var tinify = require("tinify");
-tinify.key = "bmVqqx6M8VCKtpT7lPNx8jjOkH8-uGGU";
+// var tinify = require("tinify");
+// tinify.key = "bmVqqx6M8VCKtpT7lPNx8jjOkH8-uGGU";
 
 var upload = multer({storage: multer.diskStorage({
   destination: './uploads',
@@ -120,22 +120,23 @@ app.post('/uploadImages', multipleupload, function(req, res, next) {
   if (files) {
   files.forEach(function(file){
     var category = req.body.category;
-    var str = file.path; 
-    var res = str.slice(0,str.indexOf('.'));
-    var fileUrl = res + "_optimized.jpg";
+    var fileUrl = file.path;
+    // var str = file.path; 
+    // var res = str.slice(0,str.indexOf('.'));
+    // var fileUrl = res + "_optimized.jpg";
 
 
-    var source = tinify.fromFile(file.path);
-    var resized = source.resize({
-      method: "fit",
-      width: 400,
-      height: 400
-    });
-    resized.toFile(fileUrl);
+    // var source = tinify.fromFile(file.path);
+    // var resized = source.resize({
+    //   method: "fit",
+    //   width: 400,
+    //   height: 400
+    // });
+    // resized.toFile(fileUrl);
 
        
-    var oldImg = file.path
-    fs.unlinkSync(oldImg);
+    // var oldImg = file.path
+    // fs.unlinkSync(oldImg);
 
     manager.addMultipleImages(fileUrl, category, res);
   })
