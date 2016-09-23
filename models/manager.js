@@ -7,7 +7,6 @@ module.exports = function(){
     var Schema   = mongoose.Schema;
   
   	var contentGallerySchema = new mongoose.Schema({
-	    imageName: 	  String,
 	    imageUrl:     String,
 	    category:     String,
 	    createdAt:    Date,
@@ -24,19 +23,10 @@ module.exports = function(){
 	var _vid = mongoose.model('videos', contentVideoSchema);
 
 
-	_addMultipleImages = function (req, res){
-
-		var files = req.files
-
-		for (var i = 0; i < files.length; i++) {
-			var imgName = files[i].filename
-			var imgUrl = files[i].resizedPath
-		
-
+	_addMultipleImages = function (fileUrl, category, res){
 		var gallery = new _gal({
-			imageName: 	  imgName,
-		    imageUrl:     imgUrl,
-		    category:     req.body.category,
+		    imageUrl:     fileUrl,
+		    category:     category,
 		    createdAt:    new Date(),
 		    visible:      'true'       
         	})
@@ -46,10 +36,8 @@ module.exports = function(){
 					throw err;
 				}else{
   					console.log('Image Saved to Gallery');
-				};
-    			
+				};	
   			});
-  		}
 	}
 
 	_allGalleries = function(fail, success){

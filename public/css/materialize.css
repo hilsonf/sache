@@ -5531,4 +5531,17 @@ input[type=range]:focus::-ms-fill-upper {
     font-weight: bold;
     text-transform: uppercase; }
 
+.success {
+  border-radius: 10px;
+  padding: 10px 36px;
+  margin: 10px;
+  background: #e9ffd9;
+  border: 1px solid #a6ca8a;
+  text-align: center;
+  display: none; }
+  .success span {
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase; }
+
 /*# sourceMappingURL=materialize.css.map */

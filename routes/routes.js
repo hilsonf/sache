@@ -5,38 +5,16 @@ var manager = require('../models/manager.js');
 var email = require('../config/email');
 var moment = require('moment');
 var fs = require('fs');
+var tinify = require("tinify");
+tinify.key = "bmVqqx6M8VCKtpT7lPNx8jjOkH8-uGGU";
 
-
-const resizer = new multerResizer({
-  multer: multer({storage: multer.diskStorage({
+var upload = multer({storage: multer.diskStorage({
   destination: './uploads',
   filename: function (request, file, callback) {
     callback(null, Date.now()+'-'+file.originalname)
-  }
-})}),
-   tasks: [
-        {
-            resize: {
-                width: 800,
-                height: 800,
-                interpolation: 'linear',
-                format: 'jpg'
-            }
-        }
-    ]
+  }})})
 
-})
-
-
-var multipleupload = resizer.array('file');
-
-function deleteMultipleImg(req){
-  var files = req.files
-  for (var i = 0; i < files.length; i++) {
-      var oldImg = files[i].path
-      fs.unlinkSync(oldImg);
-    }
-}
+var multipleupload = upload.array('file');
 
 function loggedIn(req, res, next){
     if(req.isAuthenticated()){
@@ -109,8 +87,9 @@ app.get('/pricelist', function (req, res) {
 })
 
 app.get('/upload',loggedIn, function (req, res) {
-  var user = req.user;
-  var data = {data:{users: user}};
+  var user    = req.user;
+  var message =  req.flash('uploadMessage');
+  var data    = {data:{users: user, message: message}};
   res.render('upload', data);
 });
 
@@ -125,14 +104,48 @@ app.post('/message', function(req, res){
 });
 
 app.post('/addVideo', function(req, res){
-  manager.addVideo(req, res);
-  res.redirect('/videos');
+  var videourl = req.body.videourl;
+  
+  if (videourl) {
+    manager.addVideo(req, res); 
+    req.flash('uploadMessage', '☺ Video Upload Sucessfull!! View In Gallery Videos');
+    res.redirect('/upload'); 
+  }
+  
 });
 
 app.post('/uploadImages', multipleupload, function(req, res, next) {
-  manager.addMultipleImages(req, res);
-  deleteMultipleImg(req);
-  res.redirect('/lookbook');
+  var files = req.files;
+
+  if (files) {
+  files.forEach(function(file){
+    var category = req.body.category;
+    var str = file.path; 
+    var res = str.slice(0,str.indexOf('.'));
+    var fileUrl = res + "_optimized.jpg";
+
+
+    var source = tinify.fromFile(file.path);
+    var resized = source.resize({
+      method: "fit",
+      width: 300,
+      height: 300
+    });
+    resized.toFile(fileUrl);
+
+       
+    var oldImg = file.path
+    fs.unlinkSync(oldImg);
+
+    manager.addMultipleImages(fileUrl, category, res);
+  })
+    req.flash('uploadMessage', '☺ Image Upload Sucessfull!! View In Gallery Look Book');
+    res.redirect('/upload');
+  }else{
+    req.flash('uploadMessage', '☹ Sorry Image Upload Sucessfull!! Try Again');
+    res.redirect('/upload');
+  }
+  
 });
 
 app.post('/login',
