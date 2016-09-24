@@ -1,4 +1,3 @@
-//
 module.exports = function(app, passport, multer) {
 
 var manager = require('../models/manager.js');
