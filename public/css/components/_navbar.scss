@@ -53,39 +53,14 @@ nav {
     padding: 0;
     white-space: nowrap;
 
-    svg{
-        width: 100px; 
-        height: 60px;
-        margin-left: 5px;    
+    img{
+      height: 60px;
     }
 
-    @media #{$medium-and-down} {
-      svg{
-        width: 100px; 
-        height: 52px;
-        margin-left: 0px;
-    }
-    }
 
     &.center {
       left: 50%;
       transform: translateX(-50%);
-    }
-
-    @media #{$medium-and-down} {
-      left: 50%;
-      transform: translateX(-50%);
-
-      &.left, &.right {
-        padding: 0;
-        transform: none;
-      }
-
-      &.left { left: 0.5rem; }
-      &.right {
-        right: 0.5rem;
-        left: auto;
-      }
     }
 
     &.right {
@@ -192,12 +167,4 @@ nav {
     position: fixed;
   }
 }
-@media #{$medium-and-up} {
-  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: $navbar-height;
-    line-height: $navbar-height;
-  }
-  .navbar-fixed {
-    height: $navbar-height;
-  }
-}
+

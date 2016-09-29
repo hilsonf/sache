@@ -9,56 +9,62 @@
 <div class="row"></div>
 <div class="row"></div>
 
-<div class="row" style="width: 100%;">
-
-<div class="container headings">
-  <h2 class="center">Extenstions</h2>
-  <hr>
-</div>
-
-<div class="swap"><i class="material-icons">swap_horiz</i></div>
-<div class="carousel">
-{{#each data.gallery}}
-{{#is this.category "extensions"}}
-<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
-{{/is}}
-{{/each}}
-</div>
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
 
 
-<div class="row" style="width: 100%;">
-<div class="container headings">
-  <h2 class="center">Braids</h2>
-  <hr>
-</div>
-<div class="swap"><i class="material-icons">swap_horiz</i></div>
-<div class="carousel">
-{{#each data.gallery}}
-{{#is this.category "braids"}}
-<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
-{{/is}}
-{{/each}}
-</div>
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Extenstions</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "extensions"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
 </div>
 
 <div class="row"></div>
 <div class="row"></div>
 
-<div class="row" style="width: 100%;">
-<div class="container headings">
-  <h2 class="center">Sew In's</h2>
-  <hr>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Braids</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "braids"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
 </div>
-<div class="swap"><i class="material-icons">swap_horiz</i></div>
-<div class="carousel">
-{{#each data.gallery}}
-{{#is this.category "sewin"}}
-<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
-{{/is}}
-{{/each}}
-</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Sew In's</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "sewin"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
 </div>
