@@ -3194,20 +3194,27 @@ nav {
 
 @font-face {
   font-family: "Quicksand";
-  src: local(Quicksand Regular), url("../fonts/quicksand/Quicksand-Regular.ttf");
+  src: local(Quicksand Regular), url("../fonts/quicksand/Quicksand-Regular.ttf") format("truetype");
   font-weight: 200; }
 @font-face {
   font-family: "Quicksand-Light";
-  src: local(Quicksand Light), url("../fonts/quicksand/Quicksand-Light.ttf");
+  src: local(Quicksand Light), url("../fonts/quicksand/Quicksand-Light.ttf") format("truetype");
   font-weight: 200; }
 @font-face {
   font-family: "Quicksand-Bold";
-  src: local(Quicksand Bold), url("../fonts/quicksand/Quicksand-Bold.ttf");
+  src: local(Quicksand Bold), url("../fonts/quicksand/Quicksand-Bold.ttf") format("truetype");
   font-weight: 200; }
 @font-face {
   font-family: "Ebgaramond";
-  src: local(Quicksand Regular), url("../fonts/ebgaramond/EBGaramond-Regular.ttf");
+  src: local(Quicksand Regular), url("../fonts/ebgaramond/EBGaramond-Regular.ttf") format("truetype");
   font-weight: 200; }
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/materialIcons/MaterialIcons-Regular.eot");
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url("../fonts/materialIcons/MaterialIcons-Regular.woff2") format("woff2"), url("../fonts/materialIcons/MaterialIcons-Regular.woff") format("woff"), url("../fonts/materialIcons/MaterialIcons-Regular.ttf") format("truetype"); }
 html {
   line-height: 1.5;
   font-family: "Ebgaramond", sans-serif;
@@ -3272,6 +3279,28 @@ small {
 
 .thin {
   font-weight: 200; }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
 
 .flow-text {
   font-weight: 300; }

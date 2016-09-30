@@ -1,22 +1,37 @@
 @font-face {
     font-family: "Quicksand";
-    src: local(Quicksand Regular), url('#{$quicksand-font-path}Quicksand-Regular.ttf');
+    src: local(Quicksand Regular), 
+    url('#{$quicksand-font-path}Quicksand-Regular.ttf') format('truetype');
     font-weight: 200;
 }
 @font-face {
     font-family: "Quicksand-Light";
-    src: local(Quicksand Light), url('#{$quicksand-font-path}Quicksand-Light.ttf');
+    src: local(Quicksand Light), 
+    url('#{$quicksand-font-path}Quicksand-Light.ttf') format('truetype');
     font-weight: 200;
 }
 @font-face {
     font-family: "Quicksand-Bold";
-    src: local(Quicksand Bold), url('#{$quicksand-font-path}Quicksand-Bold.ttf');
+    src: local(Quicksand Bold), 
+    url('#{$quicksand-font-path}Quicksand-Bold.ttf') format('truetype');
     font-weight: 200;
 }
 @font-face {
     font-family: "Ebgaramond";
-    src: local(Quicksand Regular), url('#{$ebgaramond-font-path}EBGaramond-Regular.ttf');
+    src: local(Quicksand Regular), 
+    url('#{$ebgaramond-font-path}EBGaramond-Regular.ttf') format('truetype');
     font-weight: 200;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$materialicon-font-path}MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('#{$materialicon-font-path}MaterialIcons-Regular.woff2') format('woff2'),
+       url('#{$materialicon-font-path}MaterialIcons-Regular.woff') format('woff'),
+       url('#{$materialicon-font-path}MaterialIcons-Regular.ttf') format('truetype');
 }
 
 
