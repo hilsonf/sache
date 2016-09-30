@@ -5,7 +5,6 @@ var express 	  = require('express'),
     nodemailer    = require("nodemailer"),
     passport      = require('passport'),
     flash         = require('connect-flash'),
-    LocalStrategy = require('passport-local').Strategy,
     session       = require('express-session'),
     exphbs        = require('express-handlebars'),
     helpers       = require('./config/helpers'),
@@ -21,7 +20,7 @@ var hbs = exphbs.create({
 });
 
 //pasport Configuration
-require('./config/passport')(passport); 
+require('./config/passport'); 
 
 //view engine
 app.engine('handlebars', hbs.engine);
@@ -42,7 +41,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Pasport Sessions
-app.use(session({ secret: 'zaina', saveUninitialized: true, resave: true }));
+app.use(session({ secret: 'zaina', saveUninitialized: false, resave: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

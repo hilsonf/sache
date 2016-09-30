@@ -1,6 +1,6 @@
 module.exports = function(app, passport, multer) {
 
-var manager = require('../models/manager.js');
+var manager = require('../models/manager');
 var email = require('../config/email');
 var moment = require('moment');
 var fs = require('fs');
