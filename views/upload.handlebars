@@ -7,7 +7,7 @@
 <div class="container headings">
   <h1>Manage Content</h1>
   <i class="large material-icons">file_upload</i>
-  <h3>Welcome {{data.users.username}}</h3>
+  <h3>Welcome {{user.username}}</h3>
 </div>
 
 <div class="row"></div>
@@ -78,7 +78,7 @@
 <div class="col s12 m12 l12">
   <form name="video" id="video" class="col s12 m12 l12" action="/addVideo" method="POST">
     <div class="input-field col s12 m12 l12">
-      <i class="fa fa-link material-icons prefix" aria-hidden="true"></i>
+      <i class="fa fa-link prefix" aria-hidden="true"></i>
       <input id="videourl" name="videourl" type="text" class="validate" pattern="^(http(s)?:\/\/)?youtu(be|.be)?(\.com)?\/.+" required>
       <label for="videourl" data-error="Ex https://youtu.be/oz77z9xnb_8">Enter Youtube URL</label>
 

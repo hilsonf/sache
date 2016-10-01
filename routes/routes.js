@@ -28,9 +28,7 @@ function loggedIn(req, res, next){
 
 
 app.get('/', function (req, res) {
-  var user = req.user;
-  var data = {data:{users: user}};
-  res.render('home', data);
+  res.render('home');
 })
 
 app.get('/login', function (req, res) {
@@ -46,49 +44,38 @@ app.get('/logout', function (req, res, next) {
 })
 
 app.get('/contact', function (req, res) {
-  var user = req.user;
-  var data = {data:{users: user}};
-  res.render('contact', data);
+  res.render('contact');
 })
 
 app.get('/lookbook', function (req, res) {
     manager.allGalleries(function(fail){}, function(gal){
-       var user = req.user;
-       var data = {data:{gallery: gal, users: user}};
+       var data = {data:{gallery: gal}};
        res.render('lookbook', data);
     })
 })
 
 app.get('/videos', function (req, res) {
   manager.allVideos(res, function(result){
-  var user = req.user;
-  var data = {data:{videos: result, users: user}};
+  var data = {data:{videos: result}};
   res.render('videos', data);
   })
 })
 
 app.get('/bookapt', function (req, res) {
-  var user = req.user;
-  var data = {data:{users: user}};
-  res.render('bookapt',data);
+  res.render('bookapt');
 })
 
 app.get('/stylists', function (req, res) {
-  var user = req.user;
-  var data = {data:{users: user}};
-  res.render('stylists', data);
+  res.render('stylists');
 })
 
 app.get('/pricelist', function (req, res) {
-  var user = req.user;
-  var data = {data:{users: user}};
-  res.render('pricelist', data);
+  res.render('pricelist');
 })
 
 app.get('/upload',loggedIn, function (req, res) {
-  var user    = req.user;
   var message =  req.flash('uploadMessage');
-  var data    = {data:{users: user, message: message}};
+  var data    = {data:{message: message}};
   res.render('upload', data);
 });
 

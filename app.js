@@ -10,6 +10,7 @@ var express 	  = require('express'),
     helpers       = require('./config/helpers'),
     mongoose      = require('mongoose'),
     multer        = require('multer'),
+    mongoStore    = require('connect-mongo')(session),
     bodyParser    = require('body-parser');
 
 
@@ -19,6 +20,8 @@ var hbs = exphbs.create({
   defaultLayout: 'main'
 });
 
+//mongo connect
+mongoose.connect('localhost:27017/sachedb');
 //pasport Configuration
 require('./config/passport'); 
 
@@ -29,22 +32,31 @@ app.set('view engine', 'handlebars');
 // Static Folders
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/uploads',express.static(__dirname + '/uploads'));
-//Global User
-app.use(function(req, res, next) {
-    if (!req.user)
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    next();
-});
+
 
 //Body Parser
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Pasport Sessions
-app.use(session({ secret: 'zaina', saveUninitialized: false, resave: false }));
+app.use(session({ 
+    secret: 'sache', 
+    saveUninitialized: false, 
+    resave: false,
+    store: new mongoStore({mongooseConnection: mongoose.connection}),
+    cookie: {maxAge: 80 * 60 * 1000}  
+}));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+
+//Global User
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    if (!req.user)
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    next();
+});
 
 //Routes
 require('./routes/routes')(app, passport, multer);

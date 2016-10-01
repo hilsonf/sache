@@ -1,11 +1,8 @@
-var db      = require('../config/db'),
-    mongoose    = require('mongoose');
-    mongoose.Promise = require('bluebird');
-
-var bodyParser = require('body-parser');
-var bcrypt   = require('bcrypt-nodejs');
-
-var Schema   = mongoose.Schema;
+var mongoose    		= require('mongoose');
+    mongoose.Promise 	= require('bluebird');
+var bodyParser 			= require('body-parser');
+var bcrypt   			= require('bcrypt-nodejs');
+var Schema   			= mongoose.Schema;
    
 var userSchema = new mongoose.Schema({
     username: 	  String,

@@ -1,8 +1,7 @@
 module.exports = function(){
-	var db      = require('../config/db');
-        mongoose    = require('mongoose');
+    var mongoose    = require('mongoose');
         mongoose.Promise = require('bluebird');
-	    bodyParser = require('body-parser');
+	var bodyParser = require('body-parser');
 
     var Schema   = mongoose.Schema;
   
