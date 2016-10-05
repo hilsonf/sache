@@ -5,7 +5,8 @@ var email = require('../config/email');
 var moment = require('moment');
 var fs = require('fs');
 var tinify = require("tinify");
-tinify.key = "bmVqqx6M8VCKtpT7lPNx8jjOkH8-uGGU";
+//tinify.key = "bmVqqx6M8VCKtpT7lPNx8jjOkH8-uGGU";
+tinify.key = "x89sve_Thw1Qaw5fmpC8FHyb6SgjcFii";
 
 var upload = multer({storage: multer.diskStorage({
   destination: './uploads',
