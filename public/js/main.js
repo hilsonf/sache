@@ -41,22 +41,6 @@ function next(){
 // Tooltip 
 $('.tooltipped').tooltip({delay: 50});
 
-// //show hide1
-// $('#hideshow1').click(function() {        
-//   $('#ext-content').toggle(1500);
-// });
-// //show hide2
-// $('#hideshow2').click(function() {        
-//   $('#bra-content').toggle(1500);
-// });
-// //show hide3
-// $('#hideshow3').click(function() {        
-//   $('#wef-content').toggle(1500);
-// });
-
-// $('#hideshow4').click(function() {        
-//   $('#sew-content').toggle(1500);
-// });
 //collapsable
 $('.collapsible').collapsible({
   accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
