@@ -2640,6 +2640,7 @@ input[type=range] + .thumb {
   color: #fff;
   cursor: pointer;
   border: 0;
+  z-index: 10;
   border-radius: 2px;
   text-decoration: none;
   transition: opacity 0.2s ease-out;
