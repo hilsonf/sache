@@ -22,18 +22,22 @@ if (location.hash) {
 
 //error slide up
 $('.error, .success').slideDown(2000).slideUp(6000);
+
 //carousel triggers
 $('.mycarousel').carousel({full_width: true});
 $('.carousel').carousel({dist:0, padding: 1});
+
 // nav trigger  
 $(".button-collapse").sideNav({
   menuWidth: 300, // Default is 240
   edge: 'right' // Choose the horizontal origin
 });
+
 // prev image  
 function prev(){
   $('.mycarousel').carousel('next');
 }
+
 // next image  
 function next(){
   $('.mycarousel').carousel('prev');
@@ -45,12 +49,23 @@ $('.tooltipped').tooltip({delay: 50});
 $('.collapsible').collapsible({
   accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
 });
+
 //select
 $('select').material_select();
+
+//tabs
+$('ul.tabs').tabs();
+
 
 //load file when selected
 function loadFile(event)  {
     var output = document.getElementById('pics');
+    output.src = URL.createObjectURL(event.target.files[0]);
+};
+
+//load file when selected
+function loadFile2(event)  {
+    var output = document.getElementById('empPic');
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
@@ -64,6 +79,17 @@ function checkForm(){
     }
 }
 
+$('#empImg,#name,#position,#bio,#tell,#email').on('change', checkEmpForm);
+function checkEmpForm(){
+    valid = document.getElementById("employee").checkValidity();
+    console.log(valid);
+    if (valid == true){
+      $('#employee .btn-large').prop("disabled", false);
+    }else{
+      $('#employee .btn-large').prop("disabled", true);
+    }
+}
+
 $('#category,#file').on('change', uploadImage);
 function uploadImage(){
 
@@ -73,7 +99,6 @@ function uploadImage(){
     }
 
     valid = document.getElementById("imageUpload").checkValidity();
-    console.log(valid)
     if (valid == true){
       $('#imageUpload .btn-large').prop("disabled", false);
     }else{
@@ -84,7 +109,6 @@ function uploadImage(){
 $('#videourl').on('change', uploadVideo);
 function uploadVideo(){
     valid = document.getElementById("video").checkValidity();
-    console.log(valid)
     if (valid == true){
       $('#video .btn-large').prop("disabled", false);
     }else{

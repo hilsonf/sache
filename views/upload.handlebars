@@ -10,7 +10,313 @@
   <h3>Welcome {{user.username}}</h3>
 </div>
 
+
 <div class="row"></div>
+<div class="row"></div>
+
+
+<div class="row center">
+
+<div class="col s12 m12 l12 z-depth-1">
+  <ul class="tabs ">
+    <li class="tab col s12 m4 l4"><a href="#galUpload">Gallery Upload</a></li>
+    <li class="tab col s12 m4 l4"><a href="#vidUpload">Video Upload</a></li>
+    <li class="tab col s12 m4 l4"><a class="active" href="#empUpload">Manage Employees</a></li>
+  </ul>
+</div>
+
+{{!-- Tab --}}
+<div id="galUpload" class="col s12">    
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="container headings">
+    <h2 class="center">Gallery Upload</h2>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <form name="imageUpload" id="imageUpload" enctype="multipart/form-data" action="/uploadImages" method="POST">
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">image</i>
+          <select id="category" name="category" class="validate" required>
+            <option value="" disabled selected>Select Image Category</option>
+            <option value="tape_extensions" data-icon="public/img/extensions.jpg" class="circle">Tape Extensions</option>
+            <option value="sewin_extensions" data-icon="public/img/sewin.jpg" class="circle">Sewin Extensions</option>  
+            <option value="malaysian_sewin" data-icon="" class="circle">Malaysian Sew In</option>  
+            <option value="bead_weft_extensions" data-icon="" class="circle">Micro Beaded Weft Extensions</option>  
+            <option value="bead_strands" data-icon="" class="circle">Micro Bead Individual Strands</option>  
+            <option value="glue_caps" data-icon="" class="circle">Glue Caps</option>
+            <option value="color_treatments" data-icon="" class="circle">Color Treatments</option>
+            <option value="texture_reformation" data-icon="" class="circle">Texture Reformation</option>
+            <option value="press_curl" data-icon="" class="circle">Press & Curl</option>
+            <option value="haircuts" data-icon="" class="circle">Haircuts</option>
+            <option value="braids" data-icon="" class="circle">Braids</option>
+          </select>        
+        </div>
+        <div class="row"></div>
+        <div class="row"></div>
+
+        <div class="file-field col s12 m12 l12">
+          <div class="btn">
+            <span>Select Images</span>
+            <input type="file" name="file" id="file" onchange="loadFile(event)" class="validate" required multiple>
+          </div>
+
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+
+        <div class="col s12 m12 l12 center">
+          <img id="pics"/>
+        </div>
+
+
+        <div class="row"></div>
+
+        <div class="center">
+          <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Images<i class="material-icons right">cloud_upload</i></button> 
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>{{!-- Tab --}}
+  
+
+{{!-- Next Tab --}}
+<div id="vidUpload" class="col s12">
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="container headings">
+    <h2 class="center">Video Upload</h2>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <form name="video" id="video" class="col s12 m12 l12" action="/addVideo" method="POST">
+        <div class="input-field col s12 m12 l12">
+          <i class="fa fa-link prefix" aria-hidden="true"></i>
+          <input id="videourl" name="videourl" type="text" class="validate" pattern="^(http(s)?:\/\/)?youtu(be|.be)?(\.com)?\/.+" required>
+          <label for="videourl" data-error="Ex https://youtu.be/oz77z9xnb_8">Enter Youtube URL</label>
+
+        </div>
+        <div class="row"></div>
+        <div class="center">
+          <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Video<i class="material-icons right">cloud_upload</i></button>     
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>{{!-- Tab --}}
+
+
+
+{{!-- Next Tab --}}
+<div id="empUpload" class="col s12">
+  
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+
+<div class="container headings">
+  <h2 class="center">Employees</h2>
+  <hr>
+</div>
+
+<div class="row">
+{{#each data.employees}}
+  <div class="col s12 m6 l4">
+
+  <div class="card medium">
+    <div class="card-image waves-effect waves-block waves-light">
+     <img class="activator" src="/{{this.imageUrl}}" alt="sache_stylist">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{this.name}}<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">{{this.name}}<i class="material-icons right">close</i></span>
+
+      <div class="row"></div>
+      <div class="row"></div>
+
+      <form name="" id="" enctype="multipart/form-data" action="/updateEmployee/{{this._id}}" method="POST">
+
+      <div class="file-field col s12 m12 l12">
+        <div class="btn">
+          <span>Update Photo</span>
+          <input type="file" name="updateempImg" id="updateempImg" class="validate">
+        </div>
+
+        <div class="file-path-wrapper">
+          <input type="text" class="file-path validate" name="oldempImg" id="oldempImg" value="{{this.imageUrl}}">
+        </div>
+      </div>
+
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">subject</i>
+          <input id="updatename" name="updatename" type="text" class="validate" required value="{{this.name}}">        
+          <label for="updatename">Enter Employee Name</label>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">subject</i>
+          <input id="updateposition" name="updateposition" type="text" class="validate" required value="{{this.position}}">        
+          <label for="updateposition">Enter Employee Position</label>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">phone</i>
+          <input id="updatetell" name="updatetell" type="tel" class="validate" pattern="[0-9]{10}" required value="{{this.tell}}">
+          <label for="updatetell">Enter Employee Phone</label>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">email</i>
+          <input id="updateemail" name="updateemail" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required value="{{this.email}}">
+          <label for="updateemail" data-error="Ex example@gmail.com">Enter Employee Email</label>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">mode_edit</i>
+          <input id="updatebio" name="updatebio" type="text" class="validate" required value="{{this.bio}}">
+          <label for="updatebio">Enter Employee Email</label>
+        </div>
+
+        <div class="row"></div>
+
+        <div class="center">
+          <button class="btn-large waves-effect waves-light" type="submit">Update Employee<i class="material-icons right">cloud_upload</i></button> 
+        </div>   
+        
+      </form>
+
+      <div class="row"></div>
+      <div class="row"></div>
+
+      <div class="center">
+        <a class="btn-large waves-effect waves-light" href="/deleteEmployee/{{this._id}}">Delete Employee<i class="material-icons right">cloud_upload</i></a> 
+      </div>
+
+      <div class="row"></div>
+      <div class="row"></div>   
+     
+     
+    </div>
+  </div>
+
+  </div>
+{{/each}}
+</div>
+
+
+
+
+<div class="row"></div>
+<div class="row"></div>
+
+
+<div class="container headings">
+  <h2 class="center">Add Employee</h2>
+  <hr>
+</div>
+
+<div class="row">
+
+  <form name="employee" id="employee" enctype="multipart/form-data" action="/employeeupload" method="POST">
+
+    <div class="col s12 m12 l12 center">
+      <img id="empPic"/>
+    </div>
+
+    <div class="file-field col s12 m12 l12">
+
+      <div class="btn">
+        <span>Employee Photo</span>
+        <input type="file" name="empImg" id="empImg" onchange="loadFile2(event)" class="validate" required multiple>
+      </div>
+
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+
+    </div>
+
+    <div class="input-field col s12 m6 l6">
+      <i class="material-icons prefix">subject</i>
+      <input id="name" name="name" type="text" class="validate" required>        
+      <label for="name">Enter Employee Name</label>
+    </div>
+
+    <div class="input-field col s12 m6 l6">
+      <i class="material-icons prefix">subject</i>
+      <input id="position" name="position" type="text" class="validate" required>        
+      <label for="position">Enter Employee Position</label>
+    </div>
+
+    <div class="input-field col s12 m6 l6">
+      <i class="material-icons prefix">phone</i>
+      <input id="tell" name="tell" type="tel" class="validate" pattern="[0-9]{10}" required>
+      <label for="tell" data-error="Ex 2674438896">Enter Employee Phone</label>
+    </div>
+
+    <div class="input-field col s12 m6 l6">
+      <i class="material-icons prefix">email</i>
+      <input id="email" name="email" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
+      <label for="email" data-error="Ex example@gmail.com">Enter Employee Email</label>
+    </div>
+
+    <div class="input-field col s12 m12 l12">
+      <i class="material-icons prefix">mode_edit</i>
+      <textarea id="bio" name="bio" class="materialize-textarea validate" required></textarea>
+      <label for="bio">Enter Employee Bio</label>
+    </div>
+
+    <div class="row"></div>
+
+    <div class="center">
+      <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Employee<i class="material-icons right">cloud_upload</i></button> 
+    </div>   
+
+  </form>    
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+
+
+</div>{{!-- Tab --}}
+
+  
+        
+
+            
+
+
+
+
+
+
+
+
+{{!-- <div class="row"></div>
 <div class="row"></div>
 
 <div class="container headings">
@@ -101,3 +407,71 @@
 <div class="row"></div>
 <div class="row"></div>
 <div class="row"></div>
+<div class="divider"></div>
+
+
+<div class="row">
+
+  <form name="employee" id="employee" enctype="multipart/form-data" action="/employeeupload" method="POST">
+      
+      <div class="col s12 m12 l12 center">
+        <img id="empPic"/>
+      </div>
+
+      <div class="file-field col s12 m12 l12">
+        
+        <div class="btn">
+          <span>Employee Photo</span>
+          <input type="file" name="empImg" id="empImg" onchange="loadFile2(event)" class="validate" required multiple>
+        </div>
+
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+
+      </div>
+
+      
+
+    
+
+      <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix">subject</i>
+        <input id="name" name="name" type="text" class="validate" required>        
+        <label for="name">Enter Employee Name</label>
+      </div>
+
+      <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix">subject</i>
+        <input id="position" name="position" type="text" class="validate" required>        
+        <label for="position">Enter Employee Position</label>
+      </div>
+
+      <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix">phone</i>
+        <input id="tell" name="tell" type="tel" class="validate" pattern="^\d{3}\d{4}$" required>
+        <label for="tell">Enter Employee Phone</label>
+      </div>
+
+      <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix">email</i>
+        <input id="email" name="email" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
+        <label for="email" data-error="Ex example@gmail.com">Enter Employee Email</label>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea id="bio" name="bio" class="materialize-textarea validate" required></textarea>
+        <label for="bio">Enter Employee Bio</label>
+      </div>
+           
+      <div class="row"></div>
+
+      <div class="center">
+        <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Employee<i class="material-icons right">cloud_upload</i></button> 
+      </div>   
+
+  </form>    
+</div>
+
+ --}}

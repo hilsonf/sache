@@ -29,7 +29,7 @@
     min-width: 80px;
 
     a {
-      color: $tabs-text-color;
+      color: $link-color;
       display: block;
       width: 100%;
       height: 100%;
@@ -45,6 +45,7 @@
       color: lighten($tabs-text-color, 20%);
       cursor: default;
     }
+    
   }
   .indicator {
     position: absolute;

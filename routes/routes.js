@@ -2,6 +2,7 @@ module.exports = function(app, passport, multer) {
 
 var manager = require('../models/manager');
 var email = require('../config/email');
+var employee = require('../models/employee');
 var moment = require('moment');
 var fs = require('fs');
 var tinify = require("tinify");
@@ -15,6 +16,10 @@ var upload = multer({storage: multer.diskStorage({
   }})})
 
 var multipleupload = upload.array('file');
+
+var employeeupload = upload.single('empImg');
+
+var employeeupdate = upload.single('updateempImg');
 
 function loggedIn(req, res, next){
     if(req.isAuthenticated()){
@@ -67,17 +72,38 @@ app.get('/bookapt', function (req, res) {
 })
 
 app.get('/stylists', function (req, res) {
-  res.render('stylists');
+  employee.allEmp(function(result){
+    var data = {employees: result};
+    res.render('stylists', data);
+   })
+  //res.render('stylists');
 })
 
 app.get('/pricelist', function (req, res) {
   res.render('pricelist');
 })
 
+app.get('/deleteEmployee/:id', function (req, res) {
+  var id = req.params.id;
+  if (id) {
+    employee.removeEmp(id)
+    req.flash('uploadMessage', '☺ Employee Sucessfull Removed!!');
+    res.redirect('/upload');  
+  }else{
+    req.flash('uploadMessage', '☹ Sorry Fail to remove Employee!!');
+    res.redirect('/upload');  
+  }
+})
+
 app.get('/upload',loggedIn, function (req, res) {
-  var message =  req.flash('uploadMessage');
-  var data    = {data:{message: message}};
-  res.render('upload', data);
+   employee.allEmp(function(result){
+
+    var message =  req.flash('uploadMessage');
+    var data    = {data:{message: message, employees: result}};
+    res.render('upload', data);
+
+   })
+  
 });
 
 
@@ -133,6 +159,30 @@ app.post('/uploadImages', multipleupload, function(req, res, next) {
     res.redirect('/upload');
   }
   
+});
+
+app.post('/employeeupload', employeeupload, function(req, res, next) {
+ var empImg = req.file;
+ if (empImg) {
+   employee.addEmp(req, res);
+   req.flash('uploadMessage', '☺ Employee Sucessfully Added!!');
+   res.redirect('/upload');
+ }else{
+   req.flash('uploadMessage', '☹ Sorry there was a problem adding the new employee!!');
+   res.redirect('/upload');
+ }
+})
+
+app.post('/updateEmployee/:id', employeeupdate, function(req, res){
+   employee.updateEmp(req, res, function(result){
+    if (result) {
+      req.flash('uploadMessage', '☺ Employee Sucessfully Updated!!');
+      res.redirect('/upload');
+    }else{
+      req.flash('uploadMessage', '☹ Sorry faild to Update Employee!!');
+      res.redirect('/upload');
+    }
+   })
 });
 
 app.post('/login',
