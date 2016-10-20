@@ -835,3 +835,29 @@ nav ul a span.badge {
   width:90px; 
   height:90px;
 }
+
+#back-to-top {
+    position: fixed;
+    bottom: 90px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #88AAA9;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+    
+    i {
+    top: 4px;
+    position: relative;
+    }
+}
+#back-to-top.show {
+    opacity: 1;
+}

@@ -91,3 +91,18 @@ function uploadVideo(){
       $('#video .btn-large').prop("disabled", true);
     }
 }
+
+// ===== Scroll to Top ==== 
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {         
+        $('#back-to-top').addClass('show').fadeIn(500);
+    } else {
+        $('#back-to-top').removeClass('show').fadeOut(500);
+    }
+});
+$('#back-to-top').click(function() {       
+    $('body,html').animate({
+        scrollTop : 0                      
+    }, 500);
+});
+

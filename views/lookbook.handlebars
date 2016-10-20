@@ -9,19 +9,245 @@
 <div class="row"></div>
 <div class="row"></div>
 
+<a href="#" id="back-to-top" title="Back to top"><i class="material-icons">arrow_upward</i></a>
+
+{{#sort data.gallery 'tape_extensions' 'Tape Extensions'}}{{/sort}}
+
+{{#sort data.gallery 'sewin_extensions' 'Sew In Extensions'}}{{/sort}}
+
+{{!-- {{#sort data.gallery 'malaysian_sewin' 'Malaysian Sew In'}}{{/sort}}
+
+{{#sort data.gallery 'bead_weft_extensions'  'Tape Extensions'}}{{/sort}}
+
+{{#sort data.gallery 'bead_strands' 'Bead Strands'}}{{/sort}}
+
+{{#sort data.gallery 'glue_caps' 'Glue Caps'}}{{/sort}}
+
+{{#sort data.gallery 'color_treatments'  'Color Treatments'}}{{/sort}}
+
+{{#sort data.gallery 'texture_reformation' 'Texture Reformation'}}{{/sort}}
+
+{{#sort data.gallery 'press_curl' 'Press Curl'}}{{/sort}}
+
+{{#sort data.gallery 'haircuts' 'Haircuts'}}{{/sort}}
+
+{{#sort data.gallery 'braids' 'Braids'}}{{/sort}} --}}
 
 
-<div class="row">
+
+
+{{!-- malaysian_sewin
+bead_weft_extensions
+bead_strands
+glue_caps
+colort_reatments
+texture_reformation
+press_curl
+haircuts
+braids --}}
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <div class="row">
 
 	<div class="container headings">
-	  <h2 class="center">Extenstions</h2>
+	  <h2 class="center">Tape Extensions</h2>
 	  <hr>
 	</div>
 
 	<div class="swap"><i class="material-icons">swap_horiz</i></div>
 	<div class="carousel">
 	{{#each data.gallery}}
-	{{#is this.category "extensions"}}
+	{{#is this.category "tape_extensions"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Sew In Extensions</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "sewin_extensions"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Malysian Sew In</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "malaysian_sewin"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Micro Beaded Weft Extensions</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "bead_weft_extensions"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Micro Bead Individual Strands</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "bead_strands"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Glue Caps</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "glue_caps"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Color Treatments</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "colort_reatments"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Texture Reformation</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "texture_reformation"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Press & Curl</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "press_curl"}}
+	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
+	{{/is}}
+	{{/each}}
+	</div>
+</div>
+
+
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+
+	<div class="container headings">
+	  <h2 class="center">Haircuts</h2>
+	  <hr>
+	</div>
+
+	<div class="swap"><i class="material-icons">swap_horiz</i></div>
+	<div class="carousel">
+	{{#each data.gallery}}
+	{{#is this.category "haircuts"}}
 	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
 	{{/is}}
 	{{/each}}
@@ -47,24 +273,4 @@
 	{{/is}}
 	{{/each}}
 	</div>
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
-
-<div class="row">
-
-	<div class="container headings">
-	  <h2 class="center">Sew In's</h2>
-	  <hr>
-	</div>
-
-	<div class="swap"><i class="material-icons">swap_horiz</i></div>
-	<div class="carousel">
-	{{#each data.gallery}}
-	{{#is this.category "sewin"}}
-	<a class="carousel-item" href="#!"><img src="{{this.imageUrl}}" alt="sache_gallery_images"></a>
-	{{/is}}
-	{{/each}}
-	</div>
-</div>
+</div> --}}
