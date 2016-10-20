@@ -32,9 +32,7 @@ helpers.sort = function(data, value, heading) {
 			'</div>'+
 			'<div class="row"></div>'+
 			'<div class="row"></div>';
-
 	return str;
-
 };
 
 
