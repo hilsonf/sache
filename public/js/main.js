@@ -69,7 +69,7 @@ function loadFile2(event)  {
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-$('#name,#subject,#email,#tell,#mymessage').on('change', checkForm);
+$('#senderName,#subject,#senderEmail,#senderTell,#senderMessage').on('change', checkForm);
 function checkForm(){
     valid = document.getElementById("message").checkValidity();
     if (valid == true){

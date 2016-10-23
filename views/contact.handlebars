@@ -104,8 +104,8 @@
 
     <div class="input-field col s12 m12 l6">
       <i class="material-icons prefix">account_circle</i>            
-      <input id="name" name="name" type="text" class="validate" required>
-      <label for="name">Enter Name</label>
+      <input id="senderName" name="senderName" type="text" class="validate" required>
+      <label for="senderName">Enter Name</label>
     </div>
 
     <div class="input-field col s12 m12 l6">
@@ -116,22 +116,21 @@
 
     <div class="input-field col s12 m12 l6">
       <i class="material-icons prefix">email</i>
-      <input id="email" name="email" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
-      <label for="email" data-error="Ex example@gmail.com">Enter Email</label>
+      <input id="senderEmail" name="senderEmail" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
+      <label for="senderEmail" data-error="Ex example@gmail.com">Enter Email</label>
     </div>
 
     <div class="input-field col s12 m6 l6">
       <i class="material-icons prefix">phone</i>
-      <input id="tell" name="tell" type="tel" class="validate" pattern="[0-9]{10}" required>
-      <label for="tell" data-error="Ex 3448896223">Enter Telephone</label>
+      <input id="senderTell" name="senderTell" type="tel" class="validate" pattern="[0-9]{10}" required>
+      <label for="senderTell" data-error="Ex 3448896223">Enter Telephone</label>
     </div>
 
     <div class="input-field col s12 m12 l12">
       <i class="material-icons prefix">mode_edit</i>
-      <textarea id="mymessage" name="mymessage" class="materialize-textarea validate" required></textarea>
-      <label for="mymessage">Enter Message</label>
+      <textarea id="senderMessage" name="senderMessage" class="materialize-textarea validate" required></textarea>
+      <label for="senderMessage">Enter Message</label>
     </div>
-
     <div class="row"></div>
 
     <button class="btn waves-effect waves-light right margin" type="submit" disabled>Send
