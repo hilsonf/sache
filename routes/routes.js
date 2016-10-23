@@ -6,7 +6,6 @@ var employee = require('../models/employee');
 var moment = require('moment');
 var fs = require('fs');
 var tinify = require("tinify");
-//tinify.key = "bmVqqx6M8VCKtpT7lPNx8jjOkH8-uGGU";
 tinify.key = "x89sve_Thw1Qaw5fmpC8FHyb6SgjcFii";
 
 var upload = multer({storage: multer.diskStorage({
@@ -76,7 +75,6 @@ app.get('/stylists', function (req, res) {
     var data = {employees: result};
     res.render('stylists', data);
    })
-  //res.render('stylists');
 })
 
 app.get('/pricelist', function (req, res) {
