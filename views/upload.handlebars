@@ -17,8 +17,8 @@
 
 <div class="row center">
 
-<div class="col s12 m12 l12 z-depth-1">
-  <ul class="tabs ">
+<div class="col s12 m12 l12">
+  <ul class="tabs z-depth-1">
     <li class="tab col s12 m4 l4"><a href="#galUpload">Gallery Upload</a></li>
     <li class="tab col s12 m4 l4"><a href="#vidUpload">Video Upload</a></li>
     <li class="tab col s12 m4 l4"><a href="#empUpload">Manage Employees</a></li>
@@ -151,7 +151,7 @@
       <span class="card-title activator grey-text text-darken-4">{{this.name}}<i class="material-icons right">more_vert</i></span>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{this.name}}<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4">Update {{this.name}}<i class="material-icons right">close</i></span>
 
       <div class="row"></div>
       <div class="row"></div>
@@ -202,7 +202,7 @@
         <div class="row"></div>
 
         <div class="center">
-          <button class="btn-large waves-effect waves-light" type="submit">Update Employee<i class="material-icons right">cloud_upload</i></button> 
+          <button class="btn-large waves-effect waves-light" type="submit">Update Employee<i class="material-icons right">change_history</i></button> 
         </div>   
         
       </form>
@@ -211,7 +211,7 @@
       <div class="row"></div>
 
       <div class="center">
-        <a class="btn-large waves-effect waves-light" href="/deleteEmployee/{{this._id}}">Delete Employee<i class="material-icons right">cloud_upload</i></a> 
+        <a class="btn-large waves-effect waves-light red" href="/deleteEmployee/{{this._id}}">Delete Employee<i class="material-icons right">delete</i></a> 
       </div>
 
       <div class="row"></div>
