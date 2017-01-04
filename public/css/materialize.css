@@ -3907,7 +3907,7 @@ form .margin {
 
 .modal.modal-fixed-footer {
   padding: 0;
-  height: 70%; }
+  height: 40%; }
   .modal.modal-fixed-footer .modal-content {
     position: absolute;
     height: calc(100% - 56px);

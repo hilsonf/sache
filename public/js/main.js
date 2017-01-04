@@ -56,6 +56,8 @@ $('select').material_select();
 //tabs
 $('ul.tabs').tabs();
 
+$('#notice').openModal();
+
 
 //load file when selected
 function loadFile(event)  {
@@ -120,8 +122,10 @@ function uploadVideo(){
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {         
         $('#back-to-top').addClass('show').fadeIn(500);
+
     } else {
         $('#back-to-top').removeClass('show').fadeOut(500);
+
     }
 });
 $('#back-to-top').click(function() {       
