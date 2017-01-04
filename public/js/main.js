@@ -6,6 +6,7 @@ if (location.hash) {
     $("nav ul li:nth-child(2)").addClass("active");
 }else if (currentLocation == '/') {
     $("nav ul li:nth-child(1)").addClass("active");
+    $('#notice').openModal();
 }else if (currentLocation == '/contact') {
     $("nav ul li:nth-child(3)").addClass("active");
 }else if (currentLocation == '/stylists') {
@@ -56,7 +57,7 @@ $('select').material_select();
 //tabs
 $('ul.tabs').tabs();
 
-$('#notice').openModal();
+
 
 
 //load file when selected
@@ -122,12 +123,11 @@ function uploadVideo(){
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {         
         $('#back-to-top').addClass('show').fadeIn(500);
-
     } else {
         $('#back-to-top').removeClass('show').fadeOut(500);
-
     }
 });
+
 $('#back-to-top').click(function() {       
     $('body,html').animate({
         scrollTop : 0                      
