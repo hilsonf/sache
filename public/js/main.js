@@ -6,7 +6,6 @@ if (location.hash) {
     $("nav ul li:nth-child(2)").addClass("active");
 }else if (currentLocation == '/') {
     $("nav ul li:nth-child(1)").addClass("active");
-    $('#notice').openModal();
 }else if (currentLocation == '/contact') {
     $("nav ul li:nth-child(3)").addClass("active");
 }else if (currentLocation == '/stylists') {
@@ -133,4 +132,14 @@ $('#back-to-top').click(function() {
         scrollTop : 0                      
     }, 500);
 });
+
+// ===== Notice Modal ==== 
+var executed = localStorage.getItem("executed");
+
+if (!executed) {
+  localStorage.setItem("executed", true);
+  $("#notice").openModal();
+}else{
+  $("#notice").closeModal();
+}
 
