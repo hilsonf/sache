@@ -8,6 +8,9 @@ var fs = require('fs');
 var tinify = require("tinify");
 tinify.key = "x89sve_Thw1Qaw5fmpC8FHyb6SgjcFii";
 
+var services = require('../public/serviceData.json');
+
+
 var upload = multer({storage: multer.diskStorage({
   destination: './uploads',
   filename: function (request, file, callback) {
@@ -78,7 +81,7 @@ app.get('/stylists', function (req, res) {
 })
 
 app.get('/pricelist', function (req, res) {
-  res.render('pricelist');
+  res.render('pricelist', services);
 })
 
 app.get('/deleteEmployee/:id', function (req, res) {

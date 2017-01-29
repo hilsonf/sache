@@ -1,0 +1,146 @@
+﻿{
+	"services":[
+		{"service": [
+				{"serviceName": "Bantu Knots", "servicePrice":"45.00"},
+				{"serviceName": "COILS/no shampoo/starting price", "servicePrice":"55.00"},
+				{"serviceName": "COILS/with shampoo", "servicePrice":"65.00"},
+				{"serviceName": "FINGER TWIST-no shampoo", "servicePrice":"70.00"},
+				{"serviceName": "KIDS-SHAMPOO BLOWDRY BRAID-SIMPLE", "servicePrice":"50.00"},
+				{"serviceName": "SIMPLE KIDS BRAIDS CONROW/no shampoo", "servicePrice":"35.00"},
+				{"serviceName": "TWO STRAND TWIST with shampoo", "servicePrice":"75.00"},
+				{"serviceName": "TWO STRAND-no shamp (without extensions)", "servicePrice":"65.00"}
+
+		],"name": "BRAIDING"},
+
+		{"service": [
+				{"serviceName": "BAYALAGE", "servicePrice":"110.00"},
+				{"serviceName": "COLOR RE-TOUCH", "servicePrice":"65.00"},
+				{"serviceName": "DEMI COLOR", "servicePrice":"65.00"},
+				{"serviceName": "DOUBLE COLOR OMBRE", "servicePrice":"125.00"},
+				{"serviceName": "DOUBLE PROCESS COLOR", "servicePrice":"125.00"},
+				{"serviceName": "FULL FOIL/highlight", "servicePrice":"100.00"},
+				{"serviceName": "OMBRE COLOR", "servicePrice":"75.00"},
+				{"serviceName": "PARTIAL FOIL/highlight", "servicePrice":"75.00"},
+				{"serviceName": "TRIPLE COLOR OMBRE", "servicePrice":"150.00"},
+				{"serviceName": "VIRGIN COLOR/MID BACK LENGTH", "servicePrice":"100.00"},
+				{"serviceName": "VIRGIN COLOR/SHOULDER LENGTH HAIR", "servicePrice":"85.00"},
+				{"serviceName": "WEAVE COLOR ADD ON PER BUNDLE", "servicePrice":"120.00"}
+		],"name": "COLOR TREATMENTS"},
+
+		{"service": [
+				{"serviceName": "BEADED WEFT FULL HEAD/no shampoo", "servicePrice":"110.00"},
+				{"serviceName": "BEADED WEFT PER TRACK", "servicePrice":"15.00"},
+				{"serviceName": "BEADED WEFT TIGHTEN PER TRACK", "servicePrice":"6.00"}
+				],"name": "BEADED WEFT INSTALLATION"},
+
+		{"service": [
+				{"serviceName": "BLOWDRY/regular", "servicePrice":"10.00"},
+				{"serviceName": "FINGER WAVES", "servicePrice":"45.00"},
+				{"serviceName": "HAIR & SCALP REJUVENATION TREATMENT", "servicePrice":"70.00"},
+				{"serviceName": "HYDRATING DEEP TREATMENT", "servicePrice":"10.00"},
+				{"serviceName": "NIOXIN SCALP TREATMENT & SHAMPOO", "servicePrice":"60.00"},
+				{"serviceName": "NIOXIN TREATMENT/ add on", "servicePrice":"15.00"},
+				{"serviceName": "OLAPLEX HAIR TREATMENT-SHAMPOO STYLE", "servicePrice":"70.00"},
+				{"serviceName": "PONYTAIL/ with shampoo", "servicePrice":"55.00"},
+				{"serviceName": "PRESS AND STYLE no shampoo", "servicePrice":"20.00"},
+				{"serviceName": "ROD SET", "servicePrice":"60.00"},
+				{"serviceName": "SHAMPOO & DEEP TREATMENT/ only", "servicePrice":"25.00"},
+				{"serviceName": "SHAMPOO BLOWDRY", "servicePrice":"25.00"},
+				{"serviceName": "SHAMPOO BLOWDRY STYLE", "servicePrice":"45.00"},
+				{"serviceName": "SHAMPOO MOLD STYLE", "servicePrice":"50.00"},
+				{"serviceName": "SHAMPOO PRESS CURL", "servicePrice":"45.00"},
+				{"serviceName": "SHAMPOO STYLE-WEAVE", "servicePrice":"55.00"},
+				{"serviceName": "SHAMPOO, ROLLER SET AND COMB-OUT", "servicePrice":"45.00"},
+				{"serviceName": "SHAPE UP & SHAMPOO", "servicePrice":"30.00"},
+				{"serviceName": "SILK WRAP", "servicePrice":"7.00"},
+				{"serviceName": "SPECIALTY UPDO", "servicePrice":"55.00"},
+				{"serviceName": "STYLE ONLY", "servicePrice":"20.00"},
+				{"serviceName": "THERAPEUTIC SCALP TREATMENT", "servicePrice":"15.00"},
+				{"serviceName": "WAND CURLS", "servicePrice":"25.00"},
+				{"serviceName": "WEAVE WASH/ tracks only", "servicePrice":"10.00"},
+				{"serviceName": "WIG SWITCH & SHAMPOO", "servicePrice":"50.00"},
+				{"serviceName": "WIG SWITCH NO SHAMPOO", "servicePrice":"25.00"}
+		],"name": "SHAMPOO BASICS"},
+
+		{"service": [
+				{"serviceName": "CROCHET BRAIDS", "servicePrice":"115.00"},
+				{"serviceName": "ROD SET ON HAVANA/ marley hair add on", "servicePrice":"35.00"}
+				],"name": "CROCHET BRAIDS"},
+
+		{"service": [
+				{"serviceName": "CLOSURE INSTALL", "servicePrice":"35.00"},
+				{"serviceName": "FULL SEW IN WITH CLOSURE/ no shampoo", "servicePrice":"125.00"},
+				{"serviceName": "FULL SEW IN WITH FRONTAL", "servicePrice":"150.00"},
+				{"serviceName": "FULL SEW-IN WITH NET/ no shampoo", "servicePrice":"110.00"},
+				{"serviceName": "FULL SEW-IN WITH/ no shampoo", "servicePrice":"105.00"},
+				{"serviceName": "GLUE CAPS/ no terra", "servicePrice":"85.00"},
+				{"serviceName": "HALF HEAD SEW-IN/ style", "servicePrice":"85.00"},
+				{"serviceName": "PARTIAL SEW IN WITH NET/ no shampoo", "servicePrice":"105.00"},
+				{"serviceName": "PARTIAL SEW IN/ no shampoo", "servicePrice":"100.00"},
+				{"serviceName": "SEW IN PER TRACK", "servicePrice":"12.00"},
+				{"serviceName": "TWO WAY SEW IN", "servicePrice":"120.00"},
+				{"serviceName": "VIXEN SEW IN/ select stylist only-call", "servicePrice":"150.00"},
+				{"serviceName": "WEAVE REMOVAL", "servicePrice":"20.00"},
+				{"serviceName": "WEAVE TIGHTEN no shampoo", "servicePrice":"40.00"}
+		],"name": "SEW IN WEAVE"},
+
+		{"service": [
+				{"serviceName": "CONSULTATION", "servicePrice":"20.00"},
+				{"serviceName": "TAPE EXTENSIONS", "servicePrice":"0.00"},				
+				{"serviceName": "MICRO LOOP EXTENSION ", "servicePrice":"0.00"}				
+				],"name": "CONSULTATION"},
+
+		{"service": [
+				{"serviceName": "CLOSURE FRONTAL CUSTOMIZATION/ no shampoo included", "servicePrice":"25.00"}
+				],"name": "SEW IN WEAVE"},
+
+		{"service": [
+				{"serviceName": "LOC EXTENSIONS", "servicePrice":"150.00"},
+				{"serviceName": "LOC MAINTENANCE/ large locs", "servicePrice":"80.00"},
+				{"serviceName": "LOC MAINTENENCE/ small/medium", "servicePrice":"100.00"}
+				],"name": "NATURAL STYLES"},
+
+		{"service": [
+				{"serviceName": "FUSION EXTENSIONS/ by consultation ", "servicePrice":"0.00"},
+				{"serviceName": "MICRO LINK EXTENSIONS/ by consultation", "servicePrice":"0.00"},
+				{"serviceName": "MICRO LINK/REFRESH/ by consultation", "servicePrice":"0.00"},
+				{"serviceName": "MICRO LOOP/REFRESH/ by consultation", "servicePrice":"0.00"},
+				{"serviceName": "MICRO RING EX. REMOVAL/ by consultation", "servicePrice":"0.00"}
+				],"name": "MICRO LOOP INDIVIDUAL STRAND EXTENSIONS"},
+
+		{"service": [
+				{"serviceName": "INDIVIDUAL GIFT CARD", "servicePrice":"0.00"}
+				],"name": "GIFT CARDS"},
+
+		{"service": [
+				{"serviceName": "HAIRCUT", "servicePrice":"20.00"},
+				{"serviceName": "SHAPEUP", "servicePrice":"10.00"},
+				{"serviceName": "TRIM", "servicePrice":"10.00"}
+				],"name": "HAIR CUTS"},
+
+		{"service": [
+				{"serviceName": "INDIVIDUAL EYELASH", "servicePrice":"20.00"},
+				{"serviceName": "LASH STRIP", "servicePrice":"15.00"}
+				],"name": "EYELASH"},
+
+		{"service": [
+				{"serviceName": "MALAYSIAN BRAIDLESS SEW-IN 1 ROW", "servicePrice":"20.00"},
+				{"serviceName": "MALAYSIAN BRAIDLESS SEW-IN 4 ROWS", "servicePrice":"80.00"},
+				{"serviceName": "MALAYSIAN BRAIDLESS SEW-IN 6 ROWS", "servicePrice":"120.00"}
+				],"name": "MALAYSIAN BRAIDLESS SEW IN"},
+
+		{"service": [
+				{"serviceName": "RELAXER RE-TOUCH", "servicePrice":"60.00"},
+				{"serviceName": "SENSITIVE SCALP RELAXER", "servicePrice":"75.00"},
+				{"serviceName": "TEXTURIZER", "servicePrice":"65.00"},
+				{"serviceName": "VIRGIN RELAXER", "servicePrice":"85.00"}
+				],"name": "RELAXER SERVICES"},
+
+		{"service": [
+				{"serviceName": "WAVE NOUVEAU", "servicePrice":"95.00"}
+				],"name": "PERMANENT WAVING"}
+
+
+
+	]
+}
