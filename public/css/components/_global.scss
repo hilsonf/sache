@@ -437,6 +437,11 @@ td, th{
   border-radius: 2px;
 }
 
+td{
+
+   width: 50%;
+}
+
 // Responsive Table
 @media #{$medium-and-down} {
 

@@ -16,7 +16,7 @@
   border-bottom: 1px solid $collapsible-border-color;
   font-weight: 600; 
 
-  i {
+  /*i {
     width: 2rem;
     font-size: 1.6rem;
     line-height: $collapsible-height;
@@ -24,7 +24,19 @@
     float: left;
     text-align: center;
     margin-right: 1rem;
+  }*/
+  span{
+    width: 80%;
   }
+  i {
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 0;
+    display: block;
+    text-align: center;
+    margin: -1.2rem 1rem 0rem 0rem;
+
+      }
 }
 
 .collapsible-body {
