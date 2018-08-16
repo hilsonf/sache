@@ -3,12 +3,14 @@ module.exports = function(app, passport, multer) {
 var manager = require('../models/manager');
 var email = require('../config/email');
 var employee = require('../models/employee');
+var service = require('../models/service');
+var category = require('../models/category');
 var moment = require('moment');
 var fs = require('fs');
 var tinify = require("tinify");
 tinify.key = "x89sve_Thw1Qaw5fmpC8FHyb6SgjcFii";
 
-var services = require('../public/serviceData.json');
+//var services = require('../public/serviceData.json');
 
 
 var upload = multer({storage: multer.diskStorage({
@@ -77,11 +79,14 @@ app.get('/stylists', function (req, res) {
   employee.allEmp(function(result){
     var data = {employees: result};
     res.render('stylists', data);
-   })
+  })
 })
 
 app.get('/pricelist', function (req, res) {
-  res.render('pricelist', services);
+  service.allServ(function(result){
+    var data = {services: result};
+    res.render('pricelist', data);
+  })
 })
 
 app.get('/deleteEmployee/:id', function (req, res) {
@@ -97,15 +102,39 @@ app.get('/deleteEmployee/:id', function (req, res) {
 })
 
 app.get('/upload',loggedIn, function (req, res) {
-   employee.allEmp(function(result){
-
-    var message =  req.flash('uploadMessage');
-    var data    = {data:{message: message, employees: result}};
-    res.render('upload', data);
-
-   })
-  
+  employee.allEmp(function(employees){
+    category.allCat(function(categories){
+      service.allServ(function(services){
+        var message =  req.flash('uploadMessage');
+        var data    = {data:{ message: message, employees: employees, categories: categories, services: services }};
+        res.render('upload', data);
+      })
+    })
+  })
 });
+
+app.get('/updateCategory/:id', function (req, res, next) {
+  category.findCat(req, res, function(result){
+    if (result) {
+        message =  req.flash('uploadMessage');
+        data = {data:{ message: message, category: result }};
+        res.render('category', data);
+    }
+  })
+})
+
+app.get('/updateService/:id', function (req, res, next) {
+  service.findServ(req, res, function(result){
+  category.allCat(function(categories){
+    if (result) {
+        message =  req.flash('uploadMessage');
+        data = {data:{ message: message, service: result, categories: categories }};
+        res.render('service', data);
+    }
+  })
+  })
+})
+
 
 
 
@@ -184,6 +213,52 @@ app.post('/updateEmployee/:id', employeeupdate, function(req, res){
       res.redirect('/upload');
     }
    })
+});
+
+app.post('/newservice', function(req, res){
+  if(req.body) {
+     service.addServ(req, res);
+     req.flash('uploadMessage', '☺ Service Sucessfully Added!!');
+     res.redirect('/upload');
+  }else{
+     req.flash('uploadMessage', '☹ Sorry there was a problem adding the new Service!!');
+     res.redirect('/upload');
+  }
+});
+
+app.post('/updateservice', function(req, res){
+  if (req.body.name) {
+     service.updateServ(req, res, function(result){
+      res.redirect(req.headers.referer);
+      req.flash('uploadMessage', '☺ Service Sucessfully Updated!!');
+     })
+  }else{
+     req.flash('uploadMessage', '☹ Sorry there was a problem updating your service!!');
+     res.redirect(req.headers.referer);
+  }
+});
+
+app.post('/newcategory', function(req, res){
+  if (req.body.name && req.body.price) {
+     category.addCat(req, res);
+     req.flash('uploadMessage', '☺ Category Sucessfully Added!!');
+     res.redirect('/upload');
+  }else{
+     req.flash('uploadMessage', '☹ Sorry there was a problem adding the new category!!');
+     res.redirect('/upload');
+  }
+});
+
+app.post('/updatecategory', function(req, res){
+  if (req.body.name && req.body.price) {
+     category.updateCat(req, res, function(result){
+        req.flash('uploadMessage', '☺ Category Sucessfully Updated!!');
+        res.redirect(req.headers.referer);
+     })
+  }else{
+     req.flash('uploadMessage', '☹ Sorry there was a problem updating your category!!');
+     res.redirect(req.headers.referer);
+  }
 });
 
 app.post('/login',

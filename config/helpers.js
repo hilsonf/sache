@@ -34,6 +34,3 @@ helpers.sort = function(data, value, heading) {
 			'<div class="row"></div>';
 	return str;
 };
-
-
-

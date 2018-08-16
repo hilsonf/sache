@@ -1,0 +1,40 @@
+<div class="row"></div>
+<div class="row"></div>
+
+<div class="row">
+  <div class="col s12 m12 l12">     
+    <a href="/upload" class="left"><i class="material-icons left">arrow_back_ios</i></a>
+  </div>
+  <div class="col s12 m12 l12 headings">
+    <h2 class="center">Update {{data.service.name}}</h2>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <form name="update_service" id="update_service" action="/updateservice" method="POST">
+
+    <div class="input-field col s12 m6 l6 push-m3 l6 push-l3">
+      <input id="name" name="name" type="text" class="validate" required value="{{data.service.name}}"> 
+      <label for="name">Enter Category Name</label>
+    </div>
+
+    <div class="input-field col s12 m12 l12">
+      <select id="category" name="category[]" class="validate" required multiple>
+        {{#each data.service.category}}
+        <option value="{{this.name}},{{this.price}}" selected>{{this.name}}</option>
+        {{/each}} 
+        {{#each data.categories}}
+        <option value="{{this.name}},{{this.price}}">{{this.name}}</option>
+        {{/each}}          
+      </select>        
+    </div> 
+
+    <input id="id" name="id" type="hidden" value="{{data.service._id}}" />    
+
+    <div class="center col s12 m12 l12">
+      <button class="btn-large waves-effect waves-light" type="submit">Add Category<i class="material-icons right">cloud_upload</i></button> 
+    </div>   
+
+  </form>
+</div>

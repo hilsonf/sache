@@ -1,0 +1,36 @@
+
+<div class="row"></div>
+<div class="row"></div>
+
+
+<div class="row">
+  <div class="col s12 m12 l12">     
+    <a href="/upload" class="left"><i class="material-icons left">arrow_back_ios</i></a>
+  </div>
+  <div class="col s12 m12 l12 headings">
+    <h2 class="center">Update {{data.category.name}}</h2>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <form name="update_category" id="update_category" action="/updatecategory" method="POST">
+
+    <div class="input-field col s12 m6 l6">
+      <input id="name" name="name" type="text" class="validate" required value="{{data.category.name}}"> 
+      <label for="name">Enter Category Name</label>
+    </div>
+
+    <div class="input-field col s12 m6 l6">
+      <input id="price" name="price" type="number" class="validate" required value="{{data.category.price}}">        
+      <label for="price">Enter Category Price</label>
+    </div>
+
+    <input id="id" name="id" type="hidden" value="{{data.category._id}}">        
+
+    <div class="center">
+      <button class="btn-large waves-effect waves-light" type="submit">Add Category<i class="material-icons right">cloud_upload</i></button> 
+    </div>   
+
+  </form>
+</div>
