@@ -1,25 +1,3 @@
-//Get Current Location
-var currentLocation = location.pathname;
-
- //Add Active Class on Tab
-if (location.hash) {
-    $("nav ul li:nth-child(2)").addClass("active");
-}else if (currentLocation == '/') {
-    $("nav ul li:nth-child(1)").addClass("active");
-}else if (currentLocation == '/contact') {
-    $("nav ul li:nth-child(3)").addClass("active");
-}else if (currentLocation == '/stylists') {
-    $("nav ul li:nth-child(4)").addClass("active");
-}else if (currentLocation == '/pricelist') {
-    $("nav ul li:nth-child(5)").addClass("active");
-}else if (currentLocation == '/lookbook' || currentLocation == '/videos') {
-   $("nav ul li:nth-child(6)").addClass("active");
-}else if (currentLocation == '/bookapt') {
-    $("nav ul li:nth-child(7)").addClass("active");
-}else if (currentLocation == '/upload') {
-    $("nav ul li:nth-child(8)").addClass("active");
-}
-
 //error slide up
 $('.error, .success').slideDown(2000).slideUp(6000);
 
@@ -76,7 +54,7 @@ $('#empImg,#name,#position,#bio,#tell,#email').on('change', function(){
   form_validate('employee');
 });
 
-$('#category,#file').on('change', function(){
+$('#imageUpload #service, #imageUpload #file').on('change', function(){
 var x = $('#category').val();
     if (x != '') {
       $('#imageUpload .select-dropdown').addClass("valid");
@@ -88,16 +66,16 @@ $('#videourl').on('change',function(){
   form_validate('video');
 });
 
-$('#service').on('change',function(){
-  form_validate('service');
+$('#new-service').on('change',function(){
+  form_validate('new-service');
 });
 
-$('#new_category').on('change',function(){
-  var x = $('#new_category #service').val();
+$('#new-category').on('change',function(){
+  var x = $('#new-category #service').val();
     if (x != '') {
-      $('#new_category .select-dropdown').addClass("valid");
+      $('#new-category .select-dropdown').addClass("valid");
     }
-    form_validate('new_category');
+    form_validate('new-category');
 });
 
 $('#update_category').change(function(){

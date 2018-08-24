@@ -9,6 +9,10 @@ module.exports = function(){
 		categories:      [{
 			type: Schema.Types.ObjectId,
 			ref: 'category'
+		}],
+		galleries:      [{
+			type: Schema.Types.ObjectId,
+			ref: 'gallery'
 		}]
 	});
 
@@ -21,15 +25,24 @@ module.exports = function(){
 			}else{
 				success(doc);
 			}
-		}).populate('categories')
+		}).populate(['categories', 'galleries'])
+	}
+
+	_allServiceGalleries = function(success){
+		_service.find({galleries: { $exists: true, $ne: [] }}, 
+			function(err, doc){
+				if(err){
+					fail(err);
+				}else{
+					success(doc);
+				}
+		}).populate('galleries').sort({createdAt: -1})
 	}
 
 	_addService = function (req, res, success){
-
 		var service = new _service({
 			name: req.body.name
 		})
-		// Save to Database
 		service.save(function(err, doc){
 			if (err) {
 				throw err;
@@ -60,10 +73,21 @@ module.exports = function(){
 		});
 	}
 
-
 	_updateService = function(req, res, success){
 		_service.update({_id: req.body.id},{$set:{
 			name: req.body.name
+		}}, function(err, doc){
+			if(err){
+				throw err;
+			}else{
+				success(doc);
+			}
+		})
+	}
+
+	_addGallery = function(req, res, gallery, success){	 
+		_service.update({_id: req.body.service},{$push:{
+			galleries: gallery._id
 		}}, function(err, doc){
 			if(err){
 				throw err;
@@ -97,6 +121,18 @@ module.exports = function(){
 		})
 	}
 
+	_updateGallery = function(req, res, gallery, success){
+		_service.update({galleries: gallery._id},{$pull:{ 
+			galleries: gallery._id
+		}}, function(err, doc){
+			if(err){
+				throw err;
+			}else{
+				success(doc);
+			}
+		})
+	}
+
 	_allExcept = function( result, success){
 		if (result.services[0] != undefined) {
 			_service.find( { name: { $ne: result.services[0].name }},function(err, doc){
@@ -119,12 +155,15 @@ module.exports = function(){
 
 	return {
 		allServ  				: _allServices,
+		allServGal  		: _allServiceGalleries,
 		addServ	    		: _addService,
 		removeServ  		: _removeService,
 		updateServ  		: _updateService, 
 		findServ    		: _find_oneService, 
 		addCategory 		: _addCategory,
+		addGallery 		  : _addGallery,
 		updateCategory 	: _updateCategory,
+		updateGallery   : _updateGallery,
 		allExcept  			: _allExcept
 	};
 

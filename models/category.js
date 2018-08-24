@@ -90,7 +90,7 @@ module.exports = function(){
 	_updateService = function(req, res, success){
 		_category.update({services: req.params.id},{$pull:{ 
 			services: req.params.id
-		}}, function(err, doc){
+		}}, { multi : true }, function(err, doc){
 			if(err){
 				throw err;
 			}else{
@@ -102,10 +102,10 @@ module.exports = function(){
 	return {
 		allCat  		: _allCategories,
 		addCat			: _addCategory,
-		removeCat 	: _removeCategory,
-		updateCat 	: _updateCategory, 
+		removeCat 		: _removeCategory,
+		updateCat 		: _updateCategory, 
 		findCat  		: _find_oneCategory,
-		updateServ	: _updateService
+		updateServ		: _updateService
 	};
 
 }();

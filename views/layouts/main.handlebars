@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
   <link rel="icon" type="image/png" sizes="32x32" href="/public/img/favicon.svg">
   <link rel="stylesheet" type="text/css" href="/public/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/public/css/toastr.css">
   <link rel="stylesheet" type="text/css" href="/public/css/materialize.css"  media="screen"/>
   <title>Sache Beauty Salon</title>
 </head>
@@ -23,16 +24,16 @@
 
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="/">HOME</a></li>
-      <li><a href="/#about">ABOUT US</a></li>
-      <li><a href="/contact">CONTACT</a></li>      
-      <li><a href="/stylists">STYLISTS</a></li>      
-      <li><a href="/pricelist">PRICE LIST</a></li>      
-      <li><a class="dropdown-button" href="#!" data-activates="gallery-desktop">GALLERY<i class="material-icons right">arrow_drop_down</i></a></li>
-      <li><a href="/bookapt">BOOK APPT</a></li>
+      <li {{#is page "home"}} class="active" {{/is}}><a href="/">HOME</a></li>
+      <li {{#is page "about"}} class="active" {{/is}}><a href="/#about">ABOUT US</a></li>
+      <li {{#is page "contact"}} class="active" {{/is}}><a href="/contact">CONTACT</a></li>      
+      <li {{#is page "stylists"}} class="active" {{/is}}><a href="/stylists">STYLISTS</a></li>      
+      <li {{#is page "pricelist"}} class="active" {{/is}}><a href="/pricelist">PRICE LIST</a></li>      
+      <li {{#is page "gallery"}} class="active" {{/is}}><a class="dropdown-button" href="#!" data-activates="gallery-desktop">GALLERY<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li {{#is page "gallery"}} class="active" {{/is}}><a href="/bookapt">BOOK APPT</a></li>
 
       {{#if user}}
-      <li><a href="/upload">MANAGER</a></li>
+      <li {{#is page "manager"}} class="active" {{/is}}><a href="/upload">MANAGER</a></li>
       <li><a href="/logout">LOGOUT</a></li> 
       {{/if}}
     </ul>
@@ -51,16 +52,16 @@
       </ul>
 
     <ul class="side-nav" id="mobile-demo"> 
-      <li><a href="/"><i class="material-icons prefix">home</i>HOME</a></li>      
-      <li><a href="/#about"><i class="material-icons">info</i>ABOUT US</a></li>
-      <li><a href="/contact"><i class="material-icons">contacts</i>CONTACT</a></li>
-      <li><a href="/stylists"><i class="material-icons">content_cut</i>STYLISTS</a></li>
-      <li><a href="/pricelist"><i class="material-icons">assignment</i>PRICE LIST</a></li>   
-      <li><a class="dropdown-button" href="#!" data-activates="gallery-mobile"><i class="material-icons">photo_library</i>GALLERY<i class="material-icons right">arrow_drop_down</i></a></li> 
-      <li><a href="/bookapt"><i class="material-icons">date_range</i>BOOK APPOINTMENT</a></li>
+      <li {{#is page "home"}} class="active" {{/is}}><a href="/"><i class="material-icons prefix">home</i>HOME</a></li>      
+      <li {{#is page "about"}} class="active" {{/is}}><a href="/#about"><i class="material-icons">info</i>ABOUT US</a></li>
+      <li {{#is page "contact"}} class="active" {{/is}}><a href="/contact"><i class="material-icons">contacts</i>CONTACT</a></li>
+      <li {{#is page "stylists"}} class="active" {{/is}}><a href="/stylists"><i class="material-icons">content_cut</i>STYLISTS</a></li>
+      <li {{#is page "pricelist"}} class="active" {{/is}}><a href="/pricelist"><i class="material-icons">assignment</i>PRICE LIST</a></li>   
+      <li {{#is page "gallery"}} class="active" {{/is}}><a class="dropdown-button" href="#!" data-activates="gallery-mobile"><i class="material-icons">photo_library</i>GALLERY<i class="material-icons right">arrow_drop_down</i></a></li> 
+      <li {{#is page "bookapt"}} class="active" {{/is}}><a href="/bookapt"><i class="material-icons">date_range</i>BOOK APPOINTMENT</a></li>
 
       {{#if user}}   
-      <li><a href="/upload"><i class="material-icons">supervisor_account</i>MANAGER</a></li>
+      <li {{#is page "manager"}} class="active" {{/is}}><a href="/upload"><i class="material-icons">supervisor_account</i>MANAGER</a></li>
       <li><a href="/logout"><i class="fa fa-sign-out material-icons" aria-hidden="true"></i>LOGOUT</a></li>
       {{/if}}
 
@@ -68,10 +69,6 @@
   </div>
 </nav>
 <!-- NAVIGATION -->
-
-{{#if data.message}}
-<div class="success"><span>{{data.message}}</span></div>
-{{/if}}
 
 <main>
 {{{body}}}
@@ -100,10 +97,16 @@
   <script type="text/javascript" src="/public/js/jquery.min.js"></script> 
   <!-- Materialize Js  -->
   <script type="text/javascript" src="/public/js/materialize.min.js"></script>
+  {{!-- Toastr --}}
+  <script type="text/javascript" src="/public/js/toastr.js"></script>
   <!-- Handlebars Js  -->  
   <script type="text/javascript" src="/public/js/handlebars.min.js"></script>
    <!-- Main Js  -->  
   <script type="text/javascript" src="/public/js/main.js"></script>
+
+  {{#if success_msg}}<script type="text/javascript">toastr.success('{{success_msg}}');</script> {{/if}}
+  {{#if error_msg}}<script type="text/javascript">toastr.success('{{error_msg}}');</script> {{/if}}
+  {{#if error}}<script type="text/javascript">toastr.success('{{error}}');</script> {{/if}}
 </body>
 </html>
 

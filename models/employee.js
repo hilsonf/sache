@@ -53,7 +53,7 @@ module.exports = function(){
 	}
 
 	_removeEmployee = function(req, res, success){
-		_emp.remove({_id: req.params.id},function(err, doc) {
+		_emp.findOneAndRemove({_id: req.params.id},function(err, doc) {
 			if (err) {
 				throw err;
 			}else{

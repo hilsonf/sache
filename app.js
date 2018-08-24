@@ -52,18 +52,15 @@ app.use(passport.session());
 
 //Global User
 app.use(function(req, res, next) {
-    res.locals.user = req.user;
-    if (!req.user)
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    next();
-});
-
-app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null
     if ( req.query._method == 'DELETE' ) {
         req.method = 'DELETE';
         req.url = req.path;
-    }       
-    next(); 
+    }  
+    next();     
 });
 
 //Routes
