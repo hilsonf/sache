@@ -107,13 +107,38 @@ module.exports = function(){
 		})
 	}
 
+	_find_oneGallery = function(req, res, success){
+		_gal.findOne({_id: req.params.id}, function(err, doc){
+			if(err){
+				throw err
+			}else{
+				success(doc);
+			}
+		}).populate('services');
+	}
+
+	_updateGallery = function(req, res, success){
+		_gal.findOneAndUpdate({_id: req.body.id},{$set:{
+			services: req.body.service
+		}}, function(err, doc){
+			if(err){
+				throw err
+			}else{
+				service.addGallery(req, res, doc, function(result){   					
+					success(doc);
+				}) 
+			}})
+	}
+
 
 	return {
 		addVideo  			    : _addVideo,
 		allVideos  			    : _allVideos,
-		missingGal  			: _missingServiceGalleries,
+		missingGal  			  : _missingServiceGalleries,
+		findGal             : _find_oneGallery,
 		addMultipleImages 	: _addMultipleImages,
 		removeGal           : _removeGallery,
+		updateGal           : _updateGallery,
 		updateServ          : _updateService
 	};
 

@@ -12,7 +12,7 @@
 </div>
 
 <div class="row">
-  <form name="update_service" id="update_service" action="/update-service" method="POST">
+  <form name="update-service" id="update-service" action="/update-service" method="POST">
 
     <div class="input-field col s12 m6 l6 push-m3 l6 push-l3">
       <input id="name" name="name" type="text" class="validate" required value="{{data.service.name}}"> 
@@ -22,7 +22,7 @@
     <input id="id" name="id" type="hidden" value="{{data.service._id}}" />    
 
     <div class="center col s12 m12 l12">
-      <button class="btn-large waves-effect waves-light" type="submit">Save Service<i class="material-icons right">cloud_upload</i></button> 
+      <button class="btn-large waves-effect waves-light" type="submit" disabled>Save Service<i class="material-icons right">cloud_upload</i></button> 
     </div>   
 
   </form>

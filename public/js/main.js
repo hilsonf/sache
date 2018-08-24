@@ -70,6 +70,10 @@ $('#new-service').on('change',function(){
   form_validate('new-service');
 });
 
+$('#update-service').on('change',function(){
+  form_validate('update-service');
+});
+
 $('#new-category').on('change',function(){
   var x = $('#new-category #service').val();
     if (x != '') {
@@ -78,13 +82,22 @@ $('#new-category').on('change',function(){
     form_validate('new-category');
 });
 
-$('#update_category').change(function(){
-  var x = $('#update_category #service').val();
+$('#update-category').change(function(){
+  var x = $('#update-category #service').val();
     if (x != '') {
-      $('#update_category .select-dropdown').addClass("valid");
+      $('#update-category .select-dropdown').addClass("valid");
     }
-  form_validate('update_category');
+  form_validate('update-category');
 });
+
+$('#update-gallery').change(function(){
+  var x = $('#update-gallery #service').val();
+    if (x != '') {
+      $('#update-gallery .select-dropdown').addClass("valid");
+    }
+  form_validate('update-gallery');
+});
+
 
 function form_validate(id){
     valid = document.getElementById(id).checkValidity();

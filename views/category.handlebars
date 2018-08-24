@@ -14,7 +14,7 @@
 </div>
 
 <div class="row">
-  <form name="update_category" id="update_category" action="/update-category" method="POST">
+  <form name="update-category" id="update-category" action="/update-category" method="POST">
 
     <div class="input-field col s12 m3 l3  push-l3">
       <input id="name" name="name" type="text" class="validate" required value="{{data.category.name}}"> 
@@ -43,7 +43,7 @@
     <input id="id" name="id" type="hidden" value="{{data.category._id}}">        
 
     <div class="center col s12 m12 l12">
-      <button class="btn-large waves-effect waves-light" type="submit">Save Category<i class="material-icons right">cloud_upload</i></button> 
+      <button class="btn-large waves-effect waves-light" type="submit" disabled>Save Category<i class="material-icons right">cloud_upload</i></button> 
     </div>   
 
   </form>

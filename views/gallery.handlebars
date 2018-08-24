@@ -1,0 +1,38 @@
+<div class="row"></div>
+<div class="row"></div>
+
+
+<div class="row">
+  <div class="col s12 m12 l12">     
+    <a href="/upload" class="left"><i class="material-icons left">arrow_back_ios</i></a>
+  </div>
+  <div class="col s12 m12 l12 headings">
+    <h2 class="center">Update Gallery</h2>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <form name="update-gallery" id="update-gallery" action="/update-gallery" method="POST">
+
+  	<div class="col sm12 m6 l6 push-m3 push-l3">
+  		<img src="/{{data.gallery.imageUrl}}" alt="sache_gallery_images" class="responsive-img">
+  	</div>
+
+    <div class="input-field col s12 m12 l8  push-l2">
+      <select id="service" name="service[]" class="validate" required>
+      	<option value="" disabled selected>Select Gallery Service</option>
+        {{#each data.services}} 
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}  
+      </select>        
+    </div>
+
+    <input id="id" name="id" type="hidden" value="{{data.gallery._id}}">        
+
+    <div class="center col s12 m12 l12">
+      <button class="btn-large waves-effect waves-light" type="submit" disabled>Save Gallery<i class="material-icons right">cloud_upload</i></button> 
+    </div>   
+
+  </form>
+</div>

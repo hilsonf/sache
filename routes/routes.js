@@ -124,6 +124,18 @@ module.exports = function(app, passport, multer) {
     })
   })
 
+  app.get('/update-gallery/:id', function (req, res) {
+    manager.findGal(req, res, function(gallery){  
+      service.allServ(function(services){
+        if (gallery && services) {
+          message =  req.flash('success_msg');
+          data = {data:{ message: message, gallery: gallery, services: services }};
+          res.render('gallery', data);
+        }
+      })
+    })
+  })
+
 
 
 
@@ -296,7 +308,7 @@ module.exports = function(app, passport, multer) {
       })
     }else{
       req.flash('error_msg', '☹ Sorry there was a problem deleting your category!!');
-      res.redirect(req.headers.referer);
+      res.redirect('/upload');
     }
   })
 
@@ -306,6 +318,18 @@ module.exports = function(app, passport, multer) {
         //remove image file
         fs.unlinkSync(result.imageUrl);
         req.flash('success_msg', '☺ Gallery Sucessfully Deleted!!');
+        res.redirect('/upload');
+      })
+    }else{
+      req.flash('error_msg', '☹ Sorry there was a problem deleting your gallery!!');
+      res.redirect('/upload');
+    }
+  })
+
+  app.post('/update-gallery', function(req, res){
+    if (req.body.id) {
+      manager.updateGal(req, res, function(result){
+        req.flash('success_msg', '☺ Gallery Sucessfully Updated!!');
         res.redirect('/upload');
       })
     }else{
