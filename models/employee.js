@@ -52,15 +52,13 @@ module.exports = function(){
   			});
 	}
 
-	_removeEmployee = function(id){
-
-		_emp.remove({_id: id}, function(err, doc) {
-	  	if (err) {
-	  		throw err;
-	  	}else{
-	  		console.log('Employee Deleted');
-	  	}
-
+	_removeEmployee = function(req, res, success){
+		_emp.remove({_id: req.params.id},function(err, doc) {
+			if (err) {
+				throw err;
+			}else{
+				success(doc);
+			}
 		});
 	}
 

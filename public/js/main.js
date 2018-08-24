@@ -79,7 +79,7 @@ $('#empImg,#name,#position,#bio,#tell,#email').on('change', function(){
 $('#category,#file').on('change', function(){
 var x = $('#category').val();
     if (x != '') {
-      $('.select-dropdown').addClass("valid");
+      $('#imageUpload .select-dropdown').addClass("valid");
     }
     form_validate('imageUpload');
 });
@@ -93,10 +93,18 @@ $('#service').on('change',function(){
 });
 
 $('#new_category').on('change',function(){
-  form_validate('new_category');
+  var x = $('#new_category #service').val();
+    if (x != '') {
+      $('#new_category .select-dropdown').addClass("valid");
+    }
+    form_validate('new_category');
 });
 
 $('#update_category').change(function(){
+  var x = $('#update_category #service').val();
+    if (x != '') {
+      $('#update_category .select-dropdown').addClass("valid");
+    }
   form_validate('update_category');
 });
 

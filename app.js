@@ -58,6 +58,14 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(function(req, res, next) {
+    if ( req.query._method == 'DELETE' ) {
+        req.method = 'DELETE';
+        req.url = req.path;
+    }       
+    next(); 
+});
+
 //Routes
 require('./routes/routes')(app, passport, multer);
 

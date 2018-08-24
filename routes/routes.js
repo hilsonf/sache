@@ -89,18 +89,6 @@ app.get('/pricelist', function (req, res) {
   })
 })
 
-app.get('/deleteEmployee/:id', function (req, res) {
-  var id = req.params.id;
-  if (id) {
-    employee.removeEmp(id)
-    req.flash('uploadMessage', '☺ Employee Sucessfull Removed!!');
-    res.redirect('/upload');  
-  }else{
-    req.flash('uploadMessage', '☹ Sorry Fail to remove Employee!!');
-    res.redirect('/upload');  
-  }
-})
-
 app.get('/upload',loggedIn, function (req, res) {
   employee.allEmp(function(employees){
     category.allCat(function(categories){
@@ -113,17 +101,17 @@ app.get('/upload',loggedIn, function (req, res) {
   })
 });
 
-app.get('/updateCategory/:id', function (req, res, next) {
-  category.findCat(req, res, function(result){
-    if (result) {
-        message =  req.flash('uploadMessage');
-        data = {data:{ message: message, category: result }};
-        res.render('category', data);
-    }
+app.get('/update-category/:id', function (req, res, next) {
+  category.findCat(req, res, function(category){  
+    service.allExcept(category, function(services){
+      message =  req.flash('uploadMessage');
+      data = {data:{ message: message, category: category, services: services }};
+      res.render('category', data);
+    })
   })
 })
 
-app.get('/updateService/:id', function (req, res, next) {
+app.get('/update-service/:id', function (req, res, next) {
   service.findServ(req, res, function(result){
   category.allCat(function(categories){
     if (result) {
@@ -191,7 +179,7 @@ app.post('/uploadImages', multipleupload, function(req, res, next) {
   
 });
 
-app.post('/employeeupload', employeeupload, function(req, res, next) {
+app.post('/employee-upload', employeeupload, function(req, res, next) {
  var empImg = req.file;
  if (empImg) {
    employee.addEmp(req, res);
@@ -203,7 +191,7 @@ app.post('/employeeupload', employeeupload, function(req, res, next) {
  }
 })
 
-app.post('/updateEmployee/:id', employeeupdate, function(req, res){
+app.post('/update-employee/:id', employeeupdate, function(req, res){
    employee.updateEmp(req, res, function(result){
     if (result) {
       req.flash('uploadMessage', '☺ Employee Sucessfully Updated!!');
@@ -215,18 +203,31 @@ app.post('/updateEmployee/:id', employeeupdate, function(req, res){
    })
 });
 
-app.post('/newservice', function(req, res){
+app.delete('/delete-employee/:id', function (req, res) {
+  if (req.params.id) {
+    employee.removeEmp(req, res, function(result){
+        req.flash('uploadMessage', '☺ Employee Sucessfull Removed!!');
+        res.redirect('/upload'); 
+    }) 
+  }else{
+    req.flash('uploadMessage', '☹ Sorry Fail to remove Employee!!');
+    res.redirect('/upload');  
+  }
+})
+
+app.post('/new-service', function(req, res){
   if(req.body) {
-     service.addServ(req, res);
-     req.flash('uploadMessage', '☺ Service Sucessfully Added!!');
-     res.redirect('/upload');
+     service.addServ(req, res, function(result){
+        req.flash('uploadMessage', '☺ Service Sucessfully Added!!');
+        res.redirect('/upload');
+     });
   }else{
      req.flash('uploadMessage', '☹ Sorry there was a problem adding the new Service!!');
      res.redirect('/upload');
   }
 });
 
-app.post('/updateservice', function(req, res){
+app.post('/update-service', function(req, res){
   if (req.body.name) {
      service.updateServ(req, res, function(result){
       res.redirect(req.headers.referer);
@@ -238,18 +239,33 @@ app.post('/updateservice', function(req, res){
   }
 });
 
-app.post('/newcategory', function(req, res){
+app.delete('/delete-service/:id', function(req, res){
+  if (req.params.id) {
+    service.removeServ(req, res, function(result){
+      category.updateServ(req,res, function(results){
+        req.flash('uploadMessage', '☺ Service Sucessfully Deleted!!');
+        res.redirect('/upload');
+      })
+    })
+  }else{
+      req.flash('uploadMessage', '☹ Sorry there was a problem deleting this service');
+      res.redirect('/upload');
+  }
+})
+
+app.post('/new-category', function(req, res){
   if (req.body.name && req.body.price) {
-     category.addCat(req, res);
-     req.flash('uploadMessage', '☺ Category Sucessfully Added!!');
-     res.redirect('/upload');
+     category.addCat(req, res, function(result){
+       req.flash('uploadMessage', '☺ Category Sucessfully Added!!');
+       res.redirect('/upload');
+     })
   }else{
      req.flash('uploadMessage', '☹ Sorry there was a problem adding the new category!!');
      res.redirect('/upload');
   }
 });
 
-app.post('/updatecategory', function(req, res){
+app.post('/update-category', function(req, res){
   if (req.body.name && req.body.price) {
      category.updateCat(req, res, function(result){
         req.flash('uploadMessage', '☺ Category Sucessfully Updated!!');
@@ -260,6 +276,18 @@ app.post('/updatecategory', function(req, res){
      res.redirect(req.headers.referer);
   }
 });
+
+app.delete('/delete-category/:id', function(req, res){
+  if (req.params.id) {
+    category.removeCat(req, res, function(result){
+      req.flash('uploadMessage', '☺ Category Sucessfully Deleted!!');
+      res.redirect('/upload');
+    })
+  }else{
+     req.flash('uploadMessage', '☹ Sorry there was a problem deleting your category!!');
+     res.redirect(req.headers.referer);
+  }
+})
 
 app.post('/login',
   passport.authenticate("local", {

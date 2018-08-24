@@ -138,7 +138,7 @@
     <h2 class="center">Employees</h2>
     <hr>
   </div>
-  {{ data }}
+
   <div class="row">
     {{#each data.employees}}
     <div class="col s12 m6 l4">
@@ -156,7 +156,7 @@
         <div class="row"></div>
         <div class="row"></div>
 
-        <form name="" id="" enctype="multipart/form-data" action="/updateEmployee/{{this._id}}" method="POST">
+        <form name="" id="" enctype="multipart/form-data" action="/update-employee/{{this._id}}" method="POST">
 
           <div class="file-field col s12 m12 l12">
             <div class="btn">
@@ -211,7 +211,7 @@
         <div class="row"></div>
 
         <div class="center">
-          <a class="btn-large waves-effect waves-light red" href="/deleteEmployee/{{this._id}}">Delete Employee<i class="material-icons right">delete</i></a> 
+          <a class="btn-large waves-effect waves-light red" href="/delete-employee/{{this._id}}?_method=DELETE">Delete Employee<i class="material-icons right">delete</i></a> 
         </div>
 
         <div class="row"></div>
@@ -239,7 +239,7 @@
 
 <div class="row">
 
-  <form name="employee" id="employee" enctype="multipart/form-data" action="/employeeupload" method="POST">
+  <form name="employee" id="employee" enctype="multipart/form-data" action="/employee-upload" method="POST">
 
     <div class="col s12 m12 l12 center">
       <img id="empPic"/>
@@ -312,21 +312,22 @@
     <hr>
   </div>
 
-  <form name="service" id="service" action="/newservice" method="POST">
+  <form name="service" id="service" action="/new-service" method="POST">
 
     <div class="input-field center col s12 m6 push-m3 l6 push-l3">
       <input id="name" name="name" type="text" class="validate" required>        
       <label for="name">Enter Service Name</label>
     </div>
 
-    <div class="input-field col s12 m12 l12">
+    {{!-- <div class="input-field col s12 m12 l12">
       <select id="category" name="category" class="validate" required multiple>
         <option value="" disabled selected>Select Image Category</option>
         {{#each data.categories}}
         <option value="{{this.name}},{{this.price}}">{{this.name}}</option>
         {{/each}}       
       </select>        
-    </div>
+    </div> --}}
+
 
     <div class="center col s12 m12 l12">
       <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Service<i class="material-icons right">cloud_upload</i></button> 
@@ -356,13 +357,13 @@
           <tr>
             <td> {{this.name}} </td>
             <td>
-            {{#each category}}
+            {{#each categories}}
              {{this.name}} |
             {{/each}}
             </td> 
             <td> 
-            <a class="btn-large waves-effect waves-light" href="/updateService/{{this._id}}"> Update Category </a> 
-            <a class="btn-large waves-effect waves-light red" href="/deleteService/{{this._id}}"> Delete Category </a>
+            <a class="btn-large waves-effect waves-light" href="/update-service/{{this._id}}"> Update Category </a> 
+            <a class="btn-large waves-effect waves-light red" href="/delete-service/{{this._id}}?_method=DELETE"> Delete Category </a>
           </td>
           </tr>
         {{/each}}
@@ -385,7 +386,7 @@
   </div>
 
   <div class="row">
-    <form name="category" id="new_category" action="/newcategory" method="POST">
+    <form name="category" id="new_category" action="/new-category" method="POST">
 
       <div class="input-field col s12 m6 l6">
         <input id="name" name="name" type="text" class="validate" required>        
@@ -395,6 +396,15 @@
       <div class="input-field col s12 m6 l6">
         <input id="price" name="price" type="number" class="validate" required>        
         <label for="price">Enter Category Price</label>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <select id="service" name="service[]" class="validate" required>
+          <option value="" disabled selected>Select Image Category</option>
+          {{#each data.services}}
+          <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}       
+        </select>        
       </div>
 
       <div class="center">
@@ -427,10 +437,10 @@
           <td>{{this.name}}</td> 
           <td>{{this.price}}</td>
           <td> 
-            <a class="btn-large waves-effect waves-light" href="/updateCategory/{{this._id}}"> Update Category </a> 
-            <a class="btn-large waves-effect waves-light red" href="/deleteCategory/{{this._id}}"> Delete Category </a>
+            <a class="btn-large waves-effect waves-light" href="/update-category/{{this._id}}"> Update Category </a> 
+            <a class="btn-large waves-effect waves-light red" href="/delete-category/{{this._id}}?_method=DELETE"> Delete Category </a>
           </td>
-        </tr>
+        </tr>        
         {{/each}}
       </tbody>
     </table>
@@ -438,172 +448,3 @@
 
 </div>
 {{!-- Tab --}}
-
-
-
-
-
-
-
-
-
-
-{{!-- <div class="row"></div>
-<div class="row"></div>
-
-<div class="container headings">
-<h2 class="center">Multiple Image Upload</h2>
-<hr>
-</div>
-
-<div class="row">
-<div class="col s12 m12 l12">
-<form name="imageUpload" id="imageUpload" enctype="multipart/form-data" action="/uploadImages" method="POST">
-  <div class="input-field col s12 m12 l12">
-        <i class="material-icons prefix">image</i>
-        <select id="category" name="category" class="validate" required>
-          <option value="" disabled selected>Select Image Category</option>
-          <option value="tape_extensions" data-icon="public/img/extensions.jpg" class="circle">Tape Extensions</option>
-          <option value="sewin_extensions" data-icon="public/img/sewin.jpg" class="circle">Sewin Extensions</option>  
-          <option value="malaysian_sewin" data-icon="" class="circle">Malaysian Sew In</option>  
-          <option value="bead_weft_extensions" data-icon="" class="circle">Micro Beaded Weft Extensions</option>  
-          <option value="bead_strands" data-icon="" class="circle">Micro Bead Individual Strands</option>  
-          <option value="glue_caps" data-icon="" class="circle">Glue Caps</option>
-          <option value="color_treatments" data-icon="" class="circle">Color Treatments</option>
-          <option value="texture_reformation" data-icon="" class="circle">Texture Reformation</option>
-          <option value="press_curl" data-icon="" class="circle">Press & Curl</option>
-          <option value="haircuts" data-icon="" class="circle">Haircuts</option>
-          <option value="braids" data-icon="" class="circle">Braids</option>
-        </select>        
-  </div>
-  <div class="row"></div>
-  <div class="row"></div>
-
-  <div class="file-field col s12 m12 l12">
-      <div class="btn">
-        <span>Select Files</span>
-        <input type="file" name="file" id="file" onchange="loadFile(event)" class="validate" required multiple>
-      </div>
-
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-  </div>
-
-  <div class="col s12 m12 l12 center">
-  <img id="pics"/>
-  </div>
-
-
-  <div class="row"></div>
-
-  <div class="center">
-  <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Images<i class="material-icons right">cloud_upload</i></button> 
-  </div>
-
-</form>
-</div>
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="divider"></div>
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-
-<div class="container headings">
-<h2 class="center">Upload Video</h2>
-<hr>
-</div>
-
-<div class="row">
-<div class="col s12 m12 l12">
-  <form name="video" id="video" class="col s12 m12 l12" action="/addVideo" method="POST">
-    <div class="input-field col s12 m12 l12">
-      <i class="fa fa-link prefix" aria-hidden="true"></i>
-      <input id="videourl" name="videourl" type="text" class="validate" pattern="^(http(s)?:\/\/)?youtu(be|.be)?(\.com)?\/.+" required>
-      <label for="videourl" data-error="Ex https://youtu.be/oz77z9xnb_8">Enter Youtube URL</label>
-
-     </div>
-    <div class="row"></div>
-    <div class="center">
-      <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Video<i class="material-icons right">cloud_upload</i></button>     
-    </div>
-  </form>
-</div>
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="divider"></div>
-
-
-<div class="row">
-
-  <form name="employee" id="employee" enctype="multipart/form-data" action="/employeeupload" method="POST">
-      
-      <div class="col s12 m12 l12 center">
-        <img id="empPic"/>
-      </div>
-
-      <div class="file-field col s12 m12 l12">
-        
-        <div class="btn">
-          <span>Employee Photo</span>
-          <input type="file" name="empImg" id="empImg" onchange="loadFile2(event)" class="validate" required multiple>
-        </div>
-
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
-
-      </div>
-
-      
-
-    
-
-      <div class="input-field col s12 m6 l6">
-        <i class="material-icons prefix">subject</i>
-        <input id="name" name="name" type="text" class="validate" required>        
-        <label for="name">Enter Employee Name</label>
-      </div>
-
-      <div class="input-field col s12 m6 l6">
-        <i class="material-icons prefix">subject</i>
-        <input id="position" name="position" type="text" class="validate" required>        
-        <label for="position">Enter Employee Position</label>
-      </div>
-
-      <div class="input-field col s12 m6 l6">
-        <i class="material-icons prefix">phone</i>
-        <input id="tell" name="tell" type="tel" class="validate" pattern="^\d{3}\d{4}$" required>
-        <label for="tell">Enter Employee Phone</label>
-      </div>
-
-      <div class="input-field col s12 m6 l6">
-        <i class="material-icons prefix">email</i>
-        <input id="email" name="email" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
-        <label for="email" data-error="Ex example@gmail.com">Enter Employee Email</label>
-      </div>
-
-      <div class="input-field col s12 m12 l12">
-        <i class="material-icons prefix">mode_edit</i>
-        <textarea id="bio" name="bio" class="materialize-textarea validate" required></textarea>
-        <label for="bio">Enter Employee Bio</label>
-      </div>
-           
-      <div class="row"></div>
-
-      <div class="center">
-        <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Employee<i class="material-icons right">cloud_upload</i></button> 
-      </div>   
-
-  </form>    
-</div>
-
- --}}

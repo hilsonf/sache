@@ -14,22 +14,36 @@
 </div>
 
 <div class="row">
-  <form name="update_category" id="update_category" action="/updatecategory" method="POST">
+  <form name="update_category" id="update_category" action="/update-category" method="POST">
 
-    <div class="input-field col s12 m6 l6">
+    <div class="input-field col s12 m3 l3  push-l3">
       <input id="name" name="name" type="text" class="validate" required value="{{data.category.name}}"> 
       <label for="name">Enter Category Name</label>
     </div>
 
-    <div class="input-field col s12 m6 l6">
+    <div class="input-field col s12 m3 l3  push-l3">
       <input id="price" name="price" type="number" class="validate" required value="{{data.category.price}}">        
       <label for="price">Enter Category Price</label>
     </div>
 
+    <div class="input-field col s12 m12 l8  push-l2">
+      <select id="service" name="service[]" class="validate" required>
+        <option value="" disabled selected>Select Image Category</option>
+        {{#each data.category.services}}
+        <option value="{{this._id}}" selected>{{this.name}}</option>
+        {{/each}}  
+
+        {{#each data.services}} 
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}  
+
+      </select>        
+    </div>
+
     <input id="id" name="id" type="hidden" value="{{data.category._id}}">        
 
-    <div class="center">
-      <button class="btn-large waves-effect waves-light" type="submit">Add Category<i class="material-icons right">cloud_upload</i></button> 
+    <div class="center col s12 m12 l12">
+      <button class="btn-large waves-effect waves-light" type="submit">Edit Category<i class="material-icons right">cloud_upload</i></button> 
     </div>   
 
   </form>
