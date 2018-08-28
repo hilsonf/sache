@@ -25,7 +25,7 @@ module.exports = function(){
 			}else{
 				success(doc);
 			}
-		}).populate(['categories', 'galleries'])
+		}).populate(['categories', 'galleries']).sort({ 'name': 1 })
 	}
 
 	_allServiceGalleries = function(success){

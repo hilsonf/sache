@@ -23,7 +23,7 @@ module.exports = function(){
 			}else{
 				success(doc);
 			}
-		}).populate('services');
+		}).populate('services').sort({ 'name': 1 });
 	}
 
 	_addCategory = function (req, res, success){
