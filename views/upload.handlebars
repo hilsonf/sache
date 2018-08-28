@@ -1,9 +1,5 @@
 <div class="row"></div>
 
-{{#if data.message}}
-<div class="success"><span>{{data.message}}</span></div>
-{{/if}}
-
 <div class="container headings">
   <h1>Manage Content</h1>
   <i class="large material-icons">file_upload</i>
@@ -17,81 +13,140 @@
 
 <div class="row center">
 
-<div class="col s12 m12 l12">
-  <ul class="tabs z-depth-1">
-    <li class="tab col s12 m4 l4"><a href="#galUpload">Gallery Upload</a></li>
-    <li class="tab col s12 m4 l4"><a href="#vidUpload">Video Upload</a></li>
-    <li class="tab col s12 m4 l4"><a href="#empUpload">Manage Employees</a></li>
-  </ul>
-</div>
-
-{{!-- Tab --}}
-<div id="galUpload" class="col s12">    
-
-  <div class="row"></div>
-  <div class="row"></div>
-
-  <div class="container headings">
-    <h2 class="center">Gallery Upload</h2>
-    <hr>
+  <div class="col s12 m12 l12">
+    <ul class="tabs z-depth-1">
+      <li class="tab col s12 m4 l2"><a href="#galUpload">Gallery Upload</a></li>
+      <li class="tab col s12 m4 l2"><a href="#vidUpload">Video Upload</a></li>
+      <li class="tab col s12 m4 l2"><a href="#empUpload">Manage Employees</a></li>
+      <li class="tab col s12 m4 l2"><a href="#services">Manage Services</a></li>
+      <li class="tab col s12 m4 l2"><a href="#categories">Manage Categories</a></li>
+    </ul>
   </div>
 
-  <div class="row">
-    <div class="col s12 m12 l12">
-      <form name="imageUpload" id="imageUpload" enctype="multipart/form-data" action="/uploadImages" method="POST">
-        
-  
-        <div class="col s12 m12 l12 center">
-          <img id="pics"/>
-        </div>
+  {{!-- Tab --}}
+  <div id="galUpload" class="col s12">    
 
-        <div class="file-field col s12 m12 l12">
-          <div class="btn">
-            <span>Select Images</span>
-            <input type="file" name="file" id="file" onchange="loadFile(event)" class="validate" required multiple>
+    <div class="row"></div>
+    <div class="row"></div>
+
+    <div class="container headings">
+      <h2 class="center">Gallery Upload</h2>
+      <hr>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <form name="imageUpload" id="imageUpload" enctype="multipart/form-data" action="/uploadImages" method="POST">
+
+          <div class="col s12 m12 l12 center">
+            <img id="pics"/>
           </div>
 
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
+          <div class="file-field col s12 m6 push-m3 l6 push-l3">
+            <div class="btn">
+              <span>Select Images</span>
+              <input type="file" name="file" id="file" onchange="loadFile(event)" class="validate" required multiple>
+            </div>
+
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
           </div>
-        </div>
 
 
-        <div class="row"></div>
-        <div class="row"></div>
+          <div class="row"></div>
+          <div class="row"></div>
 
-        <div class="input-field col s12 m12 l12">
-          {{!-- <i class="material-icons medium">image</i> --}}
-          <select id="category" name="category" class="validate" required>
-            <option value="" disabled selected>Select Image Category</option>
-            <option value="micro_bead_extensions" data-icon="public/img/extensions.jpg" class="circle">Micro Bead Extensions</option>
-            <option value="braids" data-icon="public/img/braids.png" class="circle">Braids</option>
-            <option value="bead_weft_extensions" data-icon="public/img/weft.jpg" class="circle">Beaded Weft Extensions</option>  
-            <option value="malaysian_sewin" data-icon="public/img/sewin.jpg" class="circle">Malaysian Sew In</option>  
-
-            {{!-- <option value="sewin_extensions" data-icon="" class="circle">Sewin Extensions</option>  
-            <option value="bead_strands" data-icon="" class="circle">Micro Bead Individual Strands</option>  
-            <option value="glue_caps" data-icon="" class="circle">Glue Caps</option>
-            <option value="color_treatments" data-icon="" class="circle">Color Treatments</option>
-            <option value="texture_reformation" data-icon="" class="circle">Texture Reformation</option>
-            <option value="press_curl" data-icon="" class="circle">Press & Curl</option>
-            <option value="haircuts" data-icon="" class="circle">Haircuts</option> --}}
-            
-          </select>        
-        </div>
+          <div class="input-field col s12 m6 push-m3 l6 push-l3">
+            <select id="service" name="service[]" class="validate" required>
+              <option value="" disabled selected>Select Image Service</option>
+              {{#each data.services}}
+              <option value="{{this._id}}">{{this.name}}</option>
+              {{/each}}       
+            </select>        
+          </div>
 
         <div class="row"></div>
 
         <div class="center">
-          <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Images<i class="material-icons right">cloud_upload</i></button> 
+          <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Gallery Images<i class="material-icons right">cloud_upload</i></button> 
         </div>
 
       </form>
     </div>
   </div>
 
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>VIEW GALLERIES</span>
+      </div>
+      <div class="collapsible-body">
+
+        {{#each data.services}}
+        <table class="centered striped responsive-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <h2>{{this.name}}</h2>
+            </tr>
+            {{#each this.galleries}}
+            <tr>
+              <td>
+                <img src="{{this.imageUrl}}" alt="sache_gallery_images" width="100" height="100">
+              </td> 
+              <td> 
+                <a class="btn-large waves-effect waves-light red" href="/delete-gallery/{{this._id}}?_method=DELETE"> Delete Gallery Image</a>
+              </td>
+            </tr>   
+            {{/each}} 
+          </tbody>
+        </table>
+        <div class="row"></div>
+        <div class="row"></div>
+        {{/each}}
+
+        {{#if data.missing_galleries}}
+        <table class="centered striped responsive-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <h2>Galleries Missing Services</h2>
+            </tr>
+            {{#each data.missing_galleries}}
+            <tr>
+              <td>
+                <img src="{{this.imageUrl}}" alt="sache_gallery_images" width="100" height="100">
+              </td> 
+              <td> 
+                <a class="btn-large waves-effect waves-light" href="/update-gallery/{{this._id}}"> Update Gallery</a>
+                <a class="btn-large waves-effect waves-light red" href="/delete-gallery/{{this._id}}?_method=DELETE"> Delete Gallery Image</a>
+              </td>
+            </tr>   
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+
+      </div>
+    </li>
+  </ul>
+
 </div>{{!-- Tab --}}
-  
+
 
 {{!-- Next Tab --}}
 <div id="vidUpload" class="col s12">
@@ -107,7 +162,7 @@
   <div class="row">
     <div class="col s12 m12 l12">
       <form name="video" id="video" class="col s12 m12 l12" action="/addVideo" method="POST">
-        <div class="input-field col s12 m12 l12">
+        <div class="input-field col s12 m6 push-m3 l6 push-l3">
           <i class="fa fa-link prefix" aria-hidden="true"></i>
           <input id="videourl" name="videourl" type="text" class="validate" pattern="^(http(s)?:\/\/)?youtu(be|.be)?(\.com)?\/.+" required>
           <label for="videourl" data-error="Ex https://youtu.be/oz77z9xnb_8">Enter Youtube URL</label>
@@ -115,7 +170,7 @@
         </div>
         <div class="row"></div>
         <div class="center">
-          <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Video<i class="material-icons right">cloud_upload</i></button>     
+          <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Video<i class="material-icons right">cloud_upload</i></button>     
         </div>
       </form>
     </div>
@@ -128,306 +183,30 @@
 
 {{!-- Next Tab --}}
 <div id="empUpload" class="col s12">
-  
-<div class="row"></div>
-<div class="row"></div>
 
 
-
-
-
-<div class="container headings">
-  <h2 class="center">Employees</h2>
-  <hr>
-</div>
-
-<div class="row">
-{{#each data.employees}}
-  <div class="col s12 m6 l4">
-
-  <div class="card medium">
-    <div class="card-image waves-effect waves-block waves-light">
-     <img class="activator" src="/{{this.imageUrl}}" alt="sache_stylist">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{this.name}}<i class="material-icons right">more_vert</i></span>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Update {{this.name}}<i class="material-icons right">close</i></span>
-
-      <div class="row"></div>
-      <div class="row"></div>
-
-      <form name="" id="" enctype="multipart/form-data" action="/updateEmployee/{{this._id}}" method="POST">
-
-      <div class="file-field col s12 m12 l12">
-        <div class="btn">
-          <span>Update Photo</span>
-          <input type="file" name="updateempImg" id="updateempImg" class="validate">
-        </div>
-
-        <div class="file-path-wrapper">
-          <input type="text" class="file-path validate" name="oldempImg" id="oldempImg" value="{{this.imageUrl}}">
-        </div>
-      </div>
-
-        <div class="input-field col s12 m12 l12">
-          <i class="material-icons prefix">subject</i>
-          <input id="updatename" name="updatename" type="text" class="validate" required value="{{this.name}}">        
-          <label for="updatename">Enter Employee Name</label>
-        </div>
-
-        <div class="input-field col s12 m12 l12">
-          <i class="material-icons prefix">subject</i>
-          <input id="updateposition" name="updateposition" type="text" class="validate" required value="{{this.position}}">        
-          <label for="updateposition">Enter Employee Position</label>
-        </div>
-
-        <div class="input-field col s12 m12 l12">
-          <i class="material-icons prefix">phone</i>
-          <input id="updatetell" name="updatetell" type="tel" class="validate" pattern="[0-9]{10}" required value="{{this.tell}}">
-          <label for="updatetell">Enter Employee Phone</label>
-        </div>
-
-        <div class="input-field col s12 m12 l12">
-          <i class="material-icons prefix">email</i>
-          <input id="updateemail" name="updateemail" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required value="{{this.email}}">
-          <label for="updateemail" data-error="Ex example@gmail.com">Enter Employee Email</label>
-        </div>
-
-        <div class="input-field col s12 m12 l12">
-          <i class="material-icons prefix">mode_edit</i>
-          <input id="updatebio" name="updatebio" type="text" class="validate" required value="{{this.bio}}">
-          <label for="updatebio">Enter Employee Email</label>
-        </div>
-
-        <div class="row"></div>
-
-        <div class="center">
-          <button class="btn-large waves-effect waves-light" type="submit">Update Employee<i class="material-icons right">change_history</i></button> 
-        </div>   
-        
-      </form>
-
-      <div class="row"></div>
-      <div class="row"></div>
-
-      <div class="center">
-        <a class="btn-large waves-effect waves-light red" href="/deleteEmployee/{{this._id}}">Delete Employee<i class="material-icons right">delete</i></a> 
-      </div>
-
-      <div class="row"></div>
-      <div class="row"></div>   
-     
-     
-    </div>
-  </div>
-
-  </div>
-{{/each}}
-</div>
-
-
-
-
-<div class="row"></div>
-<div class="row"></div>
-
-
-<div class="container headings">
-  <h2 class="center">Add Employee</h2>
-  <hr>
-</div>
-
-<div class="row">
-
-  <form name="employee" id="employee" enctype="multipart/form-data" action="/employeeupload" method="POST">
-
-    <div class="col s12 m12 l12 center">
-      <img id="empPic"/>
-    </div>
-
-    <div class="file-field col s12 m12 l12">
-
-      <div class="btn">
-        <span>Employee Photo</span>
-        <input type="file" name="empImg" id="empImg" onchange="loadFile2(event)" class="validate" required>
-      </div>
-
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
-
-    </div>
-
-    <div class="input-field col s12 m6 l6">
-      <i class="material-icons prefix">subject</i>
-      <input id="name" name="name" type="text" class="validate" required>        
-      <label for="name">Enter Employee Name</label>
-    </div>
-
-    <div class="input-field col s12 m6 l6">
-      <i class="material-icons prefix">subject</i>
-      <input id="position" name="position" type="text" class="validate" required>        
-      <label for="position">Enter Employee Position</label>
-    </div>
-
-    <div class="input-field col s12 m6 l6">
-      <i class="material-icons prefix">phone</i>
-      <input id="tell" name="tell" type="tel" class="validate" pattern="[0-9]{10}" required>
-      <label for="tell" data-error="Ex 2674438896">Enter Employee Phone</label>
-    </div>
-
-    <div class="input-field col s12 m6 l6">
-      <i class="material-icons prefix">email</i>
-      <input id="email" name="email" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
-      <label for="email" data-error="Ex example@gmail.com">Enter Employee Email</label>
-    </div>
-
-    <div class="input-field col s12 m12 l12">
-      <i class="material-icons prefix">mode_edit</i>
-      <textarea id="bio" name="bio" class="materialize-textarea validate" required></textarea>
-      <label for="bio">Enter Employee Bio</label>
-    </div>
-
-    <div class="row"></div>
-
-    <div class="center">
-      <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Employee<i class="material-icons right">cloud_upload</i></button> 
-    </div>   
-
-  </form>    
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
-
-
-
-
-
-
-</div>{{!-- Tab --}}
-
-  
-        
-
-            
-
-
-
-
-
-
-
-
-{{!-- <div class="row"></div>
-<div class="row"></div>
-
-<div class="container headings">
-<h2 class="center">Multiple Image Upload</h2>
-<hr>
-</div>
-
-<div class="row">
-<div class="col s12 m12 l12">
-<form name="imageUpload" id="imageUpload" enctype="multipart/form-data" action="/uploadImages" method="POST">
-  <div class="input-field col s12 m12 l12">
-        <i class="material-icons prefix">image</i>
-        <select id="category" name="category" class="validate" required>
-          <option value="" disabled selected>Select Image Category</option>
-          <option value="tape_extensions" data-icon="public/img/extensions.jpg" class="circle">Tape Extensions</option>
-          <option value="sewin_extensions" data-icon="public/img/sewin.jpg" class="circle">Sewin Extensions</option>  
-          <option value="malaysian_sewin" data-icon="" class="circle">Malaysian Sew In</option>  
-          <option value="bead_weft_extensions" data-icon="" class="circle">Micro Beaded Weft Extensions</option>  
-          <option value="bead_strands" data-icon="" class="circle">Micro Bead Individual Strands</option>  
-          <option value="glue_caps" data-icon="" class="circle">Glue Caps</option>
-          <option value="color_treatments" data-icon="" class="circle">Color Treatments</option>
-          <option value="texture_reformation" data-icon="" class="circle">Texture Reformation</option>
-          <option value="press_curl" data-icon="" class="circle">Press & Curl</option>
-          <option value="haircuts" data-icon="" class="circle">Haircuts</option>
-          <option value="braids" data-icon="" class="circle">Braids</option>
-        </select>        
-  </div>
   <div class="row"></div>
   <div class="row"></div>
 
-  <div class="file-field col s12 m12 l12">
-      <div class="btn">
-        <span>Select Files</span>
-        <input type="file" name="file" id="file" onchange="loadFile(event)" class="validate" required multiple>
-      </div>
 
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
+  <div class="container headings">
+    <h2 class="center">Add Employee</h2>
+    <hr>
   </div>
 
-  <div class="col s12 m12 l12 center">
-  <img id="pics"/>
-  </div>
+  <div class="row">
 
+    <form name="employee" id="employee" enctype="multipart/form-data" action="/employee-upload" method="POST">
 
-  <div class="row"></div>
-
-  <div class="center">
-  <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Images<i class="material-icons right">cloud_upload</i></button> 
-  </div>
-
-</form>
-</div>
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="divider"></div>
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-
-<div class="container headings">
-<h2 class="center">Upload Video</h2>
-<hr>
-</div>
-
-<div class="row">
-<div class="col s12 m12 l12">
-  <form name="video" id="video" class="col s12 m12 l12" action="/addVideo" method="POST">
-    <div class="input-field col s12 m12 l12">
-      <i class="fa fa-link prefix" aria-hidden="true"></i>
-      <input id="videourl" name="videourl" type="text" class="validate" pattern="^(http(s)?:\/\/)?youtu(be|.be)?(\.com)?\/.+" required>
-      <label for="videourl" data-error="Ex https://youtu.be/oz77z9xnb_8">Enter Youtube URL</label>
-
-     </div>
-    <div class="row"></div>
-    <div class="center">
-      <button class="btn-large waves-effect waves-light" type="submit" disabled>Upload Video<i class="material-icons right">cloud_upload</i></button>     
-    </div>
-  </form>
-</div>
-</div>
-
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="divider"></div>
-
-
-<div class="row">
-
-  <form name="employee" id="employee" enctype="multipart/form-data" action="/employeeupload" method="POST">
-      
       <div class="col s12 m12 l12 center">
         <img id="empPic"/>
       </div>
 
       <div class="file-field col s12 m12 l12">
-        
+
         <div class="btn">
           <span>Employee Photo</span>
-          <input type="file" name="empImg" id="empImg" onchange="loadFile2(event)" class="validate" required multiple>
+          <input type="file" name="empImg" id="empImg" onchange="loadFile2(event)" class="validate" required>
         </div>
 
         <div class="file-path-wrapper">
@@ -435,10 +214,6 @@
         </div>
 
       </div>
-
-      
-
-    
 
       <div class="input-field col s12 m6 l6">
         <i class="material-icons prefix">subject</i>
@@ -454,8 +229,8 @@
 
       <div class="input-field col s12 m6 l6">
         <i class="material-icons prefix">phone</i>
-        <input id="tell" name="tell" type="tel" class="validate" pattern="^\d{3}\d{4}$" required>
-        <label for="tell">Enter Employee Phone</label>
+        <input id="tell" name="tell" type="tel" class="validate" pattern="[0-9]{10}" required>
+        <label for="tell" data-error="Ex 2674438896">Enter Employee Phone</label>
       </div>
 
       <div class="input-field col s12 m6 l6">
@@ -469,14 +244,296 @@
         <textarea id="bio" name="bio" class="materialize-textarea validate" required></textarea>
         <label for="bio">Enter Employee Bio</label>
       </div>
-           
+
       <div class="row"></div>
 
       <div class="center">
         <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Employee<i class="material-icons right">cloud_upload</i></button> 
       </div>   
 
-  </form>    
-</div>
+    </form>    
+  </div>
 
- --}}
+  <div class="row"></div>
+  <div class="row"></div>
+
+
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>VIEW EMPLOYEES</span>
+      </div>
+      <div class="collapsible-body">
+
+        {{#if data.employees}}
+
+        <div class="row">
+          {{#each data.employees}}
+          <div class="col s12 m6 l4">
+
+            <div class="card medium">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="/{{this.imageUrl}}" alt="sache_stylist">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{this.name}}<i class="material-icons right">more_vert</i></span>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Update {{this.name}}<i class="material-icons right">close</i></span>
+
+                <div class="row"></div>
+                <div class="row"></div>
+
+                <form name="update_employees" id="update_employees" enctype="multipart/form-data" action="/update-employee/{{this._id}}" method="POST">
+
+                  <div class="file-field col s12 m12 l12">
+                    <div class="btn">
+                      <span>Update Photo</span>
+                      <input type="file" name="updateempImg" id="updateempImg" class="validate">
+                    </div>
+
+                    <div class="file-path-wrapper">
+                      <input type="text" class="file-path validate" name="oldempImg" id="oldempImg" value="{{this.imageUrl}}">
+                    </div>
+                  </div>
+
+                  <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">subject</i>
+                    <input id="updatename" name="updatename" type="text" class="validate" required value="{{this.name}}">        
+                    <label for="updatename">Enter Employee Name</label>
+                  </div>
+
+                  <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">subject</i>
+                    <input id="updateposition" name="updateposition" type="text" class="validate" required value="{{this.position}}">        
+                    <label for="updateposition">Enter Employee Position</label>
+                  </div>
+
+                  <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="updatetell" name="updatetell" type="tel" class="validate" pattern="[0-9]{10}" required value="{{this.tell}}">
+                    <label for="updatetell">Enter Employee Phone</label>
+                  </div>
+
+                  <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">email</i>
+                    <input id="updateemail" name="updateemail" type="text" class="validate" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required value="{{this.email}}">
+                    <label for="updateemail" data-error="Ex example@gmail.com">Enter Employee Email</label>
+                  </div>
+
+                  <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <input id="updatebio" name="updatebio" type="text" class="validate" required value="{{this.bio}}">
+                    <label for="updatebio">Enter Employee Email</label>
+                  </div>
+
+                  <div class="row"></div>
+
+                  <div class="center">
+                    <button class="btn-large waves-effect waves-light" type="submit">Update Employee<i class="material-icons right">change_history</i></button> 
+                  </div>   
+
+                </form>
+
+                <div class="row"></div>
+                <div class="row"></div>
+
+                <div class="center">
+                  <a class="btn-large waves-effect waves-light red" href="/delete-employee/{{this._id}}?_method=DELETE">Delete Employee<i class="material-icons right">delete</i></a> 
+                </div>
+
+                <div class="row"></div>
+                <div class="row"></div>   
+
+              </div>
+            </div>
+
+          </div>
+          {{/each}}
+        </div>
+
+        {{else}}
+
+        <h2>NO EMPLOYEES FOUND</h2>
+
+        {{/if}}
+      </div>
+    </li>
+  </ul>
+
+
+</div>{{!-- Tab --}}
+
+
+{{!-- Next Tab --}}
+<div id="services" class="col s12">
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="container headings">
+    <h2 class="center">Add A Service</h2>
+    <hr>
+  </div>
+
+  <form name="new-service" id="new-service" action="/new-service" method="POST">
+
+    <div class="input-field center col s12 m6 push-m3 l6 push-l3">
+      <input id="name" name="name" type="text" class="validate" required>        
+      <label for="name">Enter Service Name</label>
+    </div>
+
+    <div class="center col s12 m12 l12">
+      <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Service<i class="material-icons right">cloud_upload</i></button> 
+    </div>   
+
+  </form>
+
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>VIEW SERVICES</span>
+      </div>
+      <div class="collapsible-body">
+
+        {{#if data.services}}
+          {{#each data.services}} 
+          <table class="centered striped responsive-table">
+            <thead>
+              <tr>
+                <th>Categories</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <h2>{{this.name}}</h2>
+              </tr>
+              <tr>
+                <td>
+                  {{#if this.categories}}
+                    {{#each categories}}
+                    {{this.name}} |
+                    {{/each}}
+                  {{else}}
+                  No Categories Found 
+                  {{/if}}
+                </td> 
+                <td> 
+                  <a class="btn-large waves-effect waves-light" href="/update-service/{{this._id}}"> Update Service </a> 
+                  <a class="btn-large waves-effect waves-light red" href="/delete-service/{{this._id}}?_method=DELETE"> Delete Service </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row"></div>
+          <div class="row"></div>
+          {{/each}}
+        
+        {{else}}
+          <h2>NO SERVICES FOUND</h2>
+        {{/if}}
+
+      </div>
+    </li>
+  </ul>
+
+</div>
+{{!-- Tab --}}
+
+
+
+{{!-- Next Tab --}}
+<div id="categories" class="col s12">
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="container headings">
+    <h2 class="center">Add A Category Price</h2>
+    <hr>
+  </div>
+
+  <div class="row">
+    <form name="new-category" id="new-category" action="/new-category" method="POST">
+
+      <div class="input-field col s12 m6 l6">
+        <input id="name" name="name" type="text" class="validate" required>        
+        <label for="name">Enter Category Name</label>
+      </div>
+
+      <div class="input-field col s12 m6 l6">
+        <input id="price" name="price" type="number" class="validate" required>        
+        <label for="price">Enter Category Price</label>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <select id="service" name="service[]" class="validate" required>
+          <option value="" disabled selected>Select Category Service</option>
+          {{#each data.services}}
+          <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}       
+        </select>        
+      </div>
+
+      <div class="center">
+        <button class="btn-large waves-effect waves-light" type="submit" disabled>Add Category<i class="material-icons right">cloud_upload</i></button> 
+      </div>   
+
+    </form>
+  </div>
+
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+
+
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>VIEW CATEGORIES</span>
+      </div>
+      <div class="collapsible-body">
+        {{#if data.categories}}
+          
+          {{#each data.categories}}
+          <table class="centered striped responsive-table">
+            <thead>
+              <tr>
+                <th>Category Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <h2>{{this.name}}</h2>
+              </tr>
+              <tr>
+                <td>${{this.price}}</td>
+                <td> 
+                  <a class="btn-large waves-effect waves-light" href="/update-category/{{this._id}}"> Update Category </a> 
+                  <a class="btn-large waves-effect waves-light red" href="/delete-category/{{this._id}}?_method=DELETE"> Delete Category </a>
+                </td>
+              </tr>        
+            </tbody>
+          </table>
+          {{/each}}
+
+        {{else}}
+
+          <h2>NO CATTEGORIES FOUND</h2>
+
+        {{/if}}
+      </div>
+    </li>
+  </ul>
+
+
+</div>
+{{!-- Tab --}}

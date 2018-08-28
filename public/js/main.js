@@ -1,25 +1,3 @@
-//Get Current Location
-var currentLocation = location.pathname;
-
- //Add Active Class on Tab
-if (location.hash) {
-    $("nav ul li:nth-child(2)").addClass("active");
-}else if (currentLocation == '/') {
-    $("nav ul li:nth-child(1)").addClass("active");
-}else if (currentLocation == '/contact') {
-    $("nav ul li:nth-child(3)").addClass("active");
-}else if (currentLocation == '/stylists') {
-    $("nav ul li:nth-child(4)").addClass("active");
-}else if (currentLocation == '/pricelist') {
-    $("nav ul li:nth-child(5)").addClass("active");
-}else if (currentLocation == '/lookbook' || currentLocation == '/videos') {
-   $("nav ul li:nth-child(6)").addClass("active");
-}else if (currentLocation == '/bookapt') {
-    $("nav ul li:nth-child(7)").addClass("active");
-}else if (currentLocation == '/upload') {
-    $("nav ul li:nth-child(8)").addClass("active");
-}
-
 //error slide up
 $('.error, .success').slideDown(2000).slideUp(6000);
 
@@ -56,9 +34,6 @@ $('select').material_select();
 //tabs
 $('ul.tabs').tabs();
 
-
-
-
 //load file when selected
 function loadFile(event)  {
     var output = document.getElementById('pics');
@@ -71,50 +46,65 @@ function loadFile2(event)  {
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-$('#senderName,#subject,#senderEmail,#senderTell,#senderMessage').on('change', checkForm);
-function checkForm(){
-    valid = document.getElementById("message").checkValidity();
-    if (valid == true){
-      $('form .btn').prop("disabled", false);
-    }else{
-      $('form .btn').prop("disabled", true);
-    }
-}
+$('#senderName,#subject,#senderEmail,#senderTell,#senderMessage').on('change', function(){
+  form_validate('message');
+});
 
-$('#empImg,#name,#position,#bio,#tell,#email').on('change', checkEmpForm);
-function checkEmpForm(){
-    valid = document.getElementById("employee").checkValidity();
-    console.log(valid);
-    if (valid == true){
-      $('#employee .btn-large').prop("disabled", false);
-    }else{
-      $('#employee .btn-large').prop("disabled", true);
-    }
-}
+$('#empImg,#name,#position,#bio,#tell,#email').on('change', function(){
+  form_validate('employee');
+});
 
-$('#category,#file').on('change', uploadImage);
-function uploadImage(){
-
-    var x = $('#category').val();
+$('#imageUpload #service, #imageUpload #file').on('change', function(){
+var x = $('#category').val();
     if (x != '') {
-      $('.select-dropdown').addClass("valid");
+      $('#imageUpload .select-dropdown').addClass("valid");
     }
+    form_validate('imageUpload');
+});
 
-    valid = document.getElementById("imageUpload").checkValidity();
-    if (valid == true){
-      $('#imageUpload .btn-large').prop("disabled", false);
-    }else{
-      $('#imageUpload .btn-large').prop("disabled", true);
+$('#videourl').on('change',function(){
+  form_validate('video');
+});
+
+$('#new-service').on('change',function(){
+  form_validate('new-service');
+});
+
+$('#update-service').on('change',function(){
+  form_validate('update-service');
+});
+
+$('#new-category').on('change',function(){
+  var x = $('#new-category #service').val();
+    if (x != '') {
+      $('#new-category .select-dropdown').addClass("valid");
     }
-}
+    form_validate('new-category');
+});
 
-$('#videourl').on('change', uploadVideo);
-function uploadVideo(){
-    valid = document.getElementById("video").checkValidity();
+$('#update-category').change(function(){
+  var x = $('#update-category #service').val();
+    if (x != '') {
+      $('#update-category .select-dropdown').addClass("valid");
+    }
+  form_validate('update-category');
+});
+
+$('#update-gallery').change(function(){
+  var x = $('#update-gallery #service').val();
+    if (x != '') {
+      $('#update-gallery .select-dropdown').addClass("valid");
+    }
+  form_validate('update-gallery');
+});
+
+
+function form_validate(id){
+    valid = document.getElementById(id).checkValidity();
     if (valid == true){
-      $('#video .btn-large').prop("disabled", false);
+      $('#'+id+' .btn-large').prop("disabled", false);
     }else{
-      $('#video .btn-large').prop("disabled", true);
+      $('#'+id+' .btn-large').prop("disabled", true);
     }
 }
 
@@ -142,4 +132,5 @@ if (!executed) {
 }else{
   $("#notice").closeModal();
 }
+
 
